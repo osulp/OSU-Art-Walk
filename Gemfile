@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem 'unicorn'
 gem 'blacklight'
+gem 'solrizer'
 
 group :development do
   gem 'spring'
