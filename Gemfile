@@ -13,6 +13,7 @@ gem 'sass-rails', '~> 4.0.3'
 gem 'simple_form'
 gem 'uglifier'
 gem 'unicorn'
+gem 'blacklight'
 
 group :development do
   gem 'spring'
@@ -39,3 +40,7 @@ end
 group :staging, :production do
   gem 'newrelic_rpm', '>= 3.7.3'
 end
+
+gem "jettywrapper", "~> 1.7"
+gem "devise"
+gem "devise-guests", "~> 0.3"
