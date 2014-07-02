@@ -1,4 +1,3 @@
-class ArtPieces < ActiveRecord::Base
-
+class ArtPiece < ActiveRecord::Base
   validates :title, :presence => true 
 end
