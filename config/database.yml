@@ -1,0 +1,11 @@
+development: &default
+  adapter: sqlite3
+  database: db/OSU-Art-Walk_development.sqlite3
+  encoding: utf8
+  min_messages: warning
+  pool: 2
+  timeout: 5000
+
+test:
+  <<: *default
+  database: db/OSU-Art-Walk_test.sqlite3
