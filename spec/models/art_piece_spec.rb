@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe ArtPieces do
+describe ArtPiece do
   subject {build(:art_piece)}
 
   describe "Validations" do
