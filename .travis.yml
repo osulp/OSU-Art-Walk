@@ -4,6 +4,9 @@ language:
   - ruby
 rvm:
   - 2.1.2
+before_script:
+  - RAILS_ENV=test bundle exec rake jetty:clean
+  - RAILS_ENV=test bundle exec rake jetty:config
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rspec spec/ --format documentation
