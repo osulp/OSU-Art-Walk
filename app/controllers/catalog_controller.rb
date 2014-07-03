@@ -7,8 +7,8 @@ class CatalogController < ApplicationController
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = { 
-      :qt => "select",
-      :rows => 10 
+      :qt => "/select",
+      :rows => 10
     }
     config.add_index_field 'title_texts', :label => 'Title:'
     config.add_facet_field 'title_texts', :label => 'Title:'
