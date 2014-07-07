@@ -2,7 +2,7 @@ class Admin::UsersController < AdminController
   respond_to :html, :json
 
   def index
-    @users = User.all
+    @users = User.all.decorate
   end
 
   def edit
@@ -13,11 +13,10 @@ class Admin::UsersController < AdminController
     @user = User.find(params[:id])
     if current_user.id == @user.id
       flash[:error] = "You can't change your own status."
-      respond_with @user, :location => admin_users_path
     else
       @user.update_attributes(user_params)
-      respond_with @user, :location => admin_users_path
     end
+    respond_with @user, :location => admin_users_path
   end
 
   def show
