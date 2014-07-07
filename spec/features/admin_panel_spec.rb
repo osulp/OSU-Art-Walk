@@ -10,6 +10,10 @@ describe "admin panel" do
     it "should not have an admin panel link" do
       expect(page).not_to have_link("Admin Panel")
     end
+    it "should not let you access admin panel utils" do
+      visit admin_index_path
+      expect(page).to have_content("Only admin can access")
+    end
   end
   context "when logged in as a non-admin" do
     let(:user) {create(:user)}

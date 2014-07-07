@@ -1,9 +1,8 @@
 class Admin::UsersController < AdminController
   respond_to :html, :json
 
-
   def index
-    @user_list = User.all
+    @users = User.all
   end
 
   def edit
@@ -22,7 +21,6 @@ class Admin::UsersController < AdminController
   end
 
   def show
-
   end
 
   private 

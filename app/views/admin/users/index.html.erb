@@ -4,7 +4,7 @@
       <div class="panel panel-primary" id="dashboard">
         <div class="panel panel-heading"> List of Users </div>
         <div class="panel panel-body">
-          <% @user_list.each do |user| %>
+          <% @users.each do |user| %>
           <div class="panel panel-body" id="userstatus-<%= user.id %>">
             <p><b>User Email:</b> <%= user.email %></p>
             <p><b>User Admin Status</b> <% if user.admin %>
