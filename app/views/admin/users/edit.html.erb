@@ -1,0 +1,6 @@
+<h3>Edit Users Administrative Status</h3>
+User Email: <%= @user.email %>
+<%= simple_form_for(@user, url: admin_user_path(@user)) do |f| %>
+  <%= f.input :admin, label: "Checked means has admin status" %>
+  <%= f.button :submit %>
+<% end %>

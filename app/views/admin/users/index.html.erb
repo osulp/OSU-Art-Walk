@@ -1,0 +1,22 @@
+<div class="container" align="center">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2">
+      <div class="panel panel-primary" id="dashboard">
+        <div class="panel panel-heading"> List of Users </div>
+        <div class="panel panel-body">
+          <% @user_list.each do |user| %>
+          <div class="panel panel-body" id="userstatus-<%= user.id %>">
+            <p><b>User Email:</b> <%= user.email %></p>
+            <p><b>User Admin Status</b> <% if user.admin %>
+            <%= "Admin"%>
+            <% else %>
+            <%= "User" %>
+            <% end %></p>
+            <p><%= link_to "Edit", edit_admin_user_path(user) %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
