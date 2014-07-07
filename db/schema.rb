@@ -11,15 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707222719) do
+ActiveRecord::Schema.define(version: 20140707223635) do
 
   create_table "art_piece_buildings", force: true do |t|
-    t.integer  "floor"
-    t.string   "location"
-    t.integer  "art_piece_id"
-    t.integer  "building_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "floor"
+    t.string  "location"
+    t.integer "art_piece_id"
+    t.integer "building_id"
   end
 
   add_index "art_piece_buildings", ["art_piece_id"], name: "index_art_piece_buildings_on_art_piece_id"
@@ -54,12 +52,10 @@ ActiveRecord::Schema.define(version: 20140707222719) do
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "buildings", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.float    "lat"
-    t.float    "long"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string "name"
+    t.text   "description"
+    t.float  "lat"
+    t.float  "long"
   end
 
   create_table "searches", force: true do |t|

@@ -8,9 +8,5 @@ describe ArtPiece do
     context "Presence check" do
       it {should validate_presence_of(:title)}
     end
-
-    context "Type check" do
-
-    end
   end
 end
