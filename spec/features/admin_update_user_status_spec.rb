@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "admin update user status" do
   let(:user) {create(:user, :admin)}
   let(:user_2) {}
-
   before do
     user_2
     capybara_login(user) if user
@@ -25,15 +24,15 @@ describe "admin update user status" do
       it "should take you to the index for the admin_users_controller" do
         expect(page).to have_content("List of Users")
       end
-      it "should have a status of Admin" do
-        within("#userstatus-#{user.id} .status") do
+      it "should show an admin status for the current user" do
+        within "#userstatus-#{user.id} .status" do
           expect(page).to have_content("Admin")
         end
       end
-      context "when there's another user" do
+      context "and there are two users" do
         let(:user_2) {create(:user)}
-        it "should have a status of User" do
-          within("#userstatus-#{user_2.id} .status") do
+        it "should show a user status for the current user" do
+          within "#userstatus-#{user_2.id} .status" do
             expect(page).to have_content("User")
           end
         end
