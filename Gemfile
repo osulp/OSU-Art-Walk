@@ -15,6 +15,8 @@ gem 'uglifier'
 gem 'unicorn'
 gem 'blacklight'
 gem 'sunspot_rails'
+# Draper for decoration.
+gem 'draper', '~> 1.3'
 
 group :development do
   gem 'spring'
