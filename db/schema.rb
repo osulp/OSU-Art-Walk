@@ -11,15 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140707223635) do
-
-  create_table "art_piece_buildings", force: true do |t|
-    t.integer "floor"
-    t.string  "location"
-    t.integer "art_piece_id"
-    t.integer "building_id"
-=======
 ActiveRecord::Schema.define(version: 20140707184703) do
 
   create_table "art_piece_buildings", force: true do |t|
@@ -29,7 +20,6 @@ ActiveRecord::Schema.define(version: 20140707184703) do
     t.integer  "building_id"
     t.datetime "created_at"
     t.datetime "updated_at"
->>>>>>> Checkpoint commit.
   end
 
   add_index "art_piece_buildings", ["art_piece_id"], name: "index_art_piece_buildings_on_art_piece_id"
@@ -74,19 +64,12 @@ ActiveRecord::Schema.define(version: 20140707184703) do
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
   create_table "buildings", force: true do |t|
-<<<<<<< HEAD
-    t.string "name"
-    t.text   "description"
-    t.float  "lat"
-    t.float  "long"
-=======
     t.string   "name"
     t.text     "description"
     t.float    "lat"
     t.float    "long"
     t.datetime "created_at"
     t.datetime "updated_at"
->>>>>>> Checkpoint commit.
   end
 
   create_table "searches", force: true do |t|
