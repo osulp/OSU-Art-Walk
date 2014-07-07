@@ -8,7 +8,7 @@ describe Artist do
     context "When an art piece is set" do
 
       it "should work" do
-
+        
       end
     end
   end
