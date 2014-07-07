@@ -5,6 +5,8 @@ describe ArtPiece do
 
   describe "Validations" do
 
+    it {should belong_to(:artist)}
+
     context "Presence check" do
       it {should validate_presence_of(:title)}
     end
