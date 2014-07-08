@@ -8,7 +8,7 @@ describe "changing user status" do
   end
 
   it "should have users displayed with their email and administrative status" do
-    expect(page).to have_content("User Email:")
+    expect(page).to have_content("Email:")
   end
 
   context "when the edit link is clicked, it brings you to the edit page" do

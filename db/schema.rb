@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707222719) do
+ActiveRecord::Schema.define(version: 20140707234705) do
 
   create_table "art_piece_buildings", force: true do |t|
     t.integer  "floor"
@@ -39,7 +39,23 @@ ActiveRecord::Schema.define(version: 20140707222719) do
     t.boolean  "on_campus"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "artist_id"
   end
+
+  add_index "art_pieces", ["artist_id"], name: "index_art_pieces_on_artist_id"
+
+  create_table "artists", force: true do |t|
+    t.string   "name"
+    t.text     "bio"
+    t.string   "website"
+    t.string   "birthdate"
+    t.string   "deathdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "art_piece_id"
+  end
+
+  add_index "artists", ["art_piece_id"], name: "index_artists_on_art_piece_id"
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",       null: false
