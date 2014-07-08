@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :building do
-    name "MyString"
+    sequence(:name) { |n| "ValleyLib#{n}" }
     description "MyText"
     lat 1.5
     long 1.5

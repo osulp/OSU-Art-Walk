@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :artist do
-    name "MyString"
+    sequence(:name) { |n| "picasso#{n}" }
     bio "MyText"
     website "MyString"
     birthdate "MyString"
