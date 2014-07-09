@@ -1,18 +1,18 @@
 class Admin::ArtPiecesController < AdminController
-  respond_to :html, :xml, :json
+  respond_to :html, :json
   
   def index
-    @artPieces = ArtPiece.all
+    @art_pieces = ArtPiece.all
   end
 
   def edit
-    @artPiece = ArtPiece.find(params[:id])
+    @art_piece = ArtPiece.find(params[:id])
   end
 
   def update
-    @artPiece = ArtPiece.find(params[:id])
-    @artPiece.update_attributes(art_piece_params)
-    respond_with @artPiece, :location => admin_art_pieces_path
+    @art_piece = ArtPiece.find(params[:id])
+    @art_piece.update_attributes(art_piece_params)
+    respond_with @art_piece, :location => admin_art_pieces_path
   end
 
   def destroy
@@ -21,13 +21,13 @@ class Admin::ArtPiecesController < AdminController
   end
 
   def new
-    @artPiece = ArtPiece.new
+    @art_piece = ArtPiece.new
   end
 
   def create
-    @artPiece = ArtPiece.new(art_piece_params)
-    flash[:success] = "Successfully created art piece!" if @artPiece.save
-    respond_with @artPiece, :location => admin_art_pieces_path
+    @art_piece = ArtPiece.new(art_piece_params)
+    flash[:success] = "Successfully created art piece!" if @art_piece.save
+    respond_with @art_piece, :location => admin_art_pieces_path
   end
 
   private

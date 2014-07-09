@@ -1,4 +1,4 @@
-<% @artPieces.each do |art| %>
+<% @art_pieces.each do |art| %>
   <div class="panel panel-heading" id="piece-<%= art.id %>">
     <%= art.title %>
     <%= link_to "Edit", edit_admin_art_piece_path(art), :class => "pull-right", :style => "padding-left: 10px;" %>
