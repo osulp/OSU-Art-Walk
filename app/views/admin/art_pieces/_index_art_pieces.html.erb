@@ -1,19 +1,25 @@
 <% @art_pieces.each do |art| %>
-  <div class="panel panel-heading" id="piece-<%= art.id %>">
-    <%= art.title %>
-    <%= link_to "Edit", edit_admin_art_piece_path(art), :class => "pull-right", :style => "padding-left: 10px;" %>
-    <%= link_to "Delete", admin_art_piece_path(art), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %>
-  </div>
-  <div class="panel panel-body">
-    <p>Medium: <%= art.medium %></p>
-    <p>Created On: <%= art.creation_date %></p>
-    <p>Size: <%= art.size %></p>
-    <p>Legal Info: <%= art.legal_info %></p>
-    <p>Is this Piece Temporary? <%= art.temporary? %></p>
-    <p>Temporary Until: <%= art.temporary_until %></p>
-    <p>Is this a private piece? <%= art.private? %></p>
-    <p>Contact Info: <%= art.contact_info %></p>
-    <p>Description: <%= art.description %></p>
-    <p>Is this Art On Campus? <%= art.on_campus %></p>
+  <div class="panel panel-default" id="piece-<%= art.id %>">
+    <div class="panel panel-heading">
+      <a data-toggle="collapse" style="color:black;" data-parent="#accordion" href="#collapse-<%= art.id %>">
+        <%= art.title %>
+        <%= link_to "Edit", edit_admin_art_piece_path(art), :class => "pull-right", :style => "padding-left: 10px;" %>
+        <%= link_to "Delete", admin_art_piece_path(art), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %>
+      </a>
+    </div>
+    <div class="panel-collapse collapse" id="collapse-<%= art.id %>">
+      <div class="panel panel-body">
+        <p>Medium: <%= art.medium %></p>
+        <p>Created On: <%= art.creation_date %></p>
+        <p>Size: <%= art.size %></p>
+        <p>Legal Info: <%= art.legal_info %></p>
+        <p>Is this Piece Temporary? <%= art.temporary? %></p>
+        <p>Temporary Until: <%= art.temporary_until %></p>
+        <p>Is this a private piece? <%= art.private? %></p>
+        <p>Contact Info: <%= art.contact_info %></p>
+        <p>Description: <%= art.description %></p>
+        <p>Is this Art On Campus? <%= art.on_campus %></p>
+      </div>
+    </div>
   </div>
 <% end %>

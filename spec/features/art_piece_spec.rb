@@ -33,6 +33,13 @@ describe "Art Piece Manipulation" do
         expect(page).to have_content(art.title)
       end
 
+      it "should have the name as a link to collapse the boxes" do
+        within "#piece-#{art.id}" do
+          click_link "#{art.title}"
+        end
+        expect(page).to have_content("#{art.medium}")
+      end
+
       it "should have links to edit and delete each art piece" do
         within "#piece-#{art.id}" do
           expect(page).to have_link "Edit"
