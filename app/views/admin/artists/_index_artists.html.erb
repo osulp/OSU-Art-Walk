@@ -1,0 +1,14 @@
+<% @artists.each do |artist| %>
+  <div class="panel panel-default" id="artist-<%= artist.id %>">
+    <div class="panel panel-heading">
+      <p>Name: <%= artist.name %>
+      <%= link_to "Edit", edit_admin_artist_path(artist), :class => "pull-right", :style => "padding-left: 10px;" %>
+      <%= link_to "Delete", admin_artist_path(artist), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %>
+    </div>
+    <div class="panel panel-body">
+      <p>Bio: <%= artist.bio %></p>
+      <p>Website: <%= artist.website %></p>
+      <p>Birth Date:<%= artist.birthdate %></p>
+      <p>Date Deceased: <%= artist.deathdate %></p>
+    </div>
+<% end %>

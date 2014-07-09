@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1> Edit Artist Information </h1>
+      <% if @artists.count == 0 %>
+        No Artists Are Currently In The Database
+      <% else %>
+        <%= render "index_artists" %>
+      <% end %>
+    </div>
+  </div>
+</div>
