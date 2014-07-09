@@ -7,7 +7,7 @@ FactoryGirl.define do
     creation_date "2014-07-02 13:58:43"
     size "MyString"
     legal_info "MyText"
-    is_temporary false
+    temporary false
     temporary_until "2014-07-02 13:58:43"
     private false
     contact_info "MyString"

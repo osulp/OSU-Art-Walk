@@ -16,21 +16,21 @@ describe "Art Piece Manipulation" do
     end
 
     context "and no art pieces are present" do
-      #it "should display No Art Pieces Found!" do
-      # 
-      #end
+      let(:user) {create(:user, :admin)}
+      it "should display No Art Pieces Currently In The Database" do
+       expect(page).to have_content("No Art Pieces Currently In The Database")
+      end
     end
 
     context "and art pieces are present" do
       let(:user) {create(:user, :admin)}
       before do
         art
-        art.title = "Example Title"
         art.save
         visit admin_art_pieces_path
       end
       it "should show the saved art piece" do
-        expect(page).to have_content("Example Title")
+        expect(page).to have_content(art.title)
       end
 
       it "should have links to edit and delete each art piece" do
@@ -64,7 +64,6 @@ describe "Art Piece Manipulation" do
       let(:user) {create(:user, :admin)}
       before do
         art
-        art.title = "Example Title"
         art.save
         visit admin_art_pieces_path
         click_link "Edit"
@@ -73,6 +72,7 @@ describe "Art Piece Manipulation" do
         fill_in "Title", :with => "Example Title 2"
         click_button "Update Art piece"
         expect(page).to have_content("Example Title 2")
+        expect(art.reload.title).to eq "Example Title 2"
       end
     end
   end
@@ -91,6 +91,7 @@ describe "Art Piece Manipulation" do
         fill_in "Title", :with => "Cool Title"
         click_button "Create Art piece"
         expect(page).to have_content("Cool Title")
+        expect(ArtPiece.first.title).to eq "Cool Title"
       end
 
     end

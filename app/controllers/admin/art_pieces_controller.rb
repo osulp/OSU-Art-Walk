@@ -16,8 +16,11 @@ class Admin::ArtPiecesController < AdminController
   end
 
   def destroy
-    ArtPiece.find(params[:id]).destroy
-    redirect_to admin_art_pieces_path, :flash => { :success => "Sucessfully deleted." }
+     if ArtPiece.find(params[:id]).destroy
+      redirect_to admin_art_pieces_path, :flash => { :success => "Sucessfully deleted." }
+    else 
+      redirect_to admin_art_pieces_path, :flash => { :error => "Error in deleting art piece." }
+    end
   end
 
   def new
@@ -33,7 +36,7 @@ class Admin::ArtPiecesController < AdminController
   private
 
   def art_piece_params
-    params.require(:art_piece).permit(:title, :medium, :creation_date, :size, :legal_info, :is_temporary, :temporary_until, :private, :contact_info, :description, :on_campus)
+    params.require(:art_piece).permit(:title, :medium, :creation_date, :size, :legal_info, :temporary, :temporary_until, :private, :contact_info, :description, :on_campus)
   end
 
 end
