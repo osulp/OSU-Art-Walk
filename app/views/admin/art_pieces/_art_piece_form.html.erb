@@ -1,0 +1,14 @@
+<%= simple_form_for(@artPiece, html: {class: 'form-horizontal'}, url: admin_art_piece_path(@artPiece)) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :medium %>
+    <%= f.input :creation_date %>
+    <%= f.input :size %>
+    <%= f.input :legal_info %>
+    <%= f.input :is_temporary %>
+    <%= f.input :temporary_until %>
+    <%= f.input :private %>
+    <%= f.input :contact_info %>
+    <%= f.input :description %>
+    <%= f.input :on_campus %>
+    <%= f.button :submit %>
+<% end %>

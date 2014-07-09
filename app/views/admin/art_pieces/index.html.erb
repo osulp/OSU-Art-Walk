@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1> Edit Art Piece Infortmation </h1>
+      <div class="panel panel-default">
+        <%= render "index_art_pieces" %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel panel-heading">
+          Add New
+        </div>
+        <div class="panel panel-body">
+          <%= link_to "Add", new_admin_art_piece_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

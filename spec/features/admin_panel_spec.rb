@@ -34,6 +34,17 @@ describe "admin panel" do
         visit admin_index_path
         expect(page).to have_selector('#dashboard')
       end
+      context "should have a clickable Edit Information link on it" do
+        before do
+          visit admin_index_path
+          expect(page).to have_link("Art Piece Information")
+        end
+
+        it "should link you to the list of editable information" do
+          click_link "Art Piece Information"
+          expect(page).to have_content("Art Piece Infortmation")
+        end
+      end
     end
   end
 end
