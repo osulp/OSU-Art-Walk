@@ -24,6 +24,12 @@ class Admin::ArtPiecesController < AdminController
     @artPiece = ArtPiece.new
   end
 
+  def create
+    @artPiece = ArtPiece.new(art_piece_params)
+    flash[:success] = "Successfully created art iece!" if @artPiece.save
+    respond_with @artPiece, :location => admin_art_pieces_path
+  end
+
   private
 
   def art_piece_params

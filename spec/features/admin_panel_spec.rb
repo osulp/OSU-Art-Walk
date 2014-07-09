@@ -42,7 +42,7 @@ describe "admin panel" do
 
         it "should link you to the list of editable information" do
           click_link "Art Piece Information"
-          expect(page).to have_content("Art Piece Infortmation")
+          expect(page).to have_content("Edit Art Piece Information")
         end
       end
     end

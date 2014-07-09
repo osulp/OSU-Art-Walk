@@ -76,4 +76,24 @@ describe "Art Piece Manipulation" do
       end
     end
   end
+
+  context "when adding a new art piece" do
+    let(:user) {create(:user, :admin)}
+    before do
+      visit admin_art_pieces_path
+    end
+    context "clicking add should bring you to the new art piece page" do
+      before do
+        click_link "Add Art Piece"
+      end
+
+      it "should let you fill in the forms and save the new art piece" do
+        fill_in "Title", :with => "Cool Title"
+        click_button "Create Art piece"
+        expect(page).to have_content("Cool Title")
+      end
+
+    end
+
+  end
 end
