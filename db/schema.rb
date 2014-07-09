@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707234705) do
+ActiveRecord::Schema.define(version: 20140709173020) do
 
   create_table "art_piece_buildings", force: true do |t|
     t.integer  "floor"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20140707234705) do
     t.string   "creation_date"
     t.string   "size"
     t.text     "legal_info"
-    t.boolean  "is_temporary"
+    t.boolean  "temporary"
     t.datetime "temporary_until"
     t.boolean  "private"
     t.string   "contact_info"

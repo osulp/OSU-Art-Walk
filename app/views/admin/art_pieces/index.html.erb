@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8">
+      <h1> Edit Art Piece Information </h1>
+      <div class="panel-group" id="accordion">
+        <% if @art_pieces.count == 0 %>
+        No Art Pieces Currently In The Database
+        <% else %>
+        <%= render "index_art_pieces" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel panel-heading">
+          Add New
+        </div>
+        <div class="panel panel-body">
+          <%= link_to "Add Art Piece", new_admin_art_piece_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
