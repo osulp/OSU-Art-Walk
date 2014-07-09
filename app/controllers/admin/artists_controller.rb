@@ -23,6 +23,16 @@ class Admin::ArtistsController < AdminController
     end
   end
 
+  def new
+    @artist = Artist.new
+  end
+
+  def create
+    @artist = Artist.new(artist_params)
+    flash[:success] = "Successfully created artist!" if @artist.save
+    respond_with @artist, :location => admin_artists_path
+  end
+
   private
 
   def artist_params

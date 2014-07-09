@@ -51,6 +51,14 @@ describe "Artist manipulation" do
           expect(page).to have_content("Edit " + Artist.first.name)
         end
       end
+
+      context "when clicking the add artist link" do
+
+        it "should take you to the add new artist page" do
+          click_link "Add Artist"
+          expect(page).to have_content("Add New Artist")
+        end
+      end
     end
   end
 
@@ -77,7 +85,20 @@ describe "Artist manipulation" do
         expect(page).to_not have_content(the_artist.name)
       end
     end
+  end
 
+  context "when on the add artist page" do
+    let(:user) {create(:user, :admin)}
+    before do
+      visit new_admin_artist_path
+    end
+
+    it "should let you fill in the forms and save the artist" do
+      fill_in "Bio", :with => "Here's a cool bio"
+      click_button "Create Artist"
+      expect(page).to have_content("Here's a cool bio")
+      expect(Artist.first.bio).to eq "Here's a cool bio"
+    end
   end
 
 end
