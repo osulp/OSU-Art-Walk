@@ -46,11 +46,33 @@ describe "Art Piece Manipulation" do
         expect(page).to have_content("Edit")
       end
 
-      it "should delet the art piece" do
+      it "should delete the art piece" do
         within "#piece-#{art.id}" do
           click_link "Delete"
         end
         expect(page).to_not have_selector("#piece-#{art.id}")
+      end
+    end
+  end
+
+  context "When editing an art piece" do
+    before do
+      visit admin_art_pieces_path
+    end
+
+    context "and art pieces are present" do
+      let(:user) {create(:user, :admin)}
+      before do
+        art
+        art.title = "Example Title"
+        art.save
+        visit admin_art_pieces_path
+        click_link "Edit"
+      end
+      it "should edit the art piece properly" do
+        fill_in "Title", :with => "Example Title 2"
+        click_button "Update Art piece"
+        expect(page).to have_content("Example Title 2")
       end
     end
   end
