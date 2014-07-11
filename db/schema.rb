@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140709173020) do
+ActiveRecord::Schema.define(version: 20140711161331) do
+
+  create_table "art_piece_artists", force: true do |t|
+    t.integer  "art_piece_id"
+    t.integer  "artist_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "art_piece_artists", ["art_piece_id"], name: "index_art_piece_artists_on_art_piece_id"
+  add_index "art_piece_artists", ["artist_id"], name: "index_art_piece_artists_on_artist_id"
 
   create_table "art_piece_buildings", force: true do |t|
     t.integer  "floor"

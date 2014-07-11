@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users
     resources :art_pieces
+    resources :artists
   end
 end

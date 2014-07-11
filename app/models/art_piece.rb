@@ -4,7 +4,8 @@ class ArtPiece < ActiveRecord::Base
   has_one :building, :through => :art_piece_building
   has_one :art_piece_building
 
-  belongs_to :artist
+  has_many :artists, :through => :art_piece_artists
+  has_many :art_piece_artists
 
   searchable do
     text :title, :stored => true

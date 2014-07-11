@@ -1,0 +1,8 @@
+<%= simple_form_for([:admin, @artist], html: {class: 'form-horizontal'}) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :bio %>
+  <%= f.input :website %>
+  <%= f.input :birthdate %>
+  <%= f.input :deathdate %>
+  <%= f.button :submit %>
+<% end %>
