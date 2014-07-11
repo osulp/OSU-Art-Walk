@@ -1,8 +1,10 @@
 class Admin::BuildingsController < AdminController
   respond_to :html, :json
+  before_filter :find_building, :only => [:destroy, :edit, :update]
 
   def index
     @buildings = Building.all
+    respond_with(@buildings)
   end
 
   def new
@@ -16,24 +18,27 @@ class Admin::BuildingsController < AdminController
   end
 
   def destroy
-    if Building.find(params[:id]).destroy
-      redirect_to admin_buildings_path, :flash => { :success => "Sucessfully deleted." }
-    else 
-      redirect_to admin_buildings_path, :flash => { :error => "Error in deleting art piece." }
+    if @building.destroy
+      flash[:success] = "Succesfully deleted."
+    else
+      flash[:error] = "Error in deleting building"
     end
+    respond_with [:admin,@building]
   end
 
   def edit
-    @building = Building.find(params[:id])
   end
 
   def update
-    @building = Building.find(params[:id])
     @building.update_attributes(building_params)
     respond_with @building, :location => admin_buildings_path
   end
 
   private
+
+  def find_building
+    @building = Building.find(params[:id])
+  end
 
   def building_params
     params.require(:building).permit(:name, :description, :lat, :long)
