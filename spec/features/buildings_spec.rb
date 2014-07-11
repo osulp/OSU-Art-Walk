@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "buildings" do
   let(:user) {}
-  let(:building_1) {build(:building)}
+  let(:building) {create(:building)}
 
   before do
     capybara_login(user) if user
@@ -21,38 +21,47 @@ describe "buildings" do
       end
     end
 
-    it "should have a link to add a new building and take you to the new building page" do
+    it "should have a link to add a new building" do
       expect(page).to have_link("Add New Building")
-      click_link "Add New Building"
-      expect(page).to have_content("New Building Page")
+    end 
+
+    context "the add new building link" do
+      it "should take you to the new building page" do
+        click_link "Add New Building"
+        expect(page).to have_content("New Building Page")
+      end
     end
 
     context "and buildings are present" do
       before do
-        building_1
-        building_1.save
+        building
         visit admin_buildings_path
       end
       it "should have links to edit and delete specific buildings" do
-        within "#building-#{building_1.id}" do
+        within "#building-#{building.id}" do
           expect(page).to have_link "Edit"
           expect(page).to have_link "Delete"
         end
       end
-      it "should let you edit the building" do
-        within "#building-#{building_1.id}" do
-          click_link "Edit"
+      context "should let you fill in edited info" do
+        before do
+          within "#building-#{building.id}" do
+            click_link "Edit"
+          end
+          fill_in "Name", :with => "New Test Name"
         end
-        fill_in "Name", :with => "New Test Name"
-        click_button "Update Building"
-        expect(page).to have_content("New Test Name")
-        expect(building_1.reload.name).to eq "New Test Name"
+
+        it "should save it" do
+          click_button "Update Building"
+          expect(page).to have_content("New Test Name")
+          expect(building.reload.name).to eq "New Test Name"
+        end
       end
       it "should let you delete the building" do
-        within "#building-#{building_1.id}" do
+        within "#building-#{building.id}" do
           click_link "Delete"
         end
-        expect(page).to_not have_selector("#building-#{building_1.id}")
+        expect(page).to_not have_selector("#building-#{building.id}")
       end
     end
   end
@@ -62,11 +71,15 @@ describe "buildings" do
     before do
       visit new_admin_building_path
     end
-    it "should allow input of data and to save the building" do
-      fill_in "Name", :with => "Test Name"
-      click_button "Create Building"
-      expect(page).to have_content("Test Name")
-      expect(Building.first.name).to eq "Test Name"
+    context "should allow input of data" do
+      before do
+        fill_in "Name", :with => "Test Name"
+      end
+      it "should save it" do
+        click_button "Create Building"
+        expect(page).to have_content("Test Name")
+        expect(Building.first.name).to eq "Test Name"
+      end
     end
   end
 
