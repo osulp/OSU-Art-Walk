@@ -39,4 +39,6 @@ describe ArtPiece do
       end
     end
   end
+  it {should have_many(:artists).through(:art_piece_artists)}
+  it {should have_many(:art_piece_artists)}
 end
