@@ -33,7 +33,7 @@ describe "Artist manipulation" do
         expect(page).to have_content(the_artist.name)
       end
 
-      it "should have an edit and delet links for the specific artist" do
+      it "should have an edit and delete links for the specific artist" do
         within "#artist-#{the_artist.id}" do
           expect(page).to have_link "Edit"
           expect(page).to have_link "Delete"
