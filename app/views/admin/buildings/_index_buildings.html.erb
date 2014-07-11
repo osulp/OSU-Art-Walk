@@ -1,0 +1,14 @@
+<% @buildings.each do |building| %>
+  <div class="panel panel-default" id="building-<%= building.id %>">
+    <div class="panel panel-heading">
+      <p><%= building.name %>
+      <%= link_to "Edit", edit_admin_building_path(building), :class => "pull-right", :style => "padding-left: 10px;" %>
+      <%= link_to "Delete", admin_building_path(building), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %></p>
+    </div>
+    <div class="panel panel-body">
+      <p>Description: <%= building.description %></p>
+      <p>Latitude: <%= building.lat %></p>
+      <p>Longitude: <%= building.long %></p>
+    </div>
+  </div>
+<% end %>

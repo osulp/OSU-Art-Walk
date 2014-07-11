@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :users
     resources :art_pieces
     resources :artists
+    resources :buildings
   end
 end
