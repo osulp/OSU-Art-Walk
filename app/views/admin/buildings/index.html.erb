@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1> Building Information Page </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <% if @buildings.count == 0 %>
+        No Buildings Currently In Database
+      <% else %>
+        <%= render "index_buildings" %>
+      <% end %>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel panel-heading">
+          Add New
+        </div>
+        <div class="panel panel-body">
+          <%= link_to "Add New Building", new_admin_building_path %>
+        </div>
+      </div>
+    </div>
