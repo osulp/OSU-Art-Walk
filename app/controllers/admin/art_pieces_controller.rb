@@ -1,26 +1,27 @@
 class Admin::ArtPiecesController < AdminController
   respond_to :html, :json
+  before_filter :find_art_piece, :only => [:edit, :update, :destroy]
   
   def index
     @art_pieces = ArtPiece.all
+    respond_with(@art_pieces)
   end
 
   def edit
-    @art_piece = ArtPiece.find(params[:id])
   end
 
   def update
-    @art_piece = ArtPiece.find(params[:id])
     @art_piece.update_attributes(art_piece_params)
     respond_with @art_piece, :location => admin_art_pieces_path
   end
 
   def destroy
-     if ArtPiece.find(params[:id]).destroy
-      redirect_to admin_art_pieces_path, :flash => { :success => "Sucessfully deleted." }
+    if @art_piece.destroy
+      flash[:success] = "Sucessfully deleted."
     else 
-      redirect_to admin_art_pieces_path, :flash => { :error => "Error in deleting art piece." }
+      flash[:error] = "Error in deleting art piece."
     end
+    respond_with [:admin, @art_piece]
   end
 
   def new
@@ -35,8 +36,11 @@ class Admin::ArtPiecesController < AdminController
 
   private
 
+  def find_art_piece
+    @art_piece = ArtPiece.find(params[:id])
+  end
+
   def art_piece_params
     params.require(:art_piece).permit(:title, :medium, :creation_date, :size, :legal_info, :temporary, :temporary_until, :private, :contact_info, :description, :on_campus)
   end
-
 end

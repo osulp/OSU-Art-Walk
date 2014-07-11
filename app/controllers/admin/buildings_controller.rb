@@ -1,19 +1,17 @@
 class Admin::BuildingsController < AdminController
   respond_to :html, :json
-  before_filter :find_building, :only => [:destroy, :edit, :update]
+  before_filter :find_building, :only => [:edit, :update, :destroy]
 
   def index
     @buildings = Building.all
     respond_with(@buildings)
   end
 
-  def new
-    @building = Building.new
+  def edit
   end
 
-  def create
-    @building = Building.new(building_params)
-    flash[:success] = "Successfully Created Building" if @building.save
+  def update
+    @building.update_attributes(building_params)
     respond_with @building, :location => admin_buildings_path
   end
 
@@ -23,14 +21,16 @@ class Admin::BuildingsController < AdminController
     else
       flash[:error] = "Error in deleting building"
     end
-    respond_with [:admin,@building]
+    respond_with [:admin, @building]
   end
 
-  def edit
+  def new
+    @building = Building.new
   end
 
-  def update
-    @building.update_attributes(building_params)
+  def create
+    @building = Building.new(building_params)
+    flash[:success] = "Successfully Created Building" if @building.save
     respond_with @building, :location => admin_buildings_path
   end
 
