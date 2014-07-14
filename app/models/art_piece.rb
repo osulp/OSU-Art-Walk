@@ -42,17 +42,18 @@ class ArtPiece < ActiveRecord::Base
 
   def status
     status = []
-    status << I18n.t('art_piece.faculty_string') if is_faculty?
-    status << I18n.t('art_piece.student_string') if is_student?
+    status << I18n.t('art_piece.faculty_string') if by_faculty?
+    status << I18n.t('art_piece.student_string') if by_student?
+    status
   end
   
   private
 
-  def is_faculty?
+  def by_faculty?
     artists.find{|x| x.faculty?}.present?
   end
 
-  def is_student?
+  def by_student?
     artists.find{|x| x.student?}.present?
   end
 end

@@ -49,5 +49,20 @@ describe "faceting" do
         expect(page).to have_link subject.collections.name
       end
     end
+    context "with a status" do
+
+      context "of student" do
+        subject {create(:art_piece, :with_student)}
+        it "should have a link for that status" do
+          expect(page).to have_link("Created by Student")
+        end
+      end
+      context "of faculty" do
+        subject {create(:art_piece, :with_faculty)}
+        it "should have a link for that status" do
+          expect(page).to have_link("Created by Faculty")
+        end
+      end
+    end
   end
 end
