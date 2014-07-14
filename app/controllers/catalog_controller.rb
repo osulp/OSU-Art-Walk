@@ -14,6 +14,7 @@ class CatalogController < ApplicationController
     config.add_index_field 'title_ss', :label => 'Title'
     config.add_facet_field 'building_ss', :label => 'Buildings'
     config.add_facet_field 'artists_sms', :label => 'Artists'
+    config.add_facet_field 'collections_sms', :label => 'Collections'
     config.add_search_field 'all-fields', :label => "All Fields"
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.

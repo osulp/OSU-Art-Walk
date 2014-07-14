@@ -25,5 +25,11 @@ FactoryGirl.define do
         art_piece.artists = [build(:artist)]
       end
     end
+
+    trait :with_collection do
+      after(:build) do |art_piece|
+        art_piece.collections = [build(:collection)]
+      end
+    end
   end
 end

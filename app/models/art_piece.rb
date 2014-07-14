@@ -22,6 +22,9 @@ class ArtPiece < ActiveRecord::Base
     string :artists, :stored => true, :multiple => true do
       artists.map(&:name)
     end
+    string :collections, :stored => true, :multiple => true do
+      collections.map(&:name)
+    end
 
     string :status, :stored => true, :multiple => true
 

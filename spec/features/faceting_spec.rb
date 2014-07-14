@@ -43,10 +43,10 @@ describe "faceting" do
         expect(page).to have_link subject.artists.name
       end
     end
-    context "with an art piece that is currently a student at OSU" do
-      subject {create(:art_piece, :with_artist)}
+    context "with a collection" do
+      subject {create(:art_piece, :with_collection)}
       it "should have a link for that artist" do
-        expect(page).to have_link subject.artists.name
+        expect(page).to have_link subject.collections.name
       end
     end
   end
