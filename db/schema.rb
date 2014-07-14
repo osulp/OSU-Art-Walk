@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714203332) do
+ActiveRecord::Schema.define(version: 20140714214706) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 20140714203332) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "artist_id"
-    t.boolean  "faculty_piece"
-    t.boolean  "student_piece"
     t.integer  "collections_id"
   end
 
@@ -77,8 +75,8 @@ ActiveRecord::Schema.define(version: 20140714203332) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "art_piece_id"
-    t.boolean  "current_student"
-    t.boolean  "current_faculty"
+    t.boolean  "student"
+    t.boolean  "faculty"
   end
 
   add_index "artists", ["art_piece_id"], name: "index_artists_on_art_piece_id"

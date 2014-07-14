@@ -22,31 +22,37 @@ class ArtPiece < ActiveRecord::Base
     string :artists, :stored => true, :multiple => true do
       artists.map(&:name)
     end
+    string :artist_bio, :stored => true, :multiple => true do
+      artists.map(&:bio)
+    end
     string :collections, :stored => true, :multiple => true do
       collections.map(&:name)
     end
 
-    string :status, :stored => true, :multiple => true
+    string :status, :stored => true, :multiple => true do
+      self.status
+    end
 
     # Displayed Text
     string :title, :stored => true
+    string :medium, :stored => true
+    string :creation_date, :stored => true
+
   end
 
   def status
     status = []
-    status << t('art_piece.faculty_string') if faculty_piece?
-    status << t('art_piece.student_piece') if student_piece?
+    status << I18n.t('art_piece.faculty_string') if is_faculty?
+    status << I18n.t('art_piece.student_string') if is_student?
   end
-
+  
   private
 
-  def faculty_string
-    "Currently A Faculty Member" if current_faculty?
-    "Not Currently A Faculty Member"
+  def is_faculty?
+    artists.find{|x| x.faculty?}.present?
   end
 
-  def student_string
-    "Currently A Student" if current_student?
-    "Not Currently A Student"
+  def is_student?
+    artists.find{|x| x.student?}.present?
   end
 end

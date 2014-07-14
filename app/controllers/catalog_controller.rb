@@ -12,9 +12,14 @@ class CatalogController < ApplicationController
     }
     config.index.title_field = "title_ss"
     config.add_index_field 'title_ss', :label => 'Title'
+    config.add_index_field 'medium_ss', :label => 'Medium'
+    config.add_index_field 'size_ss', :label => 'Size'
+    config.add_index_field 'creation_date_ss', :label => 'Created On'
+    config.add_index_field 'artists_sms', :label => 'Artists'
     config.add_facet_field 'building_ss', :label => 'Buildings'
     config.add_facet_field 'artists_sms', :label => 'Artists'
     config.add_facet_field 'collections_sms', :label => 'Collections'
+    config.add_facet_field 'status_sms', :label => 'Status'
     config.add_search_field 'all-fields', :label => "All Fields"
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
