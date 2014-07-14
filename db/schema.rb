@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711161331) do
+ActiveRecord::Schema.define(version: 20140714203332) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20140711161331) do
   add_index "art_piece_buildings", ["art_piece_id"], name: "index_art_piece_buildings_on_art_piece_id"
   add_index "art_piece_buildings", ["building_id"], name: "index_art_piece_buildings_on_building_id"
 
+  create_table "art_piece_collections", force: true do |t|
+    t.integer  "art_piece_id"
+    t.integer  "collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "art_piece_collections", ["art_piece_id"], name: "index_art_piece_collections_on_art_piece_id"
+  add_index "art_piece_collections", ["collection_id"], name: "index_art_piece_collections_on_collection_id"
+
   create_table "art_pieces", force: true do |t|
     t.string   "title"
     t.string   "medium"
@@ -50,9 +60,13 @@ ActiveRecord::Schema.define(version: 20140711161331) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "artist_id"
+    t.boolean  "faculty_piece"
+    t.boolean  "student_piece"
+    t.integer  "collections_id"
   end
 
   add_index "art_pieces", ["artist_id"], name: "index_art_pieces_on_artist_id"
+  add_index "art_pieces", ["collections_id"], name: "index_art_pieces_on_collections_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
@@ -63,6 +77,8 @@ ActiveRecord::Schema.define(version: 20140711161331) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "art_piece_id"
+    t.boolean  "current_student"
+    t.boolean  "current_faculty"
   end
 
   add_index "artists", ["art_piece_id"], name: "index_artists_on_art_piece_id"
@@ -87,6 +103,15 @@ ActiveRecord::Schema.define(version: 20140711161331) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "collections", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "art_pieces_id"
+  end
+
+  add_index "collections", ["art_pieces_id"], name: "index_collections_on_art_pieces_id"
 
   create_table "searches", force: true do |t|
     t.text     "query_params"

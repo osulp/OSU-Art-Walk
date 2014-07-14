@@ -13,5 +13,17 @@ FactoryGirl.define do
     contact_info "MyString"
     description "MyText"
     on_campus false
+
+    trait :with_building do
+      after(:build) do |art_piece|
+        art_piece.building = build(:building)
+      end
+    end
+
+    trait :with_artist do
+      after(:build) do |art_piece|
+        art_piece.artists = [build(:artist)]
+      end
+    end
   end
 end
