@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714235720) do
+ActiveRecord::Schema.define(version: 20140715204715) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 20140714235720) do
     t.boolean  "on_campus"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photo"
   end
 
   create_table "artists", force: true do |t|

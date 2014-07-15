@@ -17,6 +17,9 @@ gem 'blacklight'
 gem 'sunspot_rails'
 # Draper for decoration.
 gem 'draper', '~> 1.3'
+#Carrierwave and Rmagick for photo viewing and storage
+gem 'carrierwave'
+gem 'rmagick', '~> 2.13.2'
 
 group :development do
   gem 'spring'

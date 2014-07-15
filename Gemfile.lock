@@ -50,6 +50,11 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     childprocess (0.5.3)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -163,6 +168,7 @@ GEM
     recipient_interceptor (0.1.2)
       mail
     request_store (1.0.6)
+    rmagick (2.13.2)
     rsolr (1.0.10)
       builder (>= 2.1.2)
     rspec-core (2.14.8)
@@ -242,6 +248,7 @@ DEPENDENCIES
   awesome_print
   blacklight
   byebug
+  carrierwave
   coffee-rails
   database_cleaner
   devise
@@ -258,6 +265,7 @@ DEPENDENCIES
   rack-timeout
   rails (= 4.1.1)
   recipient_interceptor
+  rmagick (~> 2.13.2)
   rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.3)
   shoulda-matchers
