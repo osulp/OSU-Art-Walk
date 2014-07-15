@@ -59,13 +59,13 @@ describe ArtPiece do
       
       context "As a student" do    
         let(:artist) {create(:artist, :student => true)}
-        it "Should return Created by Student" do
+        it "Should return Translated String for art_piece.student_string" do
           expect(subject.status).to eq [I18n.t('art_piece.student_string')]
         end
       end
       context "As a faculty" do    
         let(:artist) {create(:artist, :faculty => true)}
-        it "Should return Created by Student" do
+        it "Should return Translated String for art_piece.faculty_string" do
           expect(subject.status).to eq [I18n.t('art_piece.faculty_string')]
         end
       end 

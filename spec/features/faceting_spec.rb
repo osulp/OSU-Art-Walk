@@ -50,7 +50,6 @@ describe "faceting" do
       end
     end
     context "with a status" do
-
       context "of student" do
         subject {create(:art_piece, :with_student)}
         it "should have a link for that status" do
