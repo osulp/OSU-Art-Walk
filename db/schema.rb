@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711161331) do
+ActiveRecord::Schema.define(version: 20140714235720) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20140711161331) do
   add_index "art_piece_buildings", ["art_piece_id"], name: "index_art_piece_buildings_on_art_piece_id"
   add_index "art_piece_buildings", ["building_id"], name: "index_art_piece_buildings_on_building_id"
 
+  create_table "art_piece_collections", force: true do |t|
+    t.integer  "art_piece_id"
+    t.integer  "collection_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "art_piece_collections", ["art_piece_id"], name: "index_art_piece_collections_on_art_piece_id"
+  add_index "art_piece_collections", ["collection_id"], name: "index_art_piece_collections_on_collection_id"
+
   create_table "art_pieces", force: true do |t|
     t.string   "title"
     t.string   "medium"
@@ -49,10 +59,7 @@ ActiveRecord::Schema.define(version: 20140711161331) do
     t.boolean  "on_campus"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "artist_id"
   end
-
-  add_index "art_pieces", ["artist_id"], name: "index_art_pieces_on_artist_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
@@ -62,10 +69,9 @@ ActiveRecord::Schema.define(version: 20140711161331) do
     t.string   "deathdate"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "art_piece_id"
+    t.boolean  "student"
+    t.boolean  "faculty"
   end
-
-  add_index "artists", ["art_piece_id"], name: "index_artists_on_art_piece_id"
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",       null: false
@@ -84,6 +90,12 @@ ActiveRecord::Schema.define(version: 20140711161331) do
     t.text     "description"
     t.float    "lat"
     t.float    "long"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "collections", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -144,7 +144,7 @@
      </autoCommit>
 
      <autoSoftCommit> 
-       <maxTime>5000</maxTime> 
+       <maxTime>1000</maxTime> 
      </autoSoftCommit>
   </updateHandler>
 

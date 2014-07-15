@@ -39,6 +39,34 @@ describe ArtPiece do
       end
     end
   end
+
+  #relations
   it {should have_many(:artists).through(:art_piece_artists)}
   it {should have_many(:art_piece_artists)}
+
+  it {should have_many(:collections).through(:art_piece_collections)}
+  it {should have_many(:art_piece_collections)}
+
+  #function tests
+
+  describe "#status" do
+    subject {create(:art_piece)}
+
+    before do
+      subject.artists = [artist]
+    end
+    context "As a student" do    
+      let(:artist) {create(:artist, :student => true)}
+      it "Should return Translated String for art_piece.student_string" do
+        expect(subject.status).to eq [I18n.t('art_piece.student_string')]
+      end
+    end
+    context "As a faculty" do    
+      let(:artist) {create(:artist, :faculty => true)}
+      it "Should return Translated String for art_piece.faculty_string" do
+        expect(subject.status).to eq [I18n.t('art_piece.faculty_string')]
+      end
+    end 
+  end
+
 end

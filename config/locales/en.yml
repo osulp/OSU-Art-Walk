@@ -3,6 +3,9 @@ en:
     formats:
       default: '%m/%d/%Y'
       with_weekday: '%a %m/%d/%y'
+  art_piece:
+    faculty_string: "Created by Faculty"
+    student_string: "Created by Student"
 
   time:
     formats:
