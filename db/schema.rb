@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714214706) do
+ActiveRecord::Schema.define(version: 20140714235720) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -59,12 +59,7 @@ ActiveRecord::Schema.define(version: 20140714214706) do
     t.boolean  "on_campus"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "artist_id"
-    t.integer  "collections_id"
   end
-
-  add_index "art_pieces", ["artist_id"], name: "index_art_pieces_on_artist_id"
-  add_index "art_pieces", ["collections_id"], name: "index_art_pieces_on_collections_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
@@ -74,12 +69,9 @@ ActiveRecord::Schema.define(version: 20140714214706) do
     t.string   "deathdate"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "art_piece_id"
     t.boolean  "student"
     t.boolean  "faculty"
   end
-
-  add_index "artists", ["art_piece_id"], name: "index_artists_on_art_piece_id"
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",       null: false
@@ -106,10 +98,7 @@ ActiveRecord::Schema.define(version: 20140714214706) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "art_pieces_id"
   end
-
-  add_index "collections", ["art_pieces_id"], name: "index_collections_on_art_pieces_id"
 
   create_table "searches", force: true do |t|
     t.text     "query_params"
