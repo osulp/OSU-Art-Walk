@@ -11,7 +11,7 @@ class ArtPiece < ActiveRecord::Base
   has_many :collections, :through => :art_piece_collections
   has_many :art_piece_collections
 
-  searchable :auto_index => true, :include => [:building, :artists] do
+  searchable :auto_index => true, :include => [:building, :artists, :collections] do
     # Searchable Text
     text :title
 
@@ -36,7 +36,12 @@ class ArtPiece < ActiveRecord::Base
     # Displayed Text
     string :title, :stored => true
     string :medium, :stored => true
+    string :size, :stored => true
     string :creation_date, :stored => true
+    string :legal_info, :stored => true
+    string :temporary, :stored => true
+    string :temporary_until, :stored => true
+    string :contact_info, :stored => true
 
   end
 
