@@ -34,6 +34,7 @@ class ArtPiece < ActiveRecord::Base
     end
 
     # Displayed Text
+    string :photo, :stored => true
     string :title, :stored => true
     string :medium, :stored => true
     string :size, :stored => true
@@ -42,6 +43,8 @@ class ArtPiece < ActiveRecord::Base
     string :temporary, :stored => true
     string :temporary_until, :stored => true
     string :contact_info, :stored => true
+    string :description, :stored => true
+    string :on_campus, :stored => true
 
   end
 

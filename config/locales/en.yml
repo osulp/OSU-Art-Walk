@@ -5,7 +5,7 @@ en:
       with_weekday: '%a %m/%d/%y'
   art_piece:
     faculty_string: "Created by Faculty"
-    student_string: "Created by Student"
+    student_string: "Created by Students"
 
   time:
     formats:

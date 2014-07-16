@@ -15,23 +15,17 @@ class CatalogController < ApplicationController
       :rows => 10
     }
     config.index.title_field = "title_ss"
-    config.add_index_field 'title_ss', :label => 'Title'
+    config.index.thumbnail_field = :photo_ss
     config.add_index_field 'medium_ss', :label => 'Medium'
     config.add_index_field 'size_ss', :label => 'Size'
     config.add_index_field 'creation_date_ss', :label => 'Created On'
-    config.add_index_field 'legal_info_ss', :label => 'Legal Info'
-    config.add_index_field 'temporary_ss', :label => 'Temporary'
-    config.add_index_field 'temporary_until_ss', :label => 'Temporary Until'
-    #config.add_index_field 'contact_info_ss', :label => 'Contact Info'
     config.add_index_field 'artists_sms', :label => 'Artists'
-    config.add_index_field 'building_ss', :label => 'Buildings'
-    config.add_index_field 'collections_sms', :label => 'Collections'
     config.add_facet_field 'artists_sms', :label => 'Artists'
     config.add_facet_field 'building_ss', :label => 'Buildings'
     config.add_facet_field 'collections_sms', :label => 'Collections'
     config.add_facet_field 'status_sms', :label => 'Status'
     config.add_search_field 'all-fields', :label => "All Fields"
-    config.add_show_field 'title_ss', :label => 'Title'
+    config.show.thumbnail_field = :photo_ss
     config.add_show_field 'medium_ss', :label => 'Medium'
     config.add_show_field 'size_ss', :label => 'Size'
     config.add_show_field 'legal_info_ss', :label => 'Legal Info'
@@ -42,6 +36,8 @@ class CatalogController < ApplicationController
     config.add_show_field 'artists_sms', :label => 'Artists'
     config.add_show_field 'building_ss', :label => 'Buildings'
     config.add_show_field 'collections_sms', :label => 'Collections'
+    config.add_show_field 'on_campus_ss', :label => 'On Campus'
+    config.add_show_field 'description_ss', :label => 'Description'
 
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
