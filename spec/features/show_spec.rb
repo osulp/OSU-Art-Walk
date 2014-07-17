@@ -12,7 +12,7 @@ describe "catalog show" do
       before do
         visit catalog_path(:id => art_piece.document_id) 
       end
-      it "should show the correct" do
+      it "should show the correct title" do
         expect(page).to have_content(art_piece.title)
       end
     end
