@@ -4,7 +4,7 @@ class Admin::SettingsController < AdminController
   before_filter :default, :only => [:index]
 
   def index
-    @setting = Setting.all
+    @settings = Setting.all
   end
 
   def new
@@ -34,8 +34,7 @@ class Admin::SettingsController < AdminController
   private
 
   def default
-    @settings = Setting.all
-    @settings.create_defaults
+    Setting.create_defaults
   end
 
   def setting_params
