@@ -2,8 +2,7 @@
 
 FactoryGirl.define do
   factory :setting, :class => 'Setting' do
-    copyright "MyText"
-    email "MyString"
-    about "MyText"
+    setting_name "Copyright"
+    value "MyText"
   end
 end

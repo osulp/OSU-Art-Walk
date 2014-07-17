@@ -35,7 +35,7 @@ describe "settings" do
           visit admin_settings_path
         end
         it "should display the settings information" do
-          expect(page).to have_content("#{setting.copyright}")
+          expect(page).to have_content("#{setting.setting_name}")
         end
         it "should display the delete setting link" do
           expect(page).to have_content("Delete")
@@ -56,21 +56,18 @@ describe "settings" do
             click_link "Edit"
           end
           it "should display the setting information" do
-            expect(page).to have_field("Copyright", :with => setting.copyright)
-            expect(page).to have_field("Email", :with => setting.email)
-            expect(page).to have_field("About", :with => setting.about)
+            expect(page).to have_field("Setting name", :with => setting.setting_name)
+            expect(page).to have_field("Value", :with => setting.value)
           end
           context "when updating the setting information" do
             before do
-              fill_in "Copyright", :with => "updated copyright is DO NOT steal. Please."
-              fill_in "Email", :with => "testemail2@oregonstate.edu"
-              fill_in "About", :with => "updated about info"
+              find("#setting_setting_name").find(:xpath, 'option[2]').select_option
+              fill_in "Value", :with => "Copyright information is please do not steal."
               click_button "Update Setting"
             end
             it "should update and display the settings" do
-              expect(page).to have_content("updated copyright is DO NOT steal. Please.")
-              expect(page).to have_content("testemail2@oregonstate.edu")
-              expect(page).to have_content("updated about info")
+              expect(page).to have_content("Copyright information is please do not steal.")
+              expect(page).to have_content("Copyright")
             end
           end
         end
@@ -85,21 +82,18 @@ describe "settings" do
           end
           it "should display the add settings page" do
             expect(page).to have_content("Add Settings Page")
-            expect(page).to have_field("Copyright")
-            expect(page).to have_field("Email")
-            expect(page).to have_field("About")
+            expect(page).to have_field("Setting name")
+            expect(page).to have_field("Value")
           end
           context "when creating the setting" do
             before do
-              fill_in "Copyright", :with => "Test Copyright information is please do not steal"
-              fill_in "Email", :with => "testemail1@oregonstate.edu"
-              fill_in "About", :with => "testing about page"
+              fill_in "Value", :with => "Test Copyright information is please do not steal"
+              find("#setting_setting_name").find(:xpath, 'option[2]').select_option
               click_button "Create Setting"
             end
             it "should display the newly created setting info" do
               expect(page).to have_content("Test Copyright information is please do not steal")
-              expect(page).to have_content("testemail1@oregonstate.edu")
-              expect(page).to have_content("testing about page")
+              expect(page).to have_content("Copyright")
             end
           end
         end

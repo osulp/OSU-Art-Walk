@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716154039) do
+ActiveRecord::Schema.define(version: 20140717160221) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -112,11 +112,10 @@ ActiveRecord::Schema.define(version: 20140716154039) do
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
   create_table "settings", force: true do |t|
-    t.text     "copyright"
-    t.string   "email"
-    t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "setting_name"
+    t.text     "value"
   end
 
   create_table "users", force: true do |t|

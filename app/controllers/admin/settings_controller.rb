@@ -33,7 +33,7 @@ class Admin::SettingsController < AdminController
   private
 
   def setting_params
-    params.require(:setting).permit(:copyright, :email, :about)
+    params.require(:setting).permit(:setting_name, :value)
   end
 
   def find_setting
