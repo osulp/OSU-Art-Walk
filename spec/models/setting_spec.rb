@@ -10,8 +10,10 @@ describe Setting do
       before do
         Setting.create_defaults
       end
-      it "should create the defaults with their setting_names" do
-        expect(Setting.count).to eq 3
+      Setting.default_settings.each do |setting|
+        it "should create the default #{setting} setting" do
+          expect(Setting.where(:setting_name => setting).count).to eq 1
+        end
       end
     end
   end
