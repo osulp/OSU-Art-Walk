@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :art_pieces
     resources :artists
     resources :buildings
+    resources :settings
   end
 end

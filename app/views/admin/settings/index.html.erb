@@ -1,0 +1,21 @@
+<h1>Settings Page</h1>
+<%= link_to "Add Settings", new_admin_setting_path %>
+<br>
+    <% if @settings.count == 0 %>
+      There are no settings entered. Please add settings.
+    <% else %>
+      <% @settings.each do |s| %>
+        <div class="panel panel-default">
+          <div class="panel-heading" id="setting-<%= s.id %>">
+            <div class="panel-title">
+              Setting
+              <%= link_to "Edit", edit_admin_setting_path(s), :class => "pull-right" %>
+              <%= link_to "Delete", admin_setting_path(s), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure you want to delete the setting?"} %></p>
+            </div>
+          </div>
+          <div class="panel-body">
+            <%= s.setting_name %>: <%= s.value %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
