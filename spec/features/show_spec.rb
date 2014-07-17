@@ -1,19 +1,20 @@
 require 'spec_helper'
 
 describe "catalog show" do
-  def document_id(model)
-    Sunspot::Adapters::InstanceAdapter.adapt(model).index_id
-  end
-  context "when there's an art piece" do
-    let(:art_piece) do
-      create(:art_piece)
-      create(:art_piece)
-    end
+  context "when there are two art pieces" do
+    let(:art_piece) { create(:art_piece) }
+    let(:art_piece_2) { create(:art_piece) }
     before do
-      visit catalog_path(:id => document_id(art_piece)) 
+      art_piece
+      art_piece_2
     end
-    it "should show the title" do
-      expect(page).to have_content(art_piece.title)
+    context "and the first is visited" do
+      before do
+        visit catalog_path(:id => art_piece.document_id) 
+      end
+      it "should show the correct" do
+        expect(page).to have_content(art_piece.title)
+      end
     end
   end
 end

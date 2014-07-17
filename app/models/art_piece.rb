@@ -1,5 +1,5 @@
 class ArtPiece < ActiveRecord::Base
-  include SunspotAutoIndex
+  include SunspotModel
   validates :title, :presence => true 
 
   has_one :building, :through => :art_piece_building
