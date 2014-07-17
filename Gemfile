@@ -19,7 +19,7 @@ gem 'sunspot_rails'
 gem 'draper', '~> 1.3'
 #Carrierwave and Rmagick for photo viewing and storage
 gem 'carrierwave'
-gem 'rmagick', '~> 2.13.2'
+gem 'rmagick', '~> 2.13.2', :require => false
 
 group :development do
   gem 'spring'
