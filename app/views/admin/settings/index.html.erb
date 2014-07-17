@@ -6,7 +6,7 @@
     <% else %>
       <% @setting.each do |s| %>
         <div class="panel panel-default">
-          <div class="panel-heading">
+          <div class="panel-heading" id="setting-<%= s.id %>">
             <div class="panel-title">
               Setting
               <%= link_to "Edit", edit_admin_setting_path(s), :class => "pull-right" %>

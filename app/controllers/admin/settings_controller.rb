@@ -1,6 +1,7 @@
 class Admin::SettingsController < AdminController
   respond_to :html, :json
   before_filter :find_setting, :only => [:edit, :update, :destroy]
+  before_filter :default, :only => [:index]
 
   def index
     @setting = Setting.all
@@ -31,6 +32,11 @@ class Admin::SettingsController < AdminController
 
 
   private
+
+  def default
+    @settings = Setting.all
+    @settings.create_defaults(@settings)
+  end
 
   def setting_params
     params.require(:setting).permit(:setting_name, :value)

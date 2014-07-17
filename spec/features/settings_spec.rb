@@ -42,10 +42,12 @@ describe "settings" do
         end
         context "when deleting a setting" do
           before do
-            click_link "Delete"
+            within "#setting-#{setting.id}" do
+              click_link "Delete"
+            end
           end
           it "should delete the setting" do
-            expect(Setting.count).to eq 0
+            expect(Setting.count).to eq 3
           end
         end
         it "should display the edit settings link" do
@@ -53,10 +55,11 @@ describe "settings" do
         end
         context "when editing the setting" do
           before do
-            click_link "Edit"
+            within "#setting-#{setting.id}" do
+              click_link "Edit"
+            end
           end
           it "should display the setting information" do
-            expect(page).to have_field("Setting name", :with => setting.setting_name)
             expect(page).to have_field("Value", :with => setting.value)
           end
           context "when updating the setting information" do
@@ -70,11 +73,6 @@ describe "settings" do
               expect(page).to have_content("Copyright")
             end
           end
-        end
-      end
-      context "when there are no settings entered" do
-        it "should display that there are no settings entered" do
-          expect(page).to have_content("There are no settings entered. Please add settings.")
         end
         context "when adding settings" do
           before do
@@ -96,6 +94,13 @@ describe "settings" do
               expect(page).to have_content("Copyright")
             end
           end
+        end
+      end
+      context "when there are no settings entered" do
+        it "should display three default settings" do
+          expect(page).to have_content("Email")
+          expect(page).to have_content("Copyright")
+          expect(page).to have_content("About")
         end
       end
     end
