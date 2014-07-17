@@ -7,18 +7,11 @@ describe Setting do
   describe "#create_defaults" do
 
     context "when there are no default setting names present" do
-      let(:user) {create(:user, :admin)}
-
       before do
-        user
-        capybara_login_two(user) if user
         Setting.create_defaults
-        visit "/admin/settings"
       end
       it "should create the defaults with their setting_names" do
-        expect(page).to have_content("Email")
-        expect(page).to have_content("Copyright")
-        expect(page).to have_content("About")
+        expect(Setting.count).to eq 3
       end
     end
   end
