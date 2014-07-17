@@ -35,7 +35,7 @@ class Admin::SettingsController < AdminController
 
   def default
     @settings = Setting.all
-    @settings.create_defaults(@settings)
+    @settings.create_defaults
   end
 
   def setting_params
