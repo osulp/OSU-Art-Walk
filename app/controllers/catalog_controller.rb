@@ -1,13 +1,9 @@
 # -*- encoding : utf-8 -*-
 #
 
-
-
 class CatalogController < ApplicationController  
 
   include Blacklight::Catalog
-
-  @art_pieces = ArtPiece.all
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params

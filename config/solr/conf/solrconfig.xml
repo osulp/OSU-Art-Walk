@@ -452,8 +452,6 @@
       <str>spellcheck</str>
      </arr>
   </requestHandler>
-  
-
     <!-- for requests to get a single document; use id=666 instead of q=id:666 -->
   <requestHandler name="document" class="solr.SearchHandler" >
     <lst name="defaults">
@@ -475,8 +473,6 @@
        <str>spellcheck</str>
      </arr>     
   </requestHandler>
-
-
   <!-- realtime get handler, guaranteed to return the latest stored fields of
        any document, without the need to commit or open a new searcher.  The
        current implementation relies on the updateLog feature being enabled. -->
