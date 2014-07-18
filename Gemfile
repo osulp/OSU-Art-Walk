@@ -28,9 +28,8 @@ end
 
 group :development, :test do
   gem 'awesome_print'
-  gem 'byebug'
+  gem 'jazz_hands', :github => "terrellt/jazz_hands"
   gem 'factory_girl_rails'
-  gem 'pry-rails'
   gem 'rspec-rails', '~> 2.14.0'
 end
 
