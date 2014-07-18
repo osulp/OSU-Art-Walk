@@ -1,5 +1,4 @@
-<%= simple_form_for [:admin, @setting] do |f| %>
-  <%= f.input :setting_name, collection: ["Copyright", "Email", "About"] %>
-  <%= f.input :value %>
+<%= simple_form_for [:admin, setting] do |f| %>
+  <%= f.input :value, as: setting.type %>
   <%= f.button :submit %>
 <% end %>
