@@ -17,4 +17,42 @@ describe Setting do
       end
     end
   end
+
+  describe "setting accessors" do
+    let(:setting) {"bla"}
+    before do
+      Setting.stub(:default_settings).and_return({
+          setting => {
+            "tag_attributes" => {
+              "type" => "email"
+            }
+          }
+        })
+    end
+    context "when a field is accessed" do
+      subject {Setting.send(setting)}
+      context "and there is no database entry" do
+        it "should return a blank string" do
+          expect(subject).to eq ""
+        end
+      end
+      context "and there is a database entry" do
+        before do
+          create(:setting, :setting_name => setting, :value => "test@test.org")
+        end
+        it "should return that value" do
+          expect(Setting.send(setting)).to eq "test@test.org"
+        end
+      end
+      context "and it's two words" do
+        let(:setting) {"Account Name"}
+        before do
+          create(:setting, :setting_name => "Account Name", :value => "BAH")
+        end
+        it "should work" do
+          expect(Setting.account_name).to eq "BAH"
+        end
+      end
+    end
+  end
 end

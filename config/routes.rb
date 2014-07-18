@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   get '/admin', :to => 'admin#index', :as => "admin_index"
+
+  get '/about', :to => 'about#index', :as => "about_us"
   namespace :admin do
     resources :users
     resources :art_pieces
