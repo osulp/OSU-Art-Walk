@@ -1,0 +1,14 @@
+Email:
+  tag_attributes:
+    type: email
+    default: ""
+Copyright:
+  tag_attributes:
+    type: text
+    class: tinymce
+    default: ""
+About:
+  tag_attributes:
+    type: text
+    class: tinymce
+    default: ""

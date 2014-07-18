@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717160221) do
+ActiveRecord::Schema.define(version: 20140718163923) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 20140717160221) do
     t.string   "setting_name"
     t.text     "value"
   end
+
+  add_index "settings", ["setting_name"], name: "index_settings_on_setting_name"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
