@@ -12,11 +12,6 @@ class Admin::SettingsController < AdminController
     respond_with @setting, :location => admin_settings_path
   end
 
-  def destroy
-    flash[:success] = "Successfully Deleted Setting" if @setting.destroy
-    redirect_to admin_settings_path
-  end
-
   private
 
   def default
