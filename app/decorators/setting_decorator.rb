@@ -5,7 +5,6 @@ class SettingDecorator < Draper::Decorator
     tag_attributes["type"]
   end
 
-
   private
 
   def settings
