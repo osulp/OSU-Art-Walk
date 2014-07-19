@@ -31,6 +31,8 @@ group :development, :test do
   gem 'jazz_hands', :github => "terrellt/jazz_hands"
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 2.14.0'
+  gem 'coveralls', :require => false
+  gem 'simplecov'
 end
 
 group :test do
