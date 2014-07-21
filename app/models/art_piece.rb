@@ -46,8 +46,6 @@ class ArtPiece < ActiveRecord::Base
 
   end
 
-  mount_uploader :photo, PhotoUploader
-
   def status
     status = []
     status << I18n.t('art_piece.faculty_string') if by_faculty?

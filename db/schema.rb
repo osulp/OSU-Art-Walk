@@ -55,10 +55,13 @@ ActiveRecord::Schema.define(version: 20140721202318) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
     t.string   "photo"
     t.boolean  "display",       default: true
     t.boolean  "private",       default: true
     t.boolean  "displayed",     default: true
+=======
+>>>>>>> removed photo from art piece and art piece table
   end
 
   create_table "artists", force: true do |t|
