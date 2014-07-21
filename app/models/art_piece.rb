@@ -21,7 +21,7 @@ class ArtPiece < ActiveRecord::Base
 
 
   #indexing
-  searchable :auto_index => true, :include => [:building, :artists, :collections] do
+  searchable :auto_index => true, :include => [:building, :artists, :collections, :art_piece_photos] do
     # Searchable Text
     text :title
 
@@ -38,11 +38,13 @@ class ArtPiece < ActiveRecord::Base
     string :collections, :stored => true, :multiple => true do
       collections.map(&:name)
     end
-
     string :status, :stored => true, :multiple => true do
       self.status
     end
 
+    string :art_piece_photos, :stored => true, :multiple => true do
+      art_piece_photos.map(&:photo)
+    end
     # Displayed Text
     string :title, :stored => true
     string :medium, :stored => true
