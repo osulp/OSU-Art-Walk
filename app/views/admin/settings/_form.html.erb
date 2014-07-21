@@ -1,4 +1,5 @@
 <%= simple_form_for [:admin, setting] do |f| %>
-  <%= f.input :value, as: setting.type %>
+  <%= f.input :value, as: setting.type, :input_html => {:class => "tinymce", :id => "setting_value_#{setting.id}"}, :rows => 40, :cols => 120 %>
+  <%= tinymce %>
   <%= f.button :submit %>
 <% end %>
