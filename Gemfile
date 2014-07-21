@@ -23,6 +23,10 @@ gem 'rmagick', '~> 2.13.2', :require => false
 #TinyMCE for text editing
 gem 'tinymce-rails', '4.0.11'
 
+# Test Coverage
+gem 'coveralls', :require => false
+gem 'simplecov'
+
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
