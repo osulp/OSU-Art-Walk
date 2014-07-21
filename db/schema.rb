@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718163923) do
+ActiveRecord::Schema.define(version: 20140721202318) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -51,15 +51,14 @@ ActiveRecord::Schema.define(version: 20140718163923) do
     t.string   "creation_date"
     t.string   "size"
     t.text     "legal_info"
-    t.boolean  "temporary"
-    t.datetime "temporary_until"
-    t.boolean  "private"
     t.string   "contact_info"
     t.text     "description"
-    t.boolean  "on_campus"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
+    t.boolean  "display",       default: true
+    t.boolean  "private",       default: true
+    t.boolean  "displayed",     default: true
   end
 
   create_table "artists", force: true do |t|

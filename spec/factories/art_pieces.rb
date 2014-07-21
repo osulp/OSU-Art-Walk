@@ -7,12 +7,10 @@ FactoryGirl.define do
     creation_date "2014-07-02 13:58:43"
     size "MyString"
     legal_info "MyText"
-    temporary false
-    temporary_until "2014-07-02 13:58:43"
     private false
     contact_info "MyString"
     description "MyText"
-    on_campus false
+    displayed true
 
     trait :with_building do
       after(:build) do |art_piece|
