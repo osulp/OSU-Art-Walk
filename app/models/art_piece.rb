@@ -34,7 +34,6 @@ class ArtPiece < ActiveRecord::Base
     end
 
     # Displayed Text
-    string :photo, :stored => true
     string :title, :stored => true
     string :medium, :stored => true
     string :size, :stored => true
