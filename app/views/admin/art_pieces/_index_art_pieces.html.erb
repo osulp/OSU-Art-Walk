@@ -13,12 +13,10 @@
         <p>Created On: <%= art.creation_date %></p>
         <p>Size: <%= art.size %></p>
         <p>Legal Info: <%= art.legal_info %></p>
-        <p>Is this Piece Temporary? <%= art.temporary? %></p>
-        <p>Temporary Until: <%= art.temporary_until %></p>
         <p>Is this a private piece? <%= art.private? %></p>
         <p>Contact Info: <%= art.contact_info %></p>
         <p>Description: <%= art.description %></p>
-        <p>Is this Art On Campus? <%= art.on_campus %></p>
+        <p>Is this Art On Display? <%= art.displayed? %></p>
         <p>Picture: <%= image_tag art.photo_url(:thumb) %></p>
       </div>
     </div>

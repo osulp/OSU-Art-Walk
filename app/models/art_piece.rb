@@ -40,11 +40,9 @@ class ArtPiece < ActiveRecord::Base
     string :size, :stored => true
     string :creation_date, :stored => true
     string :legal_info, :stored => true
-    string :temporary, :stored => true
-    string :temporary_until, :stored => true
     string :contact_info, :stored => true
     string :description, :stored => true
-    string :on_campus, :stored => true
+    boolean :displayed, :stored => true
 
   end
 

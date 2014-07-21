@@ -30,5 +30,11 @@ describe "searching" do
         expect(page).to have_content(item.title)
       end
     end
+    context "and it is not displayed" do
+      let(:item) {create(:art_piece, :displayed => false)}
+      it "should not display the art piece" do
+        expect(page).not_to have_selector('.document')
+      end
+    end
   end
 end
