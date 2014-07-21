@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 20140721202318) do
   add_index "art_piece_collections", ["art_piece_id"], name: "index_art_piece_collections_on_art_piece_id"
   add_index "art_piece_collections", ["collection_id"], name: "index_art_piece_collections_on_collection_id"
 
+  create_table "art_piece_photos", force: true do |t|
+    t.string   "photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "art_pieces", force: true do |t|
     t.string   "title"
     t.string   "medium"
@@ -56,13 +62,19 @@ ActiveRecord::Schema.define(version: 20140721202318) do
     t.datetime "created_at"
     t.datetime "updated_at"
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.string   "photo"
     t.boolean  "display",       default: true
     t.boolean  "private",       default: true
     t.boolean  "displayed",     default: true
 =======
 >>>>>>> removed photo from art piece and art piece table
+=======
+    t.integer  "art_piece_photos_id"
+>>>>>>> added art piece photos and added their ids to art pieces
   end
+
+  add_index "art_pieces", ["art_piece_photos_id"], name: "index_art_pieces_on_art_piece_photos_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
