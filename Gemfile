@@ -23,10 +23,6 @@ gem 'rmagick', '~> 2.13.2', :require => false
 #TinyMCE for text editing
 gem 'tinymce-rails', '4.0.11'
 
-# Test Coverage
-gem 'coveralls', :require => false
-gem 'simplecov'
-
 group :development do
   gem 'spring'
   gem 'spring-commands-rspec'
@@ -37,6 +33,9 @@ group :development, :test do
   gem 'jazz_hands', :github => "terrellt/jazz_hands"
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 2.14.0'
+  # Test Coverage
+  gem 'coveralls', :require => false
+  gem 'simplecov'
 end
 
 group :test do
