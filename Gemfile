@@ -20,6 +20,8 @@ gem 'draper', '~> 1.3'
 #Carrierwave and Rmagick for photo viewing and storage
 gem 'carrierwave'
 gem 'rmagick', '~> 2.13.2', :require => false
+#TinyMCE for text editing
+gem 'tinymce-rails', '4.0.11'
 
 group :development do
   gem 'spring'
@@ -31,6 +33,7 @@ group :development, :test do
   gem 'jazz_hands', :github => "terrellt/jazz_hands"
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 2.14.0'
+  # Test Coverage
   gem 'coveralls', :require => false
   gem 'simplecov'
 end
