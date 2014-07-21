@@ -47,6 +47,8 @@ describe ArtPiece do
   it {should have_many(:collections).through(:art_piece_collections)}
   it {should have_many(:art_piece_collections)}
 
+  it {should have_many(:art_piece_photos)}
+
   #function tests
 
   describe "#status" do

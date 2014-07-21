@@ -11,6 +11,8 @@ class ArtPiece < ActiveRecord::Base
   has_many :collections, :through => :art_piece_collections
   has_many :art_piece_collections
 
+  has_many :art_piece_photos
+
   searchable :auto_index => true, :include => [:building, :artists, :collections] do
     # Searchable Text
     text :title

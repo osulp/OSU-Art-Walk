@@ -49,7 +49,10 @@ ActiveRecord::Schema.define(version: 20140721202318) do
     t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "art_piece_id"
   end
+
+  add_index "art_piece_photos", ["art_piece_id"], name: "index_art_piece_photos_on_art_piece_id"
 
   create_table "art_pieces", force: true do |t|
     t.string   "title"
@@ -63,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140721202318) do
     t.datetime "updated_at"
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     t.string   "photo"
     t.boolean  "display",       default: true
     t.boolean  "private",       default: true
@@ -72,9 +76,12 @@ ActiveRecord::Schema.define(version: 20140721202318) do
 =======
     t.integer  "art_piece_photos_id"
 >>>>>>> added art piece photos and added their ids to art pieces
+=======
+    t.integer  "art_piece_photo_id"
+>>>>>>> refined has many belongs to relation
   end
 
-  add_index "art_pieces", ["art_piece_photos_id"], name: "index_art_pieces_on_art_piece_photos_id"
+  add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
