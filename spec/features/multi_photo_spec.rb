@@ -14,7 +14,7 @@ describe "Multi Photo" do
     before do
       fill_in "Title", :with => "Sample Title"
       within ("#picture") do
-        attach_file("art_piece_art_piece_photos_attributes_0_photo", "app/assets/images/cats.jpg")
+        attach_file("art_piece_art_piece_photos_attributes_0_photo", "spec/fixtures/cats.jpg")
       end
       click_button "Create Art piece"
     end
@@ -30,7 +30,7 @@ describe "Multi Photo" do
       click_link "Add Another Photo"
       photos = all("*[id^=art_piece_art_piece_photos]")
       photos.each do |photo_wrapper|
-        attach_file photo_wrapper[:id], Rails.root.join("app","assets","images","cats.jpg")
+        attach_file photo_wrapper[:id], Rails.root.join("spec", "fixtures", "cats.jpg")
       end
       click_button "Create Art piece"
       expect(page).to have_content("Successfully created art piece")
