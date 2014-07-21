@@ -64,21 +64,9 @@ ActiveRecord::Schema.define(version: 20140721202318) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    t.string   "photo"
-    t.boolean  "display",       default: true
     t.boolean  "private",       default: true
     t.boolean  "displayed",     default: true
-=======
->>>>>>> removed photo from art piece and art piece table
-=======
-    t.integer  "art_piece_photos_id"
->>>>>>> added art piece photos and added their ids to art pieces
-=======
     t.integer  "art_piece_photo_id"
->>>>>>> refined has many belongs to relation
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
