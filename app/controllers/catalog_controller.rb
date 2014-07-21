@@ -44,8 +44,10 @@ class CatalogController < ApplicationController
   private
 
   def exclude_not_displayed_items(solr_params, user_params)
-    solr_params[:fq] ||= []
-    solr_params[:fq] << "-displayed_bs:false"
+    unless current_or_guest_user.admin?
+      solr_params[:fq] ||= []
+      solr_params[:fq] << "-displayed_bs:false"
+    end
   end
 
 
