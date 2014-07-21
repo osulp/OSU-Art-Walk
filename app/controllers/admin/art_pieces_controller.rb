@@ -3,7 +3,7 @@ class Admin::ArtPiecesController < AdminController
   before_filter :find_art_piece, :only => [:edit, :update, :destroy]
   
   def index
-    @art_pieces = ArtPiece.all
+    @art_pieces = ArtPiece.all.includes(:art_piece_photos)
     respond_with(@art_pieces)
   end
 
@@ -26,6 +26,7 @@ class Admin::ArtPiecesController < AdminController
 
   def new
     @art_piece = ArtPiece.new
+    @art_piece.art_piece_photos.build
   end
 
   def create
@@ -41,6 +42,6 @@ class Admin::ArtPiecesController < AdminController
   end
 
   def art_piece_params
-    params.require(:art_piece).permit(:title, :medium, :creation_date, :size, :legal_info, :temporary, :temporary_until, :private, :contact_info, :description, :on_campus)
+    params.require(:art_piece).permit(:title, :medium, :creation_date, :size, :legal_info, :temporary, :temporary_until, :private, :contact_info, :description, :on_campus, art_piece_photo_ids:[], art_piece_photos_attributes: [:photo])
   end
 end

@@ -2,17 +2,25 @@ class ArtPiece < ActiveRecord::Base
   include SunspotModel
   validates :title, :presence => true 
 
+
+  #Art Piece Building associations
   has_one :building, :through => :art_piece_building
   has_one :art_piece_building
 
+  #Art Piece Artists associations
   has_many :artists, :through => :art_piece_artists
   has_many :art_piece_artists
 
+  #Art Piece Collections associations
   has_many :collections, :through => :art_piece_collections
   has_many :art_piece_collections
 
+  #Art Piece Photo associations
   has_many :art_piece_photos
+  accepts_nested_attributes_for :art_piece_photos, :allow_destroy => true
 
+
+  #indexing
   searchable :auto_index => true, :include => [:building, :artists, :collections] do
     # Searchable Text
     text :title

@@ -8,5 +8,10 @@
     <%= f.input :contact_info %>
     <%= f.input :description %>
     <%= f.input :displayed %>
+    <div id="picture">
+        <%= f.fields_for :art_piece_photos do |builder| %>
+            <%= builder.file_field :photo %> 
+        <% end %>
+    </div>
     <%= f.button :submit %>
 <% end %>
