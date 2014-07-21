@@ -1,5 +1,5 @@
 
-<%document["art_piece_photos_sms"].each do |photo| %>
+<% Array.wrap(document["art_piece_photos_sms"]).each do |photo| %>
   <%= image_tag photo %>
 <% end %>
 <%# default partial to display solr document fields in catalog show view -%>
