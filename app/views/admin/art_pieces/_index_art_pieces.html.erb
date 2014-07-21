@@ -18,7 +18,9 @@
         <p>Description: <%= art.description %></p>
         <p>Is this Art On Display? <%= art.displayed? %></p>
         <p>Art Piece: <% art.art_piece_photos.each do |p|%>
-          <%= image_tag p.photo %>
+          <div class="">
+            <%= image_tag p.photo %>
+          </div>
         <% end %>
       </div>
     </div>
