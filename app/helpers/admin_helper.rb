@@ -7,4 +7,9 @@ module AdminHelper
     end
     link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
+
+  def link_to_remove_fields(name, f)
+    f.hidden_field(:_destroy) +
+    link_to(name, '#', onclick: "remove_fields(this)", class: "remove_fields")
+  end
 end
