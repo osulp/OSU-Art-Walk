@@ -2,16 +2,26 @@ class ArtPiece < ActiveRecord::Base
   include SunspotModel
   validates :title, :presence => true 
 
+
+  #Art Piece Building associations
   has_one :building, :through => :art_piece_building
   has_one :art_piece_building
 
+  #Art Piece Artists associations
   has_many :artists, :through => :art_piece_artists
   has_many :art_piece_artists
 
+  #Art Piece Collections associations
   has_many :collections, :through => :art_piece_collections
   has_many :art_piece_collections
 
-  searchable :auto_index => true, :include => [:building, :artists, :collections] do
+  #Art Piece Photo associations
+  has_many :art_piece_photos
+  accepts_nested_attributes_for :art_piece_photos, :allow_destroy => true
+
+
+  #indexing
+  searchable :auto_index => true, :include => [:building, :artists, :collections, :art_piece_photos] do
     # Searchable Text
     text :title
 
@@ -28,13 +38,14 @@ class ArtPiece < ActiveRecord::Base
     string :collections, :stored => true, :multiple => true do
       collections.map(&:name)
     end
-
     string :status, :stored => true, :multiple => true do
       self.status
     end
 
+    string :art_piece_photos, :stored => true, :multiple => true do
+      art_piece_photos.map(&:photo)
+    end
     # Displayed Text
-    string :photo, :stored => true
     string :title, :stored => true
     string :medium, :stored => true
     string :size, :stored => true
@@ -45,8 +56,6 @@ class ArtPiece < ActiveRecord::Base
     boolean :displayed, :stored => true
 
   end
-
-  mount_uploader :photo, PhotoUploader
 
   def status
     status = []

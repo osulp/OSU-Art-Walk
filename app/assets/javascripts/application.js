@@ -17,3 +17,4 @@
 //= require blacklight/blacklight
 //= require_tree .
 //= require tinymce-jquery
+

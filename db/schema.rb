@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20140721202318) do
   add_index "art_piece_collections", ["art_piece_id"], name: "index_art_piece_collections_on_art_piece_id"
   add_index "art_piece_collections", ["collection_id"], name: "index_art_piece_collections_on_collection_id"
 
+  create_table "art_piece_photos", force: true do |t|
+    t.string   "photo"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "art_piece_id"
+  end
+
+  add_index "art_piece_photos", ["art_piece_id"], name: "index_art_piece_photos_on_art_piece_id"
+
   create_table "art_pieces", force: true do |t|
     t.string   "title"
     t.string   "medium"
@@ -55,11 +64,13 @@ ActiveRecord::Schema.define(version: 20140721202318) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "photo"
-    t.boolean  "display",       default: true
-    t.boolean  "private",       default: true
-    t.boolean  "displayed",     default: true
+    t.integer  "art_piece_photo_id"
+    t.boolean  "display",            default: true
+    t.boolean  "private",            default: true
+    t.boolean  "displayed",          default: true
   end
+
+  add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
