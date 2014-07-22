@@ -57,8 +57,9 @@ describe "Multi Photo" do
       end
       it "Should delete the field" do
         within ".panel-group" do
-          expect(ArtPiecePhoto.all.count).to eq 0
+          expect(page).to_not have_selector("img")
         end
+        expect(ArtPiecePhoto.all.count).to eq 0
       end
     end
   end
