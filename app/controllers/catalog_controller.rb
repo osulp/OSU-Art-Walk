@@ -15,6 +15,14 @@ class CatalogController < ApplicationController
       :qt => "search",
       :rows => 10
     }
+    ## Default values
+    config.view.maps.type = "bbox" # also accepts 'placename_coord' to use the placename coordinate type
+    config.view.maps.bbox_field = "place_bbox"
+    config.view.maps.placename_coord_field = "placename_coords"
+    config.view.maps.tileurl = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    config.view.maps.attribution = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
+    config.view.maps.placename_coord_delimiter = '-|-'
+
     config.index.title_field = "title_ss"
     config.index.thumbnail_field = "art_piece_photos_sms"
     config.add_index_field 'medium_ss', :label => 'Medium'
