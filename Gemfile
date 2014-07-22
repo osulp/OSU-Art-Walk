@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
-
 gem 'coffee-rails'
 gem 'email_validator'
 gem 'jquery-rails'
