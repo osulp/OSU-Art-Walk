@@ -12,6 +12,11 @@
 
 development:
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  placename_coords:
+    - China-|-35.86166-|-104.195397
+    - Tibet-|-29.646923-|-91.117212
+    - India-|-20.593684-|-78.96288
+
 test: &test
   url: <%= "http://127.0.0.1:#{ENV['TEST_JETTY_PORT'] || 8983}/solr/blacklight-core-test" %>
 production:

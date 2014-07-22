@@ -16,7 +16,7 @@ class CatalogController < ApplicationController
       :rows => 10
     }
     ## Default values
-    config.view.maps.type = "bbox" # also accepts 'placename_coord' to use the placename coordinate type
+    config.view.maps.type = "placename_coord" # also accepts 'placename_coord'/'bbox' to use the placename coordinate type
     config.view.maps.bbox_field = "place_bbox"
     config.view.maps.placename_coord_field = "placename_coords"
     config.view.maps.tileurl = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
