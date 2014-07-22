@@ -13,3 +13,4 @@
 /tmp/*
 /jetty/*
 /public/uploads/*
+/config/config.yml

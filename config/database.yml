@@ -9,3 +9,19 @@ development: &default
 test:
   <<: *default
   database: db/OSU-Art-Walk_test.sqlite3
+
+production: &production
+  adapter: <%= ENV['ARTWALK_ADAPTER'] || "sqlite3" %>
+  database: <%= ENV['ARTWALK_DB'] || 'db/production.sqlite3' %>
+  encoding: utf8
+  reconnect: false
+  username: <%= ENV['ARTWALK_DB_USERNAME'] %>
+  password: <%= ENV['ARTWALK_DB_PASSWORD'] %>
+  host: <%= ENV['ARTWALK_DB_HOST'] %>
+  port: <%= ENV['ARTWALK_DB_PORT'] %>
+  pool: 5
+  timeout: 5000
+
+staging:
+  <<: *production
+  database: <%= ENV['ARTWALK_DB'] || 'db/staging.sqlite3' %>
