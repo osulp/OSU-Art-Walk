@@ -1,7 +1,23 @@
-
-<% Array.wrap(document["art_piece_photos_sms"]).each do |photo| %>
-  <%= image_tag photo %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <div id="my-carousel" class="carousel slide" data-ride="carousel"><!-- class of slide for animation -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <%= image_tag Array.wrap(document["art_piece_photos_sms"]).first %>
+          </div>
+          <% Array.wrap(document["art_piece_photos_sms"]).last((document["art_piece_photos_sms"].count) - 1).each do |photo| %>
+            <div class="item">
+              <%= image_tag photo %>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" onclick="">&lsaquo;</a>
+        <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button">&rsaquo;</a>
+      </div>
+    </div>
+  </div>
+</div>
 <%# default partial to display solr document fields in catalog show view -%>
 <dl class="dl-horizontal  dl-invert">
   <% document_show_fields(document).each do |solr_fname, field| -%>
@@ -11,3 +27,4 @@
     <% end -%>
   <% end -%>
 </dl>
+<script src="js/bootstrap.min.js"></script>
