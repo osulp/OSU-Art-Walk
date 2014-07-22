@@ -45,4 +45,13 @@ describe "Multi Photo" do
     end
   end
 
+  context "when deleting the field for adding pictures", :js => true do
+    before do
+      click_link "Remove Photo"
+    end
+    it "Should delete the field" do
+      expect(page).to_not have_css(".fields", :visible => true)
+    end
+  end
+
 end

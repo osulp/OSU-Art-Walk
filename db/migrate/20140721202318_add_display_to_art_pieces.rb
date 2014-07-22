@@ -3,3 +3,4 @@ class AddDisplayToArtPieces < ActiveRecord::Migration
     add_column :art_pieces, :displayed, :boolean, :default => true
   end
 end
+

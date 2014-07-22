@@ -18,10 +18,8 @@
         <p>Description: <%= art.description %></p>
         <p>Is this Art On Display? <%= art.displayed? %></p>
         <p>Art Piece: <% art.art_piece_photos.each do |p|%>
-          <div class="">
-            <%= image_tag p.photo %>
-          </div>
-        <% end %>
+          <%= image_tag p.photo %>
+        <% end %></p>
       </div>
     </div>
   </div>
