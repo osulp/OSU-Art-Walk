@@ -56,7 +56,9 @@ describe "Multi Photo" do
         click_button "Update Art piece"
       end
       it "Should delete the field" do
-        expect(page).to_not have_selector("img")
+        within ".panel-group" do
+          expect(page).to_not have_selector("img")
+        end
       end
     end
   end
