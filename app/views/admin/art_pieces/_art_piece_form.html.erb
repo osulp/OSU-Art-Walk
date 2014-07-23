@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @art_piece], html: {class: 'form-horizontal'}) do |f| %>
+<%= simple_form_for([:admin, @art_piece], html: {class: 'form-horizontal', novalidate: true}) do |f| %>
     <%= f.input :title %>
     <%= f.input :medium %>
     <%= f.input :creation_date %>
@@ -10,7 +10,7 @@
     <%= f.input :displayed %>
     <%= f.association :artists %>
     <%= f.association :collections %>
-      <%= f.fields_for :art_piece_photos do |builder| %>
+    <%= f.simple_fields_for :art_piece_photos do |builder| %>
         <%= render :partial => "photo_form", :locals => {f: builder} %>
       <% end %>
       <%= f.fields_for :art_piece_building do |builder| %>
