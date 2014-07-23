@@ -1,7 +1,20 @@
-
-<% Array.wrap(document["art_piece_photos_sms"]).each do |photo| %>
-  <%= image_tag photo %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4">
+      <div id="my-carousel" class="carousel slide"><!-- class of slide for animation -->
+        <div class="carousel-inner">
+            <% Array.wrap(document["art_piece_photos_sms"]).each_with_index do |photo, index| %>
+                <div class="item <%= "active" if index == 0 %>">
+                  <%= image_tag photo %>
+                </div>
+            <% end %>
+        </div>
+        <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" ><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button"><span class="glyphicon glyphicon-chevron-right"></span></a>
+      </div>
+    </div>
+  </div>
+</div>
 <%# default partial to display solr document fields in catalog show view -%>
 <dl class="dl-horizontal  dl-invert">
   <% document_show_fields(document).each do |solr_fname, field| -%>
