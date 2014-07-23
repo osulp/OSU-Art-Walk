@@ -6,9 +6,7 @@
       <%= link_to_document document, :label=>document_show_link_field(document) %>
     </h4>
     <% if document[:artists_sms] %>
-      <% document[:artists_sms].each do |artist| %>
-        <p><%= artist %></p>
-      <% end %>
+      By <%= document[:artists_sms].join(", ") %>
     <% end %>
   </div>
 </li>

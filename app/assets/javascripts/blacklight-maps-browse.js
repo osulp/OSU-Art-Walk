@@ -59,7 +59,7 @@
       map.addLayer(markers);
 
       // Zooms to show all points on map
-      if(geojson_docs.length > 0) {
+      if(geojson_docs.features.length > 0) {
         map.fitBounds(markers.getBounds());
       }
 
