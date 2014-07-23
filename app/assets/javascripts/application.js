@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= bootstrap
+//= require bootstrap
 // Required by Blacklight-Maps
 //= require blacklight-maps
 //
