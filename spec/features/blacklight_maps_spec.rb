@@ -29,18 +29,6 @@ describe 'blacklight maps' do
             end
           end
         end
-        context "and the art piece link is clicked" do
-          before do
-            expect(page).to have_link(art_piece.title)
-            within(".leaflet-sidebar") do
-              click_link art_piece.title
-            end
-          end
-          it "should go to the document page" do
-            expect(page).to have_selector(".blacklight-catalog-show")
-            expect(current_path).to eq catalog_path(:id => art_piece.document_id)
-          end
-        end
       end
     end
   end
