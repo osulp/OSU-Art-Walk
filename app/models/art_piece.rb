@@ -26,6 +26,9 @@ class ArtPiece < ActiveRecord::Base
     text :title
 
     # Facets
+    string :coords, :stored => true, :multiple => true do
+      building.try(:coords)
+    end
     string :building, :stored => true do
       building.try(:name)
     end

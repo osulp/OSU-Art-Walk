@@ -39,4 +39,16 @@ describe Building do
       end
     end
   end
+
+  describe "#coords" do
+    let(:building) {create(:building) }
+
+    before do
+      building
+    end
+    it "should return a placename_coords string" do
+      expect(building.coords).to eq "#{building.name}-|-#{building.lat}-|-#{building.long}"
+    end
+  end
 end
+
