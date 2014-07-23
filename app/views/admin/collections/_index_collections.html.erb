@@ -1,0 +1,9 @@
+<% @collections.each do |collection| %>
+  <div class="panel panel-default" id="collection-<%= collection.id %>">
+    <div class="panel panel-heading">
+      <p>Name of Collection: <%= collection.name %>
+      <%= link_to "Edit", edit_admin_collection_path(collection), :class => "pull-right", :style => "padding-left: 10px;" %>
+      <%= link_to "Delete", admin_collection_path(collection), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %></p>
+    </div>
+  </div>
+<% end %>

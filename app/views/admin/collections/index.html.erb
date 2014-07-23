@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1> Edit Collection Information </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="panel-group" id="accordion">
+        <% if @collections.count == 0 %>
+        No Collections Found In Database
+        <% else %>
+        <%= render "index_collections" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel panel-heading">
+          Add New
+        </div>
+        <div class="panel panel-body">
+          <%= link_to "Add Collection", new_admin_collection_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

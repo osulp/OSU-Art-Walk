@@ -27,6 +27,7 @@ class Admin::ArtPiecesController < AdminController
   def new
     @art_piece = ArtPiece.new
     @art_piece.art_piece_photos.build
+    @art_piece.build_art_piece_building
   end
 
   def create
@@ -42,6 +43,6 @@ class Admin::ArtPiecesController < AdminController
   end
 
   def art_piece_params
-    params.require(:art_piece).permit(:title, :medium, :creation_date, :size, :legal_info, :private, :contact_info, :description, :displayed, art_piece_photo_ids:[], art_piece_photos_attributes: [:photo, :id, :_destroy])
+    params.require(:art_piece).permit(:title, :medium, :creation_date, :size, :legal_info, :private, :contact_info, :description, :displayed, :building, art_piece_photo_ids:[], art_piece_photos_attributes: [:photo, :id, :_destroy], art_piece_building_attributes: [:building_id, :art_piece_id, :id], artist_ids: [], collection_ids:[])
   end
 end
