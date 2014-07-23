@@ -17,6 +17,7 @@ class ArtPiece < ActiveRecord::Base
 
   #Art Piece Photo associations
   has_many :art_piece_photos
+  delegate :name, :coords, :to => :building, :prefix => true, :allow_nil => true
   accepts_nested_attributes_for :art_piece_photos, :allow_destroy => true
 
 
@@ -26,8 +27,11 @@ class ArtPiece < ActiveRecord::Base
     text :title
 
     # Facets
+    string :coords, :stored => true, :multiple => true do
+      building_coords
+    end
     string :building, :stored => true do
-      building.try(:name)
+      building_name
     end
     string :artists, :stored => true, :multiple => true do
       artists.map(&:name)

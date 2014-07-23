@@ -20,6 +20,8 @@ gem 'carrierwave'
 gem 'rmagick', '~> 2.13.2', :require => false
 #TinyMCE for text editing
 gem 'tinymce-rails', '4.0.11'
+#Blacklight maps for mapping art pieces
+gem 'blacklight-maps'
 
 group :development do
   gem 'spring'

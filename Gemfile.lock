@@ -57,6 +57,13 @@ GEM
       nokogiri (~> 1.6)
       rails (>= 3.2.6, < 5)
       rsolr (~> 1.0.6)
+    blacklight-maps (0.1.0)
+      blacklight (>= 5.1.0)
+      bootstrap-sass (~> 3.0)
+      leaflet-markercluster-rails
+      leaflet-rails
+      leaflet-sidebar-rails (~> 0.0.2)
+      rails
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
@@ -158,6 +165,10 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.2)
+    leaflet-markercluster-rails (0.7.0)
+      railties (>= 3.1)
+    leaflet-rails (0.7.3)
+    leaflet-sidebar-rails (0.0.3)
     logger (1.2.8)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -328,6 +339,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   blacklight
+  blacklight-maps
   capistrano (~> 2.0)
   carrierwave
   coffee-rails
