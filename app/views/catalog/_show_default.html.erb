@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-4">
-      <div id="my-carousel" class="carousel slide" data-ride="carousel"><!-- class of slide for animation -->
+      <div id="my-carousel" class="carousel slide"><!-- class of slide for animation -->
         <div class="carousel-inner">
             <% Array.wrap(document["art_piece_photos_sms"]).each_with_index do |photo, index| %>
                 <div class="item <%= "active" if index == 0 %>">
@@ -9,8 +9,8 @@
                 </div>
             <% end %>
         </div>
-        <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" onclick="">&lsaquo;</a>
-        <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button">&rsaquo;</a>
+        <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" ><span class="glyphicon glyphicon-chevron-left"></span></a>
+        <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button"><span class="glyphicon glyphicon-chevron-right"></span></a>
       </div>
     </div>
   </div>

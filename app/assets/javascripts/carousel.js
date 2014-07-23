@@ -1,3 +1,6 @@
 $(document).ready(function(){
-  $('.carousel').carousel();
+  $('.carousel').carousel({
+    interval: false,
+    pause: 'hover'
+  });
 });
