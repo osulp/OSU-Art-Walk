@@ -17,6 +17,7 @@ describe "faceting" do
       context "and the facet is clicked" do
         before do
           click_link subject.building.name
+          click_link "List"
         end
         it "should show the title for the art piece" do
           within(".document .index_title") do
@@ -27,6 +28,9 @@ describe "faceting" do
           subject do
             art_piece_2
             create(:art_piece, :with_building)
+          end
+          before do
+            click_link "List"
           end
           let(:art_piece_2) {create(:art_piece)}
           it "should not show it" do
