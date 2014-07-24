@@ -71,7 +71,8 @@ describe "Art Piece Manipulation" do
         end
 
         it "should update the info of building associated with art piece" do
-          expect(art.building[:lat]).to eq BigDecimal('40.000')
+          search = ArtPiece.search { fulltext(art.title)}.hits.first.stored(:coords)
+          expect(search.first).to eq "#{art.building.name}-|-#{40.0}-|-#{art.building.long}"
         end
       end
     end
