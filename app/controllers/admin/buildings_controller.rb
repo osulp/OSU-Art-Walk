@@ -12,6 +12,7 @@ class Admin::BuildingsController < AdminController
 
   def update
     @building.update_attributes(building_params)
+    ArtPiece.reindex
     respond_with @building, :location => admin_buildings_path
   end
 

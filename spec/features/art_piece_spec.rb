@@ -59,6 +59,21 @@ describe "Art Piece Manipulation" do
         end
         expect(page).to_not have_selector("#piece-#{art.id}")
       end
+      context "and buildings are updated" do
+        let(:building) { create(:building) }
+
+        before do
+          art.building = building
+          art.save
+          visit edit_admin_building_path(art.building)
+          fill_in "Lat", :with => 40.000
+          click_button "Update Building"
+        end
+
+        it "should update the info of building associated with art piece" do
+          expect(art.building[:lat]).to eq BigDecimal('40.000')
+        end
+      end
     end
   end
 
