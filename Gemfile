@@ -22,6 +22,7 @@ gem 'rmagick', '~> 2.13.2', :require => false
 gem 'tinymce-rails', '4.0.11'
 #Blacklight maps for mapping art pieces
 gem 'blacklight-maps'
+#Lighbox for photos
 
 group :development do
   gem 'spring'
