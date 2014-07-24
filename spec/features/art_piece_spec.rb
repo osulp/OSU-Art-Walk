@@ -59,6 +59,22 @@ describe "Art Piece Manipulation" do
         end
         expect(page).to_not have_selector("#piece-#{art.id}")
       end
+      context "and buildings are updated" do
+        let(:building) { create(:building) }
+
+        before do
+          art.building = building
+          art.save
+          visit edit_admin_building_path(art.building)
+          fill_in "Lat", :with => 40.000
+          click_button "Update Building"
+        end
+
+        it "should update the info of building associated with art piece" do
+          search = ArtPiece.search { fulltext(art.title)}.hits.first.stored(:coords)
+          expect(search.first).to eq "#{art.building.name}-|-#{40.0}-|-#{art.building.long}"
+        end
+      end
     end
   end
 
