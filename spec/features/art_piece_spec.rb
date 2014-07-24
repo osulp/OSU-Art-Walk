@@ -81,7 +81,7 @@ describe "Art Piece Manipulation" do
         expect(art.reload.title).to eq "Example Title 2"
       end
 
-      it "should not display any images within the picture area" do
+      it "should not display picture div" do
         expect(page).not_to have_selector("#picture")
       end
     end
