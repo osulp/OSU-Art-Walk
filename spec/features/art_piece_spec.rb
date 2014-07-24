@@ -66,8 +66,7 @@ describe "Art Piece Manipulation" do
     before do
       visit admin_art_pieces_path
     end
-
-    context "and art pieces are present" do
+    context "and art pieces are present without photos" do
       let(:user) {create(:user, :admin)}
       before do
         art
@@ -81,6 +80,10 @@ describe "Art Piece Manipulation" do
         expect(page).to have_content("Example Title 2")
         expect(art.reload.title).to eq "Example Title 2"
       end
+
+      it "should not display picture div" do
+        expect(page).not_to have_selector("#picture")
+      end
     end
   end
 
@@ -92,6 +95,35 @@ describe "Art Piece Manipulation" do
     context "clicking add should bring you to the new art piece page" do
       before do
         click_link "Add Art Piece"
+      end
+
+      context "when adding a photo" do
+
+        it "should not have images where you pick your photos" do
+          within "#picture" do
+            expect(page).not_to have_selector("img")
+          end
+        end
+
+        context "after the photo is uploaded and the art piece is saved" do
+          before do
+            fill_in "Title", :with => "Cool Title"
+            attach_file("art_piece_art_piece_photos_attributes_0_photo", "spec/fixtures/cats.jpg")
+            click_button "Create Art piece"
+          end
+
+          context "then going to the edit page" do
+            before do
+              click_link "Edit"
+            end
+
+            it "should display a picture" do
+              within "#picture" do
+                expect(page).to have_selector("img")
+              end
+            end
+          end
+        end
       end
 
       context "when removing the photo field" do
