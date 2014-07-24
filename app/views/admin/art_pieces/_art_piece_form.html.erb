@@ -1,4 +1,4 @@
-<%= simple_form_for([:admin, @art_piece], html: {class: 'form-horizontal', novalidate: true}) do |f| %>
+<%= simple_form_for([:admin, @art_piece], :html => {:class => 'form-horizontal', :novalidate => true}) do |f| %>
     <%= f.input :title %>
     <%= f.input :medium %>
     <%= f.input :creation_date %>
