@@ -26,7 +26,7 @@ class CatalogController < ApplicationController
     config.view.maps.maxzoom = 17
 
     config.view.maps.default = true
-    
+
     config.index.title_field = "title_ss"
     config.index.thumbnail_field = "art_piece_photos_sms"
     config.add_index_field 'medium_ss', :label => 'Medium'
@@ -68,7 +68,4 @@ class CatalogController < ApplicationController
     end
   end
 
-  def default_document_index_view_type
-    document_index_views.select { |k,config| config.respond_to? :default and config.default }.keys.last || document_index_views.keys.last
-  end
 end 
