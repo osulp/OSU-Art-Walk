@@ -16,6 +16,7 @@ describe "hidden items" do
       item
       visit root_path
       click_button "Search"
+      click_link "List"
     end
     it "should not have the Displayed facet" do
       expect(page).not_to have_link("Displayed")
@@ -33,6 +34,7 @@ describe "hidden items" do
       before do
         item
         click_button "Search"
+        click_link "List"
       end
       it "should display the item where 'displayed' is false" do
         expect(page).to have_selector(".document")

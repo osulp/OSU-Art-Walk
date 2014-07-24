@@ -25,6 +25,8 @@ class CatalogController < ApplicationController
     config.view.maps.minzoom = 16
     config.view.maps.maxzoom = 17
 
+    config.view.maps.default = true
+
     config.index.title_field = "title_ss"
     config.index.thumbnail_field = "art_piece_photos_sms"
     config.add_index_field 'medium_ss', :label => 'Medium'
@@ -65,6 +67,5 @@ class CatalogController < ApplicationController
       solr_params[:fq] << "-displayed_bs:false"
     end
   end
-
 
 end 

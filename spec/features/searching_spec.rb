@@ -9,6 +9,7 @@ describe "searching" do
       visit root_path
       fill_in "Search...", :with => search_string
       click_button "Search"
+      click_link "List"
     end
     context "and a blank string is searched" do
       it "should find it" do
