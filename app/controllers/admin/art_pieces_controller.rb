@@ -8,7 +8,6 @@ class Admin::ArtPiecesController < AdminController
   end
 
   def edit
-    
   end
 
   def update
