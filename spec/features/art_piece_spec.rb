@@ -94,11 +94,25 @@ describe "Art Piece Manipulation" do
         click_link "Add Art Piece"
       end
 
-      it "should let you fill in the forms and save the new art piece" do
-        fill_in "Title", :with => "Cool Title"
-        click_button "Create Art piece"
-        expect(page).to have_content("Cool Title")
-        expect(ArtPiece.first.title).to eq "Cool Title"
+      context "when removing the photo field" do
+        it "should let you fill in the forms and save the new art piece", :js => true do
+          fill_in "Title", :with => "Cool Title"
+          click_link "remove"
+          click_button "Create Art piece"
+          expect(page).to have_content("Cool Title")
+          expect(ArtPiece.first.title).to eq "Cool Title"
+        end
+      end
+      context "when adding an art piece with a blank photo field" do
+        before do
+          fill_in "Title", :with => "Cool Title"
+          click_button "Create Art piece"
+        end
+        it "should cause an error to occur" do
+          within(".help-block") do
+            expect(page).to have_content("can't be blank")
+          end
+        end
       end
 
     end

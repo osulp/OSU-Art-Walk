@@ -1,6 +1,6 @@
 <div id="picture">
   <div class="fields">
-    <%= f.file_field :photo %>
+    <%= f.input :photo, :as => :file, :required => false%>
     <%= f.hidden_field :_destroy %>
     <%= link_to_remove_fields "remove", f %>
   </div>

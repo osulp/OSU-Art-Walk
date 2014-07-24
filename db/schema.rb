@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20140723224326) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "art_piece_photo_id"
     t.boolean  "display",            default: true
     t.boolean  "private",            default: true
     t.boolean  "displayed",          default: true
+    t.integer  "art_piece_photo_id"
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
