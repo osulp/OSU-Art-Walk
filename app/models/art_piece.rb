@@ -1,5 +1,7 @@
 class ArtPiece < ActiveRecord::Base
   include SunspotModel
+  include MakeSearchable
+
   validates :title, :presence => true 
 
 
@@ -22,47 +24,6 @@ class ArtPiece < ActiveRecord::Base
   delegate :name, :to => :building, :prefix => true, :allow_nil => true
 
   accepts_nested_attributes_for :art_piece_photos, :art_piece_building, :allow_destroy => true
-
-
-  #indexing
-  searchable :auto_index => true, :include => [:building, :artists, :collections, :art_piece_photos] do
-    # Searchable Text
-    text :title
-
-    # Facets
-    string :coords, :stored => true, :multiple => true do
-      building_coords
-    end
-    string :building, :stored => true do
-      building_name
-    end
-    string :artists, :stored => true, :multiple => true do
-      artists.map(&:name)
-    end
-    string :artist_bio, :stored => true, :multiple => true do
-      artists.map(&:bio)
-    end
-    string :collections, :stored => true, :multiple => true do
-      collections.map(&:name)
-    end
-    string :status, :stored => true, :multiple => true do
-      self.status
-    end
-
-    string :art_piece_photos, :stored => true, :multiple => true do
-      art_piece_photos.map(&:photo)
-    end
-    # Displayed Text
-    string :title, :stored => true
-    string :medium, :stored => true
-    string :size, :stored => true
-    string :creation_date, :stored => true
-    string :legal_info, :stored => true
-    string :contact_info, :stored => true
-    string :description, :stored => true
-    boolean :displayed, :stored => true
-
-  end
 
   def status
     status = []
