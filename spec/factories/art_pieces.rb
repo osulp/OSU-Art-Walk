@@ -41,10 +41,5 @@ FactoryGirl.define do
         art_piece.artists = [build(:artist, :faculty => true)]
       end
     end
-    trait :with_art_piece_photo do
-      after(:build) do |art_piece|
-        art_piece.art_piece_photos << [build(:art_piece_photo)]
-      end
-    end
   end
 end
