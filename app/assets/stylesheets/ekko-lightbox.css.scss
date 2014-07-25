@@ -7,6 +7,13 @@
 
 .ekko-lightbox-container {
   position: relative;
+  height: 400px;
+  img {
+    height: 100%;
+  }
+  div:last-child {
+    height: 100%;
+  }
 }
 
 .ekko-lightbox-nav-overlay {

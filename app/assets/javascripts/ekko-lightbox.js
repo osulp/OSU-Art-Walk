@@ -279,10 +279,11 @@ License: https://github.com/ashleydw/lightbox/blob/master/LICENSE
           image.attr('src', img.src);
           image.addClass('img-responsive');
           _this.lightbox_body.html(image);
+          _this.modal_dialog.css('max-width',"");
           if (_this.modal_arrows) {
             _this.modal_arrows.css('display', 'block');
           }
-          return _this.resize(img.width);
+          return _this.resize(image.width());
         };
         img.onerror = function() {
           return _this.error('Failed to load image: ' + src);

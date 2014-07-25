@@ -1,10 +1,4 @@
-<script>
-  $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-    event.preventDefault();
-    $(this).ekkoLightbox();
-  });
-</script>
-
+<%= render "lightbox_init" %>
 <div class="container">
   <div class="row">
     <div class="col-xs-4" >
@@ -13,7 +7,7 @@
           <div class="carousel-inner">
               <% Array.wrap(document["art_piece_photos_sms"]).each_with_index do |photo, index| %>
                   <div class="item <%= "active" if index == 0 %>">
-                    <a href="<%= photo %>" id="photo-<%= index %>" data-toggle="lightbox" data-gallery="multiimages" >
+                    <a href="<%= photo %>" id="photo-<%= index %>" data-toggle="lightbox" data-gallery="multiimages" data-parent=".carousel-inner">
                       <%= image_tag photo %>
                     </a>
                   </div>
@@ -35,3 +29,4 @@
     <% end -%>
   <% end -%>
 </dl>
+
