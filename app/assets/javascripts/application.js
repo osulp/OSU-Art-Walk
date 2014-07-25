@@ -15,6 +15,7 @@
 //= require bootstrap
 // Required by Blacklight-Maps
 //= require blacklight-maps
+//= require ekko-lightbox
 //
 // Required by Blacklight
 //= require blacklight/blacklight
