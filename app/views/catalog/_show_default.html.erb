@@ -5,7 +5,7 @@
         <div class="carousel-inner">
             <% Array.wrap(document["art_piece_photos_sms"]).each_with_index do |photo, index| %>
                 <div class="item <%= "active" if index == 0 %>">
-                  <%= image_tag photo %>
+                  <%= image_tag photo, class: "image" %>
                 </div>
             <% end %>
         </div>
