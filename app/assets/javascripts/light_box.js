@@ -1,4 +1,4 @@
-$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+$(document).on('*[data-toggle="lightbox"]', 'click', function(event) {
   event.preventDefault();
   $(this).ekkoLightbox();
 });
