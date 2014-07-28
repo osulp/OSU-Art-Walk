@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Art Piece Manipulation" do
   let(:user) {}
-  let(:art) {build(:art_piece)}
+  let(:art) {create(:art_piece)}
 
   before do
     capybara_login(user) if user
@@ -26,7 +26,6 @@ describe "Art Piece Manipulation" do
       let(:user) {create(:user, :admin)}
       before do
         art
-        art.save
         visit admin_art_pieces_path
       end
       it "should have a panel-primary selector" do
@@ -100,7 +99,6 @@ describe "Art Piece Manipulation" do
       let(:user) {create(:user, :admin)}
       before do
         art
-        art.save
         visit admin_art_pieces_path
         click_link "Edit"
       end
