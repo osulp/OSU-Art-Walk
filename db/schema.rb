@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140725161317) do
+ActiveRecord::Schema.define(version: 20140728162847) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20140725161317) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "art_piece_photo_id"
     t.boolean  "display",            default: true
     t.boolean  "private",            default: true
     t.boolean  "displayed",          default: true
+    t.integer  "art_piece_photo_id"
     t.string   "number"
     t.string   "series"
     t.boolean  "percent_for_art"
@@ -110,6 +110,11 @@ ActiveRecord::Schema.define(version: 20140725161317) do
 
   create_table "collections", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contacts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

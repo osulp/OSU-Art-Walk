@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   blacklight_for :catalog
   devise_for :users
 
+  resource :contact, :only => [:show, :create]
+
   get '/admin', :to => 'admin#index', :as => "admin_index"
 
   get '/about', :to => 'about#index', :as => "about_us"
+
   namespace :admin do
     resources :users
     resources :art_pieces
