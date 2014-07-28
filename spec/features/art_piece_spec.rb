@@ -29,6 +29,9 @@ describe "Art Piece Manipulation" do
         art.save
         visit admin_art_pieces_path
       end
+      it "should have a panel-primary selector" do
+        expect(page).to have_selector(".panel-primary")
+      end
       it "should show the saved art piece" do
         expect(page).to have_content(art.title)
       end
@@ -58,6 +61,18 @@ describe "Art Piece Manipulation" do
           click_link "Delete"
         end
         expect(page).to_not have_selector("#piece-#{art.id}")
+      end
+
+      context "and the art_piece has a false status for displayed" do
+        before do
+          art
+          art.displayed = false
+          art.save
+          visit admin_art_pieces_path
+        end
+        it "should have a panel-danger div on it" do
+          expect(page).to have_selector(".panel-danger")
+        end
       end
       context "and buildings are updated" do
         let(:building) { create(:building) }
