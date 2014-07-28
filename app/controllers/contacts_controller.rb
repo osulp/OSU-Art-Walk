@@ -5,11 +5,6 @@ class ContactsController < ApplicationController
     
   end
 
-  def new
-    @contact = Setting.email
-    @user = current_user
-  end
-
   def create
     if current_user
       @email = current_user.email
@@ -19,9 +14,10 @@ class ContactsController < ApplicationController
     @message = params["Contact"]["message"]
     if @email == nil || @email == ""
       flash[:error] = "Please enter an email address and try again"
+      render :show
     else
       flash[:success] = "Thank you for contacting us!" if ContactMailer.contact_email(@email).deliver
+      redirect_to contact_path
     end
-    redirect_to contact_path
   end
 end

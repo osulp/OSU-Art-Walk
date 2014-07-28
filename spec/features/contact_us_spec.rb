@@ -45,6 +45,9 @@ describe "Contact Us" do
           expect(page).to have_content("Please enter an email address and try again")
           expect(ActionMailer::Base.deliveries.length).to eq 0
         end
+        it "should keep the entered message" do
+          expect(page).to have_field("Message", :with => "test message")
+        end
       end
     end
     context "when there is a user logged in" do
