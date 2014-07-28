@@ -53,7 +53,7 @@ describe "catalog show" do
               end
             end
             it "should display the second image" do
-              sithin ".modal-body" do
+              within ".modal-body" do
                 expect(page).to have_selector("img[src$='#{art_piece_2.art_piece_photos.last.photo}']")
               end
             end
