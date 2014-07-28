@@ -6,13 +6,10 @@ class ContactsController < ApplicationController
   end
 
   def create
-    if current_user
-      @email = current_user.email
-    else
-      @email = params["Contact"]["email"]
-    end
-    @message = params["Contact"]["message"]
-    if @email == nil || @email == ""
+    @email = current_user.email if current_user
+    @email ||= contact_params["email"]
+    @message = contact_params["message"]
+    if @email.blank?
       flash[:error] = "Please enter an email address and try again"
       render :show
     else
@@ -20,4 +17,10 @@ class ContactsController < ApplicationController
       redirect_to contact_path
     end
   end
+
+  private
+  def contact_params
+    params["Contact"]
+  end
+
 end
