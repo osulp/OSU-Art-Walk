@@ -23,14 +23,28 @@ describe "Contact Us" do
   end
   context "when contacting us" do
     context "when there is not a user logged in" do
-      before do
-        visit contact_path
-        fill_in "Email", :with => "test@email.com"
-        fill_in "Message", :with => "test contact info"
-        click_button "Submit"
+      context "when inputing an email" do
+        before do
+          visit contact_path
+          fill_in "Email", :with => "test@email.com"
+          fill_in "Message", :with => "test contact info"
+          click_button "Submit"
+        end
+        it "should send an email" do
+          expect(page).to have_content("Thank you for contacting us!")
+          expect(ActionMailer::Base.deliveries.length).to eq 1
+        end
       end
-      it "should send an email" do
-        expect(page).to have_content("Thank you for contacting us!")
+      context "when not inputing an email" do
+        before do
+          visit contact_path
+          fill_in "Message", :with => "test message"
+          click_button "Submit"
+        end
+        it "should cause an error to occur" do
+          expect(page).to have_content("Please enter an email address and try again")
+          expect(ActionMailer::Base.deliveries.length).to eq 0
+        end
       end
     end
     context "when there is a user logged in" do
@@ -40,7 +54,9 @@ describe "Contact Us" do
         visit contact_path
       end
       it "should display the user's email" do
-        expect(page).to have_content(user.email)
+        within "#main-container" do
+          expect(page).to have_content(user.email)
+        end
       end
       context "when submitting the form" do
         before do
@@ -49,6 +65,7 @@ describe "Contact Us" do
         end
         it "should send the email" do
           expect(page).to have_content("Thank you for contacting us!")
+          expect(ActionMailer::Base.deliveries.length).to eq 1
         end
       end
     end

@@ -1,4 +1,5 @@
 class ContactsController < ApplicationController
+  respond_to :html
 
   def show
     
@@ -16,8 +17,11 @@ class ContactsController < ApplicationController
       @email = params["Contact"]["email"]
     end
     @message = params["Contact"]["message"]
-    ContactMailer.contact_email(@email).deliver
-    flash[:success] = "Thank you for contacting us!"
-    redirect_to root_path
+    if @email == nil || @email == ""
+      flash[:error] = "Please enter an email address and try again"
+    else
+      flash[:success] = "Thank you for contacting us!" if ContactMailer.contact_email(@email).deliver
+    end
+    redirect_to contact_path
   end
 end
