@@ -3,19 +3,33 @@ require "spec_helper"
 describe "settings" do
   let(:user) {}
   let(:setting) {create(:setting)}
+  let(:setting_2) {create(:setting, :setting_name => "Copyright", :value => "Test Copyright")}
 
   before do
     capybara_login(user) if user
+    setting_2
     visit root_path
   end
   
   context "when on the admin page" do
     let(:user) {create(:user, :admin)}
     let(:setup) {}
+    context "when copyright information has been entered" do
+      it "should have it on the bottom of the page" do
+        within ".footer" do
+          expect(page).to have_content("Test Copyright")
+        end
+      end
+    end
     before do
       setup
       visit admin_index_path
       click_link "Settings"
+    end
+    it "should have an empty footer" do
+      within ".footer" do
+        expect(page).to have_content("")
+      end
     end
     it "should go to the settings page" do
       expect(page).to have_content("Settings Page")
