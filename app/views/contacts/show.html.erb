@@ -1,6 +1,6 @@
 <h1>Contact Us</h1>
 
-<b>Email:</b> <%= current_user.email if current_user %>
+<%= current_user.email if current_user %>
 <br>
 <%= simple_form_for "Contact", :url => contact_path do |f| %>
   <%= f.input :email, input_html: { :value => @email } unless current_user%>

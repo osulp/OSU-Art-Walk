@@ -33,6 +33,7 @@ describe "Contact Us" do
         it "should send an email" do
           expect(page).to have_content("Thank you for contacting us!")
           expect(ActionMailer::Base.deliveries.length).to eq 1
+          expect(ActionMailer::Base.deliveries.first.html_part.body.raw_source).to have_content("test contact info")
         end
       end
       context "when not inputing an email" do
@@ -69,6 +70,7 @@ describe "Contact Us" do
         it "should send the email" do
           expect(page).to have_content("Thank you for contacting us!")
           expect(ActionMailer::Base.deliveries.length).to eq 1
+          expect(ActionMailer::Base.deliveries.first.html_part.body.raw_source).to have_content("test contact info")
         end
       end
     end
