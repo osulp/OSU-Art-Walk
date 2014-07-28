@@ -67,7 +67,6 @@ describe "Art Piece Manipulation" do
         let(:art){create(:art_piece, :displayed => false)}
         before do
           art
-          art.save
           visit admin_art_pieces_path
         end
         it "should have a panel-danger div on it" do
