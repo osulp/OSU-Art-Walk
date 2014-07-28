@@ -15,8 +15,6 @@ describe "catalog show" do
       it "should show the correct title" do
         expect(page).to have_content(art_piece.title)
       end
-      # The javascript is erroring and nobody knows why.
-      # TODO: Fix this.
       context "and the first picture is clicked on", :js => true do
         let(:user) {create(:user, :admin => true) }
         let(:art_piece_photos) do
