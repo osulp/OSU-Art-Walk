@@ -59,11 +59,11 @@ describe "settings" do
               "tag_attributes" => {
                 "type" => "email"
               }
-            }
+            }, "Copyright" => {}
           })
         end
         before do
-          expect(page).to have_selector(".setting", :count => 1)
+          expect(page).to have_selector(".setting", :count => 2)
         end
         it "should use it" do
           expect(page).to have_selector("input[type=email]")
