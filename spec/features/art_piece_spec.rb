@@ -64,9 +64,9 @@ describe "Art Piece Manipulation" do
       end
 
       context "and the art_piece has a false status for displayed" do
+        let(:art){create(:art_piece, :displayed => false)}
         before do
           art
-          art.displayed = false
           art.save
           visit admin_art_pieces_path
         end
