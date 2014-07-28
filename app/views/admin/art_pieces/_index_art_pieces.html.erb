@@ -1,5 +1,5 @@
 <% @art_pieces.each do |art| %>
-  <div class="panel panel-default" id="piece-<%= art.id %>">
+  <div class="panel <%= art.panel_class %>" id="piece-<%= art.id %>">
     <div class="panel panel-heading">
       <a data-toggle="collapse" style="color:black;" data-parent="#accordion" href="#collapse-<%= art.id %>">
         <%= art.title %>
