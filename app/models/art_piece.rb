@@ -21,7 +21,7 @@ class ArtPiece < ActiveRecord::Base
   has_many :art_piece_photos
 
   delegate :name, :coords, :to => :building, :prefix => true, :allow_nil => true
-  delegate :name, :to => :building, :prefix => true, :allow_nil => true
+  delegate :location, :to => :art_piece_building, :prefix => true, :allow_nil => true
 
   accepts_nested_attributes_for :art_piece_photos, :art_piece_building, :allow_destroy => true
 

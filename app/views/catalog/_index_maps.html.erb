@@ -8,5 +8,9 @@
     <% if document[:artists_sms] %>
       By <%= document[:artists_sms].join(", ") %>
     <% end %>
+    <br>
+    <% if document[:art_piece_building_location_ss].present? %>
+      Location: <%= document[:art_piece_building_location_ss] %>
+    <% end %>
   </div>
 </li>

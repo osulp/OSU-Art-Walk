@@ -50,7 +50,6 @@ describe "admin panel" do
           visit admin_index_path
           expect(page).to have_link("Artist Information")
         end
-
         it "should link you to the list of editable information" do
           click_link "Artist Information"
           expect(page).to have_content("Edit Artist Information")
