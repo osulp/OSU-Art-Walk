@@ -29,6 +29,26 @@ describe 'blacklight maps' do
             end
           end
         end
+        context "when there is a location entered" do
+          before do
+            art_piece.location = "this is where the art piece is"
+            art_piece.save
+            visit root_path
+            find(".leaflet-marker-icon").click
+          end
+          it "should display the location of the art piece in the building" do
+            within("#blacklight-map-sidebar") do
+              expect(page).to have_content(art_piece.location)
+            end
+          end
+        end
+        context "when there is not a location entered" do
+          it "should not display the art piece location" do
+            within(".leaflet-sidebar") do
+              expect(page).to_not have_content("Location: ")
+            end
+          end
+        end
       end
     end
   end

@@ -13,6 +13,7 @@ module ArtWalk
           config.add_show_field 'building_ss', :label => 'Building'
           config.add_show_field 'collections_sms', :label => 'Collections'
           config.add_show_field 'description_ss', :label => 'Description'
+          config.add_show_field 'location_ss', :label => 'Location'
         end
       end
     end

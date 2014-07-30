@@ -103,6 +103,7 @@ describe "Art Piece Manipulation" do
         click_link "Edit"
       end
       it "should edit the art piece properly" do
+        expect(page).to have_content("Location")
         fill_in "Title", :with => "Example Title 2"
         click_button "Update Art piece"
         expect(page).to have_content("Example Title 2")
