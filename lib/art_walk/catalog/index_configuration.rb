@@ -10,7 +10,7 @@ module ArtWalk
           config.add_index_field 'size_ss', :label => 'Size'
           config.add_index_field 'creation_date_ss', :label => 'Created On'
           config.add_index_field 'artists_sms', :label => 'Artists'
-          config.add_index_field 'location_ss', :label => 'Location'
+          config.add_index_field 'art_piece_building_location_ss', :label => 'Location'
         end
       end
     end

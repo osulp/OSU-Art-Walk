@@ -31,14 +31,14 @@ describe 'blacklight maps' do
         end
         context "when there is a location entered" do
           before do
-            art_piece.location = "this is where the art piece is"
+            art_piece.art_piece_building.location = "this is where the art piece is"
             art_piece.save
             visit root_path
             find(".leaflet-marker-icon").click
           end
           it "should display the location of the art piece in the building" do
             within("#blacklight-map-sidebar") do
-              expect(page).to have_content(art_piece.location)
+              expect(page).to have_content(art_piece.art_piece_building.location)
             end
           end
         end
