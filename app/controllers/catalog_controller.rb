@@ -9,6 +9,8 @@ class CatalogController < ApplicationController
   include ArtWalk::Catalog::ShowConfiguration
   include ArtWalk::Catalog::MapConfiguration
 
+  rescue_from ArtWalk::Exceptions::AccessDenied, :with => :no_permissions
+
   before_filter :load_map_results, :only => :index
 
   #filter out not-diplayed art pieces
@@ -50,6 +52,23 @@ class CatalogController < ApplicationController
     return unless user_params[:map_view]
     solr_params[:fq] ||= []
     solr_params[:fq] << "coords_sms:['' TO *]"
+  end
+
+  def check_admin(document)
+    unless current_or_guest_user.admin?
+      raise ArtWalk::Exceptions::AccessDenied unless document['displayed_bs']
+    end
+  end
+
+  def get_solr_response_for_doc_id(*args)
+    solr_response, document = super
+    check_admin(document)
+    return [solr_response, document]
+  end
+
+  def no_permissions
+    flash[:error] = "You do not have sufficient permissions to see this piece."
+    redirect_to root_path
   end
 
 end 

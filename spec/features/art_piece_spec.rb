@@ -9,6 +9,18 @@ describe "Art Piece Manipulation" do
     visit root_path
   end 
 
+  context "when visiting the show page of a not displayed piece" do
+    before do
+      art
+      art.displayed = false
+      art.save
+      visit catalog_path(art.document_id)
+    end
+    it "should not display the page" do
+      expect(page).to_not have_content(art.title)
+      expect(page).to have_content("You do not have sufficient permissions to see this piece.")
+    end
+  end
   context "when on the index page" do
 
     before do
