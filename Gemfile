@@ -38,7 +38,6 @@ group :development, :test do
   # Test Coverage
   gem 'coveralls', :require => false
   gem 'simplecov'
-  gem 'webmock'
 end
 
 group :test do
@@ -47,6 +46,7 @@ group :test do
   gem 'formulaic'
   gem 'shoulda-matchers', require: false
   gem 'timecop'
+  gem 'webmock'
 end
 
 group :staging, :production do
