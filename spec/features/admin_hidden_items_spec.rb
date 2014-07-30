@@ -40,16 +40,26 @@ describe "hidden items" do
         expect(page).to have_link("Displayed")
       end
     end
-    context "and an item is marked as non displayed", :js => true do
-      let(:item) {create(:art_piece, :with_building, :displayed => false )}
+    context "when the item is clicked", :js => true do
       before do
         item
         visit root_path
         find(".leaflet-marker-icon").click
       end
-      it "should be highlighted in red with the red selector" do
-        within(".leaflet-sidebar") do
-          expect(page).to have_selector(".red")
+      context "and the item is not displayed" do
+        let(:item) {create(:art_piece, :with_building, :displayed => false )}
+        it "should be highlighted in red with the red selector" do
+          within(".leaflet-sidebar") do
+            expect(page).to have_selector(".red")
+          end
+        end
+      end
+      context "and the item is displayed" do
+        let(:item) {create(:art_piece, :with_building, :displayed => true )}
+        it "should not be highlighted in red" do
+          within(".leaflet-sidebar") do
+            expect(page).not_to have_selector(".red")
+          end
         end
       end
     end
