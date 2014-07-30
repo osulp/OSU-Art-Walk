@@ -26,7 +26,7 @@ describe ArtPiece do
         expect{subject.building << building_2}.to raise_error
       end
       it "should set art pieces for the building" do
-        expect(building.art_pieces).to eq [subject]
+        expect(building.reload.art_pieces).to eq [subject]
       end
       context "if buildings are removed" do
         before do

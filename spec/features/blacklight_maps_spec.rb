@@ -7,11 +7,25 @@ describe 'blacklight maps' do
       art_piece
     end
     context "and the root page is visited" do
+      let(:setup) {}
       before do
+        setup
         visit root_path
       end
       it "should show a marker" do
         expect(page).to have_selector(".leaflet-marker-icon")
+      end
+      context "and there are two art pieces" do
+        let(:art_piece_2) {create(:art_piece, :with_building)}
+        context "and the limit is one art piece per page" do
+          let(:setup) do
+            Blacklight::Configuration.any_instance.stub(:max_per_page).and_return(1)
+            art_piece_2
+          end
+          it "should show two markers" do
+            expect(page).to have_selector(".leaflet-marker-icon", :count => 2)
+          end
+        end
       end
       context "and the marker is clicked" do
         before do
