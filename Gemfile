@@ -47,7 +47,6 @@ group :test do
   gem 'formulaic'
   gem 'shoulda-matchers', require: false
   gem 'timecop'
-  gem 'webmock'
 end
 
 group :staging, :production do
