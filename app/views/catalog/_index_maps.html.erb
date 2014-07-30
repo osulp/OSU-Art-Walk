@@ -9,7 +9,7 @@
       By <%= document[:artists_sms].join(", ") %>
     <% end %>
     <br>
-    <% if document[:art_piece_building_location_ss] != false && document[:art_piece_building_location_ss] != nil && document[:art_piece_building_location_ss] != "f" %>
+    <% if document[:art_piece_building_location_ss].present? %>
       Location: <%= document[:art_piece_building_location_ss] %>
     <% end %>
   </div>
