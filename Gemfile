@@ -38,6 +38,7 @@ group :development, :test do
   # Test Coverage
   gem 'coveralls', :require => false
   gem 'simplecov'
+  gem 'webmock'
 end
 
 group :test do

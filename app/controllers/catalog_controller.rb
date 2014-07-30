@@ -1,13 +1,15 @@
 # -*- encoding : utf-8 -*-
 #
 
-class CatalogController < ApplicationController  
+class CatalogController < ApplicationController
 
   include Blacklight::Catalog
   include ArtWalk::Catalog::IndexConfiguration
   include ArtWalk::Catalog::FacetConfiguration
   include ArtWalk::Catalog::ShowConfiguration
   include ArtWalk::Catalog::MapConfiguration
+
+  before_filter :load_map_results, :only => :index
 
   #filter out not-diplayed art pieces
   self.solr_search_params_logic += [:exclude_not_displayed_items]
@@ -27,6 +29,10 @@ class CatalogController < ApplicationController
   end
 
   private
+
+  def load_map_results
+    @map_results = get_search_results(params, {:rows => 10000, :fq => "coords_sms:['' TO *]"}).first
+  end
 
   def exclude_displayed_facet(solr_params, user_params)
     solr_params["facet.field"] -= ["displayed_bs"] unless current_or_guest_user.admin?

@@ -10,7 +10,7 @@ class Building < ActiveRecord::Base
   private
 
   def reindex_art_pieces
-    art_pieces.reindex
+    art_pieces.each(&:index)
   end
 
 end

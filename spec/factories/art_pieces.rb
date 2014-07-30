@@ -15,6 +15,7 @@ FactoryGirl.define do
     trait :with_building do
       after(:build) do |art_piece|
         art_piece.building = build(:building)
+        art_piece.art_piece_building.building = art_piece.building
       end
     end
 
