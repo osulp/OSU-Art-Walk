@@ -14,6 +14,7 @@ class CatalogController < ApplicationController
   #filter out not-diplayed art pieces
   self.solr_search_params_logic += [:exclude_not_displayed_items]
   self.solr_search_params_logic += [:exclude_displayed_facet]
+  self.solr_search_params_logic += [:require_coordinates]
 
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -31,7 +32,7 @@ class CatalogController < ApplicationController
   private
 
   def load_map_results
-    @map_results = get_search_results(params, {:rows => 10000, :fq => "coords_sms:['' TO *]"}).first
+    @map_results = get_search_results(params, {:rows => 10000, :map_view => true}).first
   end
 
   def exclude_displayed_facet(solr_params, user_params)
@@ -43,6 +44,12 @@ class CatalogController < ApplicationController
       solr_params[:fq] ||= []
       solr_params[:fq] << "-displayed_bs:false"
     end
+  end
+  
+  def require_coordinates(solr_params, user_params)
+    return unless solr_params[:map_view]
+    solr_params[:fq] ||= []
+    solr_params[:fq] << "coords_sms:['' TO *]"
   end
 
 end 

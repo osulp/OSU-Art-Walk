@@ -22,8 +22,20 @@ describe 'blacklight maps' do
             Blacklight::Configuration.any_instance.stub(:max_per_page).and_return(1)
             art_piece_2
           end
-          it "should show two markers" do
-            expect(page).to have_selector(".leaflet-marker-icon", :count => 2)
+          context "and both are marked as displayed" do
+            it "should show two markers" do
+              expect(page).to have_selector(".leaflet-marker-icon", :count => 2)
+            end
+          end
+          context "and one is marked as non-displayed" do
+            let(:art_piece_2) {create(:art_piece, :with_building, :displayed => false)}
+            before do
+              art_piece
+              art_piece_2
+            end
+            it "should only show one" do
+              expect(page).to have_selector(".leaflet-marker-icon", :count => 1)
+            end
           end
         end
       end
