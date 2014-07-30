@@ -3,7 +3,7 @@ class Admin::ArtPiecesController < AdminController
   before_filter :find_art_piece, :only => [:edit, :update, :destroy]
   
   def index
-    @art_pieces = ArtPiece.all.includes(:art_piece_photos)
+    @art_pieces = ArtPiece.all.includes(:art_piece_photos).decorate
     respond_with(@art_pieces)
   end
 

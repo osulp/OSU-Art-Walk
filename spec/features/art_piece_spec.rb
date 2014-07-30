@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Art Piece Manipulation" do
   let(:user) {}
-  let(:art) {build(:art_piece)}
+  let(:art) {create(:art_piece)}
 
   before do
     capybara_login(user) if user
@@ -26,8 +26,10 @@ describe "Art Piece Manipulation" do
       let(:user) {create(:user, :admin)}
       before do
         art
-        art.save
         visit admin_art_pieces_path
+      end
+      it "should have a panel-primary selector" do
+        expect(page).to have_selector(".panel-primary")
       end
       it "should show the saved art piece" do
         expect(page).to have_content(art.title)
@@ -59,6 +61,17 @@ describe "Art Piece Manipulation" do
         end
         expect(page).to_not have_selector("#piece-#{art.id}")
       end
+
+      context "and the art_piece has a false status for displayed" do
+        let(:art){create(:art_piece, :displayed => false)}
+        before do
+          art
+          visit admin_art_pieces_path
+        end
+        it "should have a panel-danger div on it" do
+          expect(page).to have_selector(".panel-danger")
+        end
+      end
       context "and buildings are updated" do
         let(:building) { create(:building) }
 
@@ -86,7 +99,6 @@ describe "Art Piece Manipulation" do
       let(:user) {create(:user, :admin)}
       before do
         art
-        art.save
         visit admin_art_pieces_path
         click_link "Edit"
       end

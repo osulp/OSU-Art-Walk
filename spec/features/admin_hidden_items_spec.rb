@@ -27,9 +27,6 @@ describe "hidden items" do
   end
   context "when on the index page as an admin" do
     let(:user) {create(:user, :admin)}
-    before do
-      visit root_path
-    end
     context "when searching for all art pieces as admin" do
       before do
         item
@@ -41,6 +38,19 @@ describe "hidden items" do
       end
       it "should display the 'Displayed' facet" do
         expect(page).to have_link("Displayed")
+      end
+    end
+    context "and an item is marked as non displayed", :js => true do
+      let(:item) {create(:art_piece, :with_building, :displayed => false )}
+      before do
+        item
+        visit root_path
+        find(".leaflet-marker-icon").click
+      end
+      it "should be highlighted in red with the red selector" do
+        within(".leaflet-sidebar") do
+          expect(page).to have_selector(".red")
+        end
       end
     end
   end
