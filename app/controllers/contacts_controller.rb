@@ -13,7 +13,7 @@ class ContactsController < ApplicationController
       flash[:error] = "Please enter an email address and try again"
       render :show
     else
-      flash[:success] = "Thank you for contacting us!" if ContactMailer.contact_email(@email).deliver
+      flash[:success] = "Thank you for contacting us!" if ContactMailer.contact_email(@email, @message).deliver
       redirect_to contact_path
     end
   end
