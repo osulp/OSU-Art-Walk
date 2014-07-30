@@ -12,8 +12,10 @@
                   </div>
               <% end %>
           </div>
-          <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" ><span class="glyphicon glyphicon-chevron-left"></span></a>
-          <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button"><span class="glyphicon glyphicon-chevron-right"></span></a>
+          <% if Array.wrap(document["art_piece_photos_sms"]).count > 1 %>
+            <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" ><span class="glyphicon glyphicon-chevron-left"></span></a>
+            <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button"><span class="glyphicon glyphicon-chevron-right"></span></a>
+          <% end %>
         </div>
       </div>
     </div>

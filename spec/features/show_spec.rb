@@ -32,9 +32,32 @@ describe "catalog show" do
             expect(page).to have_selector("img[src$='#{art_piece_2.art_piece_photos.first.photo}']")
           end
         end
+        context "and the images are being viewed on the show screen" do
+          let(:art_piece_photos) do
+            art_piece_2.art_piece_photos << create(:art_piece_photo, :with_photo)
+            art_piece_2.art_piece_photos << create(:art_piece_photo, :with_photo)
+            art_piece_2.save
+          end
+          before do
+            art_piece_photos
+            visit catalog_path(:id => art_piece_2.document_id)
+          end
+          it "should have the navigation arrows" do
+            expect(page).to have_selector(".glyphicon-chevron-right")
+          end
+        end
+
         context "and there is only one image" do
           it "should not have navigation elements" do
             within(".ekko-lightbox") do
+              expect(page).not_to have_selector(".glyphicon-chevron-right")
+            end
+          end
+          context "on the show page" do
+            before do
+              visit catalog_path(:id => art_piece_2.document_id)
+            end
+            it "should not have the navigation elements" do
               expect(page).not_to have_selector(".glyphicon-chevron-right")
             end
           end
