@@ -64,10 +64,10 @@ ActiveRecord::Schema.define(version: 20140730171828) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "art_piece_photo_id"
     t.boolean  "display",            default: true
     t.boolean  "private",            default: true
     t.boolean  "displayed",          default: true
-    t.integer  "art_piece_photo_id"
     t.string   "number"
     t.string   "series"
     t.boolean  "percent_for_art"
