@@ -12,13 +12,15 @@ describe "Contact Us" do
     expect(page).to have_content("Contact Us")
   end
 
-  context "when viewing the contact us page" do
+  context "when viewing the contact us page", :js => true do
     before do
       click_link "Contact Us"
     end
+    it "should have a WYSIWYG editor" do
+      expect(page).to have_css(".mce-container-body")
+    end
     it "should display the contact info" do
       expect(page).to have_content("Contact Us")
-      expect(page).to have_field("Message")
     end
   end
   context "when contacting us" do

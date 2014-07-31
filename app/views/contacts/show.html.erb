@@ -4,6 +4,7 @@
 <br>
 <%= simple_form_for "Contact", :url => contact_path do |f| %>
   <%= f.input :email, input_html: { :value => @email } unless current_user%>
-  <%= f.input :message, input_html: { :value => @message } %>
+  <%= f.input :message, :as => :text, :input_html => {:value => @message, :class => "tinymce", :rows => 15, :cols => 120} %>
+  <%= tinymce %>
   <%= f.button :submit, "Submit" %>
 <% end %>
