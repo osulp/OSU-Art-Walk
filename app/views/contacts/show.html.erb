@@ -2,7 +2,7 @@
 
 <%= current_user.email if current_user %>
 <br>
-<%= simple_form_for "Contact", :url => contact_path do |f| %>
+<%= simple_form_for("Contact", :html => { :novalidate => true }, :url => contact_path) do |f| %>
   <%= f.input :email, input_html: { :value => @email } unless current_user%>
   <%= f.input :message, :as => :text, :input_html => {:value => @message, :class => "tinymce", :rows => 15, :cols => 120} %>
   <%= tinymce %>
