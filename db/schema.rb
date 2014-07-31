@@ -70,11 +70,11 @@ ActiveRecord::Schema.define(version: 20140731181713) do
     t.string   "number"
     t.string   "series"
     t.boolean  "percent_for_art"
-    t.integer  "medium_id_id"
+    t.integer  "medium_id"
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
-  add_index "art_pieces", ["medium_id_id"], name: "index_art_pieces_on_medium_id_id"
+  add_index "art_pieces", ["medium_id"], name: "index_art_pieces_on_medium_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
