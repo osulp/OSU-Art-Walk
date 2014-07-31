@@ -108,7 +108,7 @@
     function buildList(placenames){
       var html = "";
       $.each(placenames, function(i,val){
-        html += "<h2>" + i + "</h2>";
+        html += "<h2>" + "<a href='./catalog'>" + i + "</a>" + "</h2>";
         html += "<ul class='sidebar-list'>";
         $.each(val, function(j, val2){
           html += val2;
