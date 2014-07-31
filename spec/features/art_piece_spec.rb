@@ -9,6 +9,17 @@ describe "Art Piece Manipulation" do
     visit root_path
   end 
 
+  context "when visiting the show page of a not displayed piece" do
+    let(:art) {create(:art_piece, :displayed => false)}
+    before do
+      art
+      visit catalog_path(art.document_id)
+    end
+    it "should not display the page" do
+      expect(page).to_not have_content(art.title)
+      expect(page).to have_content(I18n.t('permission_error.error_string'))
+    end
+  end
   context "when on the index page" do
 
     before do
