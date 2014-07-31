@@ -1,3 +1,3 @@
 class Medium < ActiveRecord::Base
-  belongs_to :art_piece
+  has_many :art_pieces
 end

@@ -21,7 +21,7 @@ class ArtPiece < ActiveRecord::Base
   has_many :art_piece_photos
 
   #Medium association
-  has_one :medium
+  belongs_to :medium
 
   delegate :name, :coords, :to => :building, :prefix => true, :allow_nil => true
   delegate :location, :to => :art_piece_building, :prefix => true, :allow_nil => true

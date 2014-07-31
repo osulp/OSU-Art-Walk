@@ -3,6 +3,5 @@
 FactoryGirl.define do
   factory :medium do
     medium "test"
-    art_piece nil
   end
 end

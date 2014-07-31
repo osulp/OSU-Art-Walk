@@ -1,5 +1,5 @@
 class AddMediumIdToArtPieces < ActiveRecord::Migration
   def change
-    add_reference :art_pieces, :medium, index: true
+    add_column :art_pieces, :medium_id, :integer
   end
 end

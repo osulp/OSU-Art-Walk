@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731181713) do
+ActiveRecord::Schema.define(version: 20140731190404) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -74,7 +74,6 @@ ActiveRecord::Schema.define(version: 20140731181713) do
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
-  add_index "art_pieces", ["medium_id"], name: "index_art_pieces_on_medium_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
@@ -121,13 +120,11 @@ ActiveRecord::Schema.define(version: 20140731181713) do
   end
 
   create_table "media", force: true do |t|
-    t.string   "medium"
-    t.integer  "art_piece_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "medium"
+    t.integer "art_pieces_id"
   end
 
-  add_index "media", ["art_piece_id"], name: "index_media_on_art_piece_id"
+  add_index "media", ["art_pieces_id"], name: "index_media_on_art_pieces_id"
 
   create_table "searches", force: true do |t|
     t.text     "query_params"
