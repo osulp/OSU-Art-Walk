@@ -7,7 +7,7 @@ class Admin::MediaController < ApplicationController
   end
 
   def new
-    @medium = Medium.new()
+    @medium = Medium.new
   end
 
   def create
