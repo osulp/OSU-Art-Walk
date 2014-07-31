@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1> Medium Information Page </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="panel-group" id="accordion">
+        <% if @media.count == 0 %>
+        No Mediums Found In Database
+        <% else %>
+        <%= render "index_mediums" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel panel-heading">
+          Add New
+        </div>
+        <div class="panel panel-body">
+          <%= link_to "Add Medium", new_admin_medium_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
