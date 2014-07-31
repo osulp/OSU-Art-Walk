@@ -10,10 +10,9 @@ describe "Art Piece Manipulation" do
   end 
 
   context "when visiting the show page of a not displayed piece" do
+    let(:art) {create(:art_piece, :displayed => false)}
     before do
       art
-      art.displayed = false
-      art.save
       visit catalog_path(art.document_id)
     end
     it "should not display the page" do
