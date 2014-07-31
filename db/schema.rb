@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730171828) do
+ActiveRecord::Schema.define(version: 20140731162005) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20140730171828) do
 
   create_table "art_pieces", force: true do |t|
     t.string   "title"
-    t.string   "medium"
     t.string   "creation_date"
     t.string   "size"
     t.text     "legal_info"

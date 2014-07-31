@@ -3,7 +3,6 @@
 FactoryGirl.define do
   factory :art_piece, :class => 'ArtPiece' do
     sequence(:title) { |n| "Art Piece #{n}" }
-    medium "MyString"
     creation_date "2014-07-02 13:58:43"
     size "MyString"
     legal_info "MyText"
