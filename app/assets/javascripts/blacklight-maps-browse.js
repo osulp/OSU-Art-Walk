@@ -111,7 +111,6 @@
       $.each(placenames, function(i,val){
         href = "/catalog?f[building_ss][]="+i+"&search_field=all-fields&view=list"
         html += "<a href='"+href+"'><h2>" + i + "</h2></a>";
-        //html += "<h2>" + i + "</h2>";
         html += "<ul class='sidebar-list'>";
         $.each(val, function(j, val2){
           html += val2;
