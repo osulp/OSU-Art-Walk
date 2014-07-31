@@ -55,6 +55,22 @@ describe 'blacklight maps' do
             end
           end
         end
+        it "should display a link to the building" do
+          within("#blacklight-map-sidebar") do
+            expect(page).to have_link(art_piece.building.name)
+          end
+        end
+        context "when clicking on the building name" do
+          before do
+            find("h2").click
+          end
+          it "should go to the list view search results for that building" do
+            within(".filterValue") do
+              expect(page).to have_content(art_piece.building.name)
+            end
+            expect(page).to have_content(art_piece.title)
+          end
+        end
         context "when there is a location entered" do
           before do
             art_piece.art_piece_building.location = "this is where the art piece is"
