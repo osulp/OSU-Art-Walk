@@ -67,7 +67,7 @@ class CatalogController < ApplicationController
   end
 
   def no_permissions
-    flash[:error] = "You do not have sufficient permissions to see this piece."
+    flash[:error] = I18n.t('permission_error.error_string')
     redirect_to root_path
   end
 

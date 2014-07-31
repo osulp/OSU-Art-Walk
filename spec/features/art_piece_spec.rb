@@ -18,7 +18,7 @@ describe "Art Piece Manipulation" do
     end
     it "should not display the page" do
       expect(page).to_not have_content(art.title)
-      expect(page).to have_content("You do not have sufficient permissions to see this piece.")
+      expect(page).to have_content(I18n.t('permission_error.error_string'))
     end
   end
   context "when on the index page" do
