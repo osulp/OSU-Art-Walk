@@ -18,6 +18,7 @@ describe "Contact Us" do
     end
     it "should display the contact info" do
       expect(page).to have_content("Contact Us")
+      expect(page).to have_field("Message")
     end
   end
   context "when contacting us" do
