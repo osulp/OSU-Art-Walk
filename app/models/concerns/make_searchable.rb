@@ -37,6 +37,7 @@ module MakeSearchable
       end
       boolean :displayed, :stored => true
       boolean :private, :stored => true
+      boolean :percent_for_art, :stored => true
     end
   end
 
