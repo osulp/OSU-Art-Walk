@@ -9,12 +9,10 @@ module MakeSearchable
       text :artists do
         artists.map(&:name)
       end
-      text :medium do
-        art_medium
-      end
-      text :building do
-        building_name
-      end
+      text :art_medium
+
+      text :building_name
+
       text :collections do
         collections.map(&:name)
       end
