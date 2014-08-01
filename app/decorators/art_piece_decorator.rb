@@ -2,7 +2,7 @@ class ArtPieceDecorator < Draper::Decorator
   delegate_all
 
   def panel_class
-    return "panel-primary" if displayed?
+    return "panel-default" if displayed?
     "panel-danger"
   end
 

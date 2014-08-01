@@ -40,7 +40,7 @@ describe "Art Piece Manipulation" do
         visit admin_art_pieces_path
       end
       it "should have a panel-primary selector" do
-        expect(page).to have_selector(".panel-primary")
+        expect(page).to have_selector(".panel-default")
       end
       it "should show the saved art piece" do
         expect(page).to have_content(art.title)

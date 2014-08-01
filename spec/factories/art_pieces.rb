@@ -7,7 +7,7 @@ FactoryGirl.define do
     size "MyString"
     legal_info "MyText"
     private false
-    contact_info "MyString"
+    contact_info "555-0123"
     description "MyText"
     displayed true
 
