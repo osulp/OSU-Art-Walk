@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730171828) do
+ActiveRecord::Schema.define(version: 20140731190404) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 20140730171828) do
 
   create_table "art_pieces", force: true do |t|
     t.string   "title"
-    t.string   "medium"
     t.string   "creation_date"
     t.string   "size"
     t.text     "legal_info"
@@ -64,13 +63,14 @@ ActiveRecord::Schema.define(version: 20140730171828) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "art_piece_photo_id"
     t.boolean  "display",            default: true
     t.boolean  "private",            default: true
     t.boolean  "displayed",          default: true
-    t.integer  "art_piece_photo_id"
     t.string   "number"
     t.string   "series"
     t.boolean  "percent_for_art"
+    t.integer  "medium_id"
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
@@ -118,6 +118,13 @@ ActiveRecord::Schema.define(version: 20140730171828) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "media", force: true do |t|
+    t.string  "medium"
+    t.integer "art_pieces_id"
+  end
+
+  add_index "media", ["art_pieces_id"], name: "index_media_on_art_pieces_id"
 
   create_table "searches", force: true do |t|
     t.text     "query_params"

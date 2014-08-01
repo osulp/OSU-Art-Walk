@@ -9,7 +9,7 @@
     </div>
     <div class="panel-collapse collapse" id="collapse-<%= art.id %>">
       <div class="panel panel-body">
-        <p>Medium: <%= art.medium %></p>
+        <p>Which Medium? <%= art.art_medium %> </p>
         <p>Created On: <%= art.creation_date %></p>
         <p>Size: <%= art.size %></p>
         <p>Legal Info: <%= art.legal_info %></p>
@@ -18,7 +18,7 @@
         <p>Description: <%= art.description %></p>
         <p>Is this Art On Display? <%= art.displayed? %></p>
         <p>Which Building is it in? <%= art.building_name %> </p>
-        <p>Art Piece: <% art.art_piece_photos.each do |p|%>
+        <p>Art Piece: <% art.art_piece_photos.each do |p| %>
           <%= image_tag p.photo %>
         <% end %></p>
       </div>

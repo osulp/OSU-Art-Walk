@@ -1,0 +1,9 @@
+<% @media.each do |medium| %>
+  <div class="panel panel-default" id="medium-<%= medium.id %>">
+    <div class="panel panel-heading">
+      <p>Medium: <%= medium.medium %>
+      <%= link_to "Edit", edit_admin_medium_path(medium), :class => "pull-right", :style => "padding-left: 10px;" %>
+      <%= link_to "Delete", admin_medium_path(medium), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %></p>
+    </div>
+  </div>
+<% end %>

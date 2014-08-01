@@ -1,6 +1,5 @@
 <%= simple_form_for([:admin, @art_piece], :html => {:class => 'form-horizontal'}) do |f| %>
     <%= f.input :title %>
-    <%= f.input :medium %>
     <%= f.input :creation_date %>
     <%= f.input :size %>
     <%= f.input :legal_info %>
@@ -11,6 +10,7 @@
     <%= f.input :number %>
     <%= f.input :series %>
     <%= f.input :percent_for_art %>
+    <%= f.association :medium, :label_method => :medium %>
     <%= f.association :artists %>
     <%= f.association :collections %>
     <%= f.fields_for :art_piece_building do |builder| %>

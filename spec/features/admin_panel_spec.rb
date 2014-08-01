@@ -69,10 +69,20 @@ describe "admin panel" do
         before do
           visit admin_index_path
         end
-        it "should have a link that takes you to building index page" do
+        it "should have a link that takes you to collections index page" do
           expect(page).to have_content("Collection Information")
-          click_link "Building Information"
-          expect(page).to have_content("Building Information Page")
+          click_link "Collection Information"
+          expect(page).to have_content("Collection Information")
+        end
+      end
+      context "should have a clickable Medium Information link on it" do
+        before do
+          visit admin_index_path
+        end
+        it "should have a link that takes you to collections index page" do
+          expect(page).to have_content("Medium Information")
+          click_link "Medium Information"
+          expect(page).to have_content("Medium Information Page")
         end
       end
     end

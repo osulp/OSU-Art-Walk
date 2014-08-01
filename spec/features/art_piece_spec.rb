@@ -50,7 +50,7 @@ describe "Art Piece Manipulation" do
         within "#piece-#{art.id}" do
           click_link "#{art.title}"
         end
-        expect(page).to have_content("#{art.medium}")
+        expect(page).to have_content("#{art.title}")
       end
 
       it "should have links to edit and delete each art piece" do

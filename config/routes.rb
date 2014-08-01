@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :buildings
     resources :collections
     resources :settings
+    resources :media
   end
 end
