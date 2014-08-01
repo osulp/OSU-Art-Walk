@@ -6,6 +6,16 @@ module MakeSearchable
     searchable :auto_index => true, :include => [:building, :artists, :collections, :art_piece_photos, :medium] do
       # Searchable Text
       text "title"
+      text :artists do
+        artists.map(&:name)
+      end
+      text :art_medium
+
+      text :building_name
+
+      text :collections do
+        collections.map(&:name)
+      end
       # Facets
       string :coords, :stored => true, :multiple => true do
         building_coords
