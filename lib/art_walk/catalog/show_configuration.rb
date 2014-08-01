@@ -8,7 +8,9 @@ module ArtWalk
           config.add_show_field 'medium_ss', :label => 'Medium'
           config.add_show_field 'legal_info_ss', :label => 'Legal Info'
           config.add_show_field 'creation_date_ss', :label => 'Created On'
-          config.add_show_field 'contact_info_ss', :label => 'Contact Info'
+          config.add_show_field 'number_ss', :label => 'Number'
+          config.add_show_field 'series_ss', :label => 'Series'
+          config.add_show_field 'contact_info_ss', :label => 'Contact Info', :if => :private_document?
           config.add_show_field 'artists_sms', :label => 'Artists'
           config.add_show_field 'artist_bio_sms', :label => 'Artist Bio'
           config.add_show_field 'building_ss', :label => 'Building'

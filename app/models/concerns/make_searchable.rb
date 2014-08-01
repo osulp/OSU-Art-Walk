@@ -36,12 +36,13 @@ module MakeSearchable
         string text, :stored => true
       end
       boolean :displayed, :stored => true
+      boolean :private, :stored => true
     end
   end
 
   module ClassMethods
     def displayed_texts
-      [:title, :description, :size, :creation_date, :legal_info, :contact_info, :art_piece_building_location]
+      [:title, :description, :size, :creation_date, :legal_info, :contact_info, :art_piece_building_location, :number, :series]
     end
   end
 end
