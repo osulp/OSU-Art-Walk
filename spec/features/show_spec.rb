@@ -85,32 +85,28 @@ describe "catalog show" do
   end
 
   context "when there is one art piece" do
-    let(:art_piece) { create(:art_piece, :private => true) }
+    let(:art_piece) { create(:art_piece) }
 
-    context "that is private" do
+    context "and you visit its show page" do
+      before do
+        art_piece
+        visit catalog_path(:id => art_piece.document_id)
+      end
 
-      context "and its show page is visited" do
-        before do
-          art_piece
-          visit catalog_path(:id => art_piece.document_id)
-        end
+      context "and its private" do
+        let(:art_piece) { create(:art_piece, :private => true) }
+
         it "should display the contact information" do
           expect(page).to have_content(art_piece.contact_info)
         end
       end
-    end
-    context "that is not private" do
-      let(:art_piece) { create(:art_piece, :private => false) }
+      context "and its not private" do
+        let(:art_piece) { create(:art_piece, :private => false) }
 
-      context "and its show page is visited" do
-        before do
-          art_piece
-          visit catalog_path(:id => art_piece.document_id)
-        end
         it "should not display the contact information" do
           expect(page).to_not have_content(art_piece.contact_info)
         end
       end
-    end 
+    end
   end
 end
