@@ -10,6 +10,7 @@ module ArtWalk
           config.add_show_field 'creation_date_ss', :label => 'Created On'
           config.add_show_field 'contact_info_ss', :label => 'Contact Info'
           config.add_show_field 'artists_sms', :label => 'Artists'
+          config.add_show_field 'artist_bio_sms', :label => 'Artist Bio'
           config.add_show_field 'building_ss', :label => 'Building'
           config.add_show_field 'collections_sms', :label => 'Collections'
           config.add_show_field 'description_ss', :label => 'Description'
