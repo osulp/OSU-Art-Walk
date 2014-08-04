@@ -19,6 +19,7 @@
 
       // Setup Leaflet map
       map = L.map(this.id).setView([0,0], 2);
+      window.map = map
       L.tileLayer(options.tileurl, {
         attribution: options.mapattribution,
         maxZoom: options.maxzoom

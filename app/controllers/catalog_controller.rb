@@ -31,10 +31,15 @@ class CatalogController < ApplicationController
     config.add_facet_fields_to_solr_request!
   end
 
+  def show
+    super
+    @map_results = [@document]
+  end
+
   private
 
   def load_map_results
-    @map_results = get_search_results(params.merge(:map_view => true), {:rows => 10000}).first
+    @map_results = get_search_results(params.merge(:map_view => true), {:rows => 10000}).first.docs
   end
 
   def exclude_displayed_facet(solr_params, user_params)
