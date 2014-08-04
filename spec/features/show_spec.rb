@@ -92,7 +92,6 @@ describe "catalog show" do
         art_piece
         visit catalog_path(:id => art_piece.document_id)
       end
-
       context "and its private" do
         let(:art_piece) { create(:art_piece, :private => true) }
 
