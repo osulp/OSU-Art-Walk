@@ -84,8 +84,8 @@ describe "catalog show" do
     end
   end
 
-  context "when there is one art piece" do
-    let(:art_piece) { create(:art_piece) }
+  context "when there is one art piece", :js => true do
+    let(:art_piece) { create(:art_piece, :with_building) }
 
     context "and you visit its show page" do
       before do
@@ -105,6 +105,38 @@ describe "catalog show" do
 
         it "should not display the contact information" do
           expect(page).to_not have_content(art_piece.contact_info)
+        end
+      end
+
+      it "should have tabs for a carousel and map" do
+        expect(page).to have_link("Carousel")
+        expect(page).to have_link("Map")
+      end
+
+      context "when the Map tab is clicked" do
+
+        before do
+          click_link "Map"
+        end
+
+        it "should show the map" do
+          expect(page).to have_selector('.leaflet-map-pane')
+        end
+
+        it "should have one marker on it for the art_piece" do
+          within ".leaflet-marker-pane" do
+            expect(page).to have_selector(".leaflet-marker-icon", :count => 1)
+          end
+        end
+        context "then the Carousel tab is clicked" do
+
+          before do
+            click_link "Carousel"
+          end
+
+          it "should switch back to carousel view" do
+            expect(page).to have_selector(".carousel")
+          end
         end
       end
     end
