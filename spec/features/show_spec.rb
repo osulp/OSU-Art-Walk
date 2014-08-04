@@ -107,33 +107,26 @@ describe "catalog show" do
           expect(page).to_not have_content(art_piece.contact_info)
         end
       end
-
       it "should have tabs for a carousel and map" do
         expect(page).to have_link("Carousel")
         expect(page).to have_link("Map")
       end
-
       context "when the Map tab is clicked" do
-
         before do
           click_link "Map"
         end
-
         it "should show the map" do
           expect(page).to have_selector('.leaflet-map-pane')
         end
-
         it "should have one marker on it for the art_piece" do
           within ".leaflet-marker-pane" do
             expect(page).to have_selector(".leaflet-marker-icon", :count => 1)
           end
         end
         context "then the Carousel tab is clicked" do
-
           before do
             click_link "Carousel"
           end
-
           it "should switch back to carousel view" do
             expect(page).to have_selector(".carousel")
           end
