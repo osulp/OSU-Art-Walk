@@ -19,7 +19,7 @@
         <p>Is this Art On Display? <%= art.displayed? %></p>
         <p>Which Building is it in? <%= art.building_name %> </p>
         <p>Art Piece: <% art.art_piece_photos.each do |p| %>
-          <%= image_tag p.photo %>
+          <%= image_tag p.photo_url(:thumb) %>
         <% end %></p>
       </div>
     </div>
