@@ -129,6 +129,10 @@ describe "catalog show" do
           it "should switch back to carousel view" do
             expect(page).to have_selector(".carousel")
           end
+      context "and it doesnt have a field filled in" do
+        let(:art_piece) { create(:art_piece, :size => "") }
+        it "should not be there" do
+          expect(page).to_not have_content("Size")
         end
       end
     end
