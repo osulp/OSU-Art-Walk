@@ -40,6 +40,11 @@ module MakeSearchable
       end
       string :art_piece_photos, :stored => true, :multiple => true do
         art_piece_photos.map(&:photo)
+        
+      end
+
+      string :art_piece_thumbs, :stored => true, :multiple => true do
+        art_piece_photos.map {|photo| photo.photo_url(:thumb)}
       end
       # Displayed Text
       ArtPiece.displayed_texts.each do |text|
