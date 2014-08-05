@@ -96,7 +96,7 @@ describe "Art Piece Manipulation" do
 
         it "should update the info of building associated with art piece" do
           search = ArtPiece.search { fulltext(art.title)}.hits.first.stored(:coords)
-          expect(search.first).to eq "#{art.building.name}-|-#{40.0}-|-#{art.building.long}"
+          expect(search.first).to eq "#{art.building.name}-|-#{40.0}-|-#{art.building.reload.long}"
         end
       end
     end
