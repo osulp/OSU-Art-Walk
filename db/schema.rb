@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731190404) do
+ActiveRecord::Schema.define(version: 20140731230852) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -63,10 +63,10 @@ ActiveRecord::Schema.define(version: 20140731190404) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "art_piece_photo_id"
     t.boolean  "display",            default: true
     t.boolean  "private",            default: true
     t.boolean  "displayed",          default: true
+    t.integer  "art_piece_photo_id"
     t.string   "number"
     t.string   "series"
     t.boolean  "percent_for_art"
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 20140731190404) do
     t.boolean  "student"
     t.boolean  "faculty"
   end
+
+  add_index "artists", ["name"], name: "index_artists_on_name"
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id",       null: false

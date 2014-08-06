@@ -12,6 +12,7 @@ class CatalogController < ApplicationController
   rescue_from ArtWalk::Exceptions::AccessDenied, :with => :no_permissions
 
   before_filter :load_map_results, :only => :index
+  before_filter :map_init, :only => :show
 
   #filter out not-diplayed art pieces
   self.solr_search_params_logic += [:exclude_not_displayed_items]
@@ -37,6 +38,9 @@ class CatalogController < ApplicationController
   end
 
   private
+
+  def map_init
+  end
 
   def load_map_results
     @map_results = get_search_results(params.merge(:map_view => true), {:rows => 10000}).first.docs
