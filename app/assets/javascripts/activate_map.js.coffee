@@ -7,3 +7,4 @@ jQuery ->
   )
   if $("#documents.map").length > 0 && $(".leaflet-map-pane").length < 1
     $("#blacklight-map").blacklight_leaflet_map(window.map_data)
+  $("#blacklight-map-sidebar").on('click', 'a[data-context-href]', Blacklight.handleSearchContextMethod)
