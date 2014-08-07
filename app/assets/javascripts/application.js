@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//Required for Leaflet
+//= building_map
 // Required by Blacklight-Maps
 //= require blacklight-maps
 //= require ekko-lightbox

@@ -1,7 +1,9 @@
 <%= simple_form_for([:admin, @building], html: {class: 'form-horizontal'}) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :lat %>
-  <%= f.input :long %>
+  <div id='map'>
+  </div>
   <%= f.button :submit %>
 <% end %>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
