@@ -1,7 +1,7 @@
 <%= simple_form_for([:admin, @building], html: {class: 'form-horizontal'}) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <div id='map'>
+  <div id="map" class="myMap">
   </div>
   <%= f.input :lat %>
   <%= f.input :long %>
