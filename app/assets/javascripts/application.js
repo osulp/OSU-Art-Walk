@@ -15,6 +15,7 @@
 //= require bootstrap
 //Required for Leaflet
 //= building_map
+//=leaflet
 // Required by Blacklight-Maps
 //= require blacklight-maps
 //= require ekko-lightbox
