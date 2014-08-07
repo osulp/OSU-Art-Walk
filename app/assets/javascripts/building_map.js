@@ -6,9 +6,11 @@ $(document).ready(function(){
     zoom: 16
   });
 
-
-  //set custom path to marker icons
-  L.Icon.Default.imagePath = 'app/assets/images/marker-icon.png';
+  //set custom path to marker icon
+  var markerIcon = new L.Icon({
+    iconUrl: 'http://www.lscarolinas.net/assets/leaflet/images/marker-icon-blue.png',
+    iconAnchor: [13, 12]
+  })
 
   //add map to window
   window.map = map;
@@ -20,16 +22,26 @@ $(document).ready(function(){
   }).addTo(map);
 
   //add marker to map
-  var marker = new L.marker([44.563781, -123.279444], {
-    draggable: true
-  }).addTo(map);
 
-  marker.on('click', injectCoords);
+  if($('#building_lat').val() != 44.563781){
+    var marker = new L.marker([$('#building_lat').val(), $('#building_long').val()], {
+      draggable: true,
+      icon: markerIcon
+    }).addTo(map);
+  } else {
+    var marker = new L.marker([44.563781, -123.279444], {
+      draggable: true,
+      icon: markerIcon
+    }).addTo(map);
+  }
 
+  console.log($('#building_lat').val())
+
+  map.on('mouseup', function(e){marker.setLatLng(e.latlng)});
+  map.on('mousedown', injectCoords);
 });
 
-function injectCoords(e){
-  console.log(e.latlng)
+function injectCoords(e, marker){
   $('#building_lat').val(e.latlng.lat);
   $('#building_long').val(e.latlng.lng);
 }
