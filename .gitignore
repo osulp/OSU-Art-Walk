@@ -14,3 +14,4 @@
 /jetty/*
 /public/uploads/*
 /config/config.yml
+/db/OSU-Art-Walk_test.sqlite3-journal
