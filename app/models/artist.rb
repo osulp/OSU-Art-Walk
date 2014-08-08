@@ -4,11 +4,7 @@ class Artist < ActiveRecord::Base
   after_save :reindex_art_pieces
 
   def featured_artists
-    if self.featured?
-      self.name
-    else
-      nil
-    end
+    self.name if self.featured?
   end
   
   private
