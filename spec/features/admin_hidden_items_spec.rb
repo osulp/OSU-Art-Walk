@@ -50,7 +50,7 @@ describe "hidden items" do
         let(:item) {create(:art_piece, :with_building, :displayed => false )}
         it "should be highlighted in red with the red selector" do
           within(".leaflet-sidebar") do
-            expect(page).to have_selector(".red")
+            expect(page).to have_selector(".panel-danger")
           end
         end
       end
@@ -58,7 +58,7 @@ describe "hidden items" do
         let(:item) {create(:art_piece, :with_building, :displayed => true )}
         it "should not be highlighted in red" do
           within(".leaflet-sidebar") do
-            expect(page).not_to have_selector(".red")
+            expect(page).not_to have_selector(".panel-danger")
           end
         end
       end

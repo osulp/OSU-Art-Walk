@@ -1,16 +1,29 @@
 <% # the way each document will be viewed in the sidebar list -%>
 <li class='media'>
-  <%= render_thumbnail_tag document, {class: 'sidebar-thumb media-object'}, {class: 'pull-left'} %>
-  <div class='media-body <%= 'red' if !document[:displayed_bs] %>'>
-    <h4 class='media-heading'>
-      <%= link_to_document document, :label=>document_show_link_field(document), :counter => map_counter(document) %>
-    </h4>
-    <% if document[:artists_sms] %>
-      By <%= document[:artists_sms].join(", ") %>
-    <% end %>
-    <br>
-    <% if document[:art_piece_building_location_ss].present? %>
-      Location: <%= document[:art_piece_building_location_ss] %>
-    <% end %>
+<div class="panel panel-<%= document[:displayed_bs] ? 'default' : 'danger' %>">
+    <div class="panel-heading">
+      <div class="panel-title">
+        <h4 class='media-heading'>
+          <%= link_to_document document, :label=>document_show_link_field(document), :counter => map_counter(document) %>
+        </h4>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-xs-3">
+          <%= render_thumbnail_tag document, {class: 'sidebar-thumb media-object'}, {class: 'pull-left'} %>
+        </div>
+        <div class="col-xs-8">
+          <% if document[:artists_sms] %>
+            By <%= document[:artists_sms].join(", ") %>
+          <% end %>
+          <br>
+          <% if document[:art_piece_building_location_ss].present? %>
+            Location: <%= document[:art_piece_building_location_ss] %>
+          <% end %>
+        </div>
+        <div class="col-xs-1"></div>
+      </div>
+    </div>
   </div>
 </li>
