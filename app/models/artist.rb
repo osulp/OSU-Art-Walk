@@ -3,6 +3,14 @@ class Artist < ActiveRecord::Base
   has_many :art_piece_artists
   after_save :reindex_art_pieces
 
+  def featured_artists
+    if self.featured?
+      self.name
+    else
+      nil
+    end
+  end
+  
   private
 
   def reindex_art_pieces

@@ -57,6 +57,7 @@ describe "Artist manipulation" do
         it "should take you to the add new artist page" do
           click_link "Add Artist"
           expect(page).to have_content("Add New Artist")
+          expect(page).to have_field("Featured")
         end
       end
     end

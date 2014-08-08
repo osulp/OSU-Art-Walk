@@ -26,6 +26,9 @@ module MakeSearchable
       string :medium, :stored => true do
         art_medium
       end
+      string :featured_artists, :stored => true, :multiple => true do
+        artists.map {|artist| artist.featured_artists}.flatten.compact
+      end
       string :artists, :stored => true, :multiple => true do
         artists.map(&:name)
       end
@@ -40,7 +43,6 @@ module MakeSearchable
       end
       string :art_piece_photos, :stored => true, :multiple => true do
         art_piece_photos.map(&:photo)
-        
       end
       string :art_piece_thumbs, :stored => true, :multiple => true do
         art_piece_photos.map {|photo| photo.photo_url(:thumb)}
