@@ -13,15 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//Required for Leaflet
-//= building_map
-//=leaflet
-// Required by Blacklight-Maps
-//= require blacklight-maps
-//= require ekko-lightbox
 //
 // Required by Blacklight
 //= require blacklight/blacklight
-//= require_tree .
+//
+// Required by Blacklight-Maps
+//= require leaflet
+//= require leaflet.markercluster
+//= require L.Control.Sidebar
+//= require blacklight-maps-browse
+//
+// Lightbox
+//= require ekko-lightbox
+//
+// TinyMCE
 //= require tinymce-jquery
+//= require_tree .
 

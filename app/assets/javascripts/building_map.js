@@ -31,8 +31,6 @@ $(document).ready(function(){
       marker.setLatLng([$('#building_lat').val(), $('#building_long').val()]);
     }
 
-    console.log($('#building_lat').val())
-
     map.on('mouseup', function(e){marker.setLatLng(e.latlng)});
     map.on('mousedown', injectCoords);
   });
