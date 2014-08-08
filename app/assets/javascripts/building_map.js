@@ -21,22 +21,23 @@ $(document).ready(function(){
     }).addTo(map);
 
     //add marker to map
-
     var marker = new L.marker([44.563781, -123.279444], {
         draggable: true,
         icon: markerIcon
       }).addTo(map);
 
+    //if latlng for building already exists, use that instead
     if($('#building_lat').val() != 0){
       marker.setLatLng([$('#building_lat').val(), $('#building_long').val()]);
     }
 
+    //event handlers
     map.on('mouseup', function(e){marker.setLatLng(e.latlng)});
     map.on('mousedown', injectCoords);
   });
 });
 
-
+//set the lat and long for the building to be saved
 function injectCoords(e, marker){
   $('#building_lat').val(e.latlng.lat);
   $('#building_long').val(e.latlng.lng);
