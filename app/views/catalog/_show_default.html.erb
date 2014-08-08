@@ -23,10 +23,19 @@
 <%# default partial to display solr document fields in catalog show view -%>
 <dl class="dl-horizontal  dl-invert">
   <% document_show_fields(document).each do |solr_fname, field| -%>
-    <% if should_render_show_field? document, field %>
+    <% if should_render_show_field?(document, field) %>
 	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label document, :field => solr_fname %></dt>
 	    <dd class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_value document, :field => solr_fname %></dd>
     <% end -%>
   <% end -%>
 </dl>
+<dl class="dl-horizontal  dl-invert">
+  <% if document['artists_sms'] != nil %> 
+    <% document['artists_sms'].each_with_index do |artist, i| %>
+      <dt> Artist: <dd> <%= artist %> </dd> </dt>
+      <dt> Artist Bio: <dd> <%= document['artist_bio_sms'][i] %> </dd> </dt>
+    <% end %>
+  <% end %>
+</dl>
+
 
