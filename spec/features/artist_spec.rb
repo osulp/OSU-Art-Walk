@@ -47,6 +47,10 @@ describe "Artist manipulation" do
           end
         end
 
+        it "should have a place to alter the student/faculty booleans" do
+          expect(page).to have_content("Student")
+        end
+
         it "should take you to the editing page to edit that artist" do
           expect(page).to have_content("Edit " + Artist.first.name)
         end
@@ -97,7 +101,10 @@ describe "Artist manipulation" do
     before do
       visit new_admin_artist_path
     end
-
+    
+    it "should have spots to check or uncheck student/faculty booleans" do
+      expect(page).to have_content("Student")
+    end
     context "should let you fill in the forms" do
       before do
         fill_in "Bio", :with => "Here's a cool bio"
