@@ -1,6 +1,6 @@
 <% # the way each document will be viewed in the sidebar list -%>
 <li class='media'>
-  <div class="panel panel-<%='default' if document[:displayed_bs] %><%='danger' if !document[:displayed_bs] %>">
+<div class="panel panel-<%= document[:displayed_bs] ? 'default' : 'danger' %>">
     <div class="panel-heading">
       <div class="panel-title">
         <h4 class='media-heading'>
