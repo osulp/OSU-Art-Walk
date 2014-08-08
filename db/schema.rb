@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140731230852) do
+ActiveRecord::Schema.define(version: 20140808152446) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20140731230852) do
     t.datetime "updated_at"
     t.boolean  "student"
     t.boolean  "faculty"
+    t.boolean  "featured",   default: false
   end
 
   add_index "artists", ["name"], name: "index_artists_on_name"

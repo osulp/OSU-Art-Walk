@@ -47,6 +47,25 @@ describe "faceting" do
         expect(page).to have_link subject.artists.name
       end
     end
+    context "with a featured artist" do
+      let(:featured_artist) {create(:artist, :featured => true)}
+      let(:art_piece) {create(:art_piece, :with_building, :artists => [featured_artist])}
+      let(:art_piece2) {create(:art_piece, :with_building, :with_artist)}
+
+      before do
+        art_piece
+        art_piece2
+        visit root_path
+      end
+
+      it "should have a featured artist facet" do
+        expect(page).to have_link("Featured Artists")
+      end
+      it "should not be displayed" do
+        artist_links = all("#facet-featured_artists_sms ul li")
+        expect(artist_links.length).to eq 1
+      end
+    end
     context "with a collection" do
       subject {create(:art_piece, :with_collection)}
       it "should have a link for that artist" do
