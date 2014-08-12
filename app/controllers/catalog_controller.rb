@@ -36,6 +36,28 @@ class CatalogController < ApplicationController
     @map_results = [@document]
   end
 
+  def track
+    search_session['counter'] = params[:counter]
+    search_session['per_page'] = params[:per_page]
+
+    path = if params[:redirect] and (params[:redirect].starts_with?("/") or params[:redirect] =~ URI::regexp)
+             params[:redirect]
+           else
+             { action: 'show' }
+           end
+    redirect_to path, :status => 303
+  end
+
+  protected
+
+  def cleaned_params
+    params_copy = params.reject { |k,v| blacklisted_search_session_params.include?(k.to_sym) or v.blank? }
+
+    params_copy.reject { |k,v| [:action, :controller].include? k.to_sym }
+  end
+  helper_method :cleaned_params
+
+
   private
 
   def load_map_results

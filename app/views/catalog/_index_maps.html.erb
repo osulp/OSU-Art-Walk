@@ -4,7 +4,7 @@
     <div class="panel-heading">
       <div class="panel-title">
         <h4 class='media-heading'>
-          <%= link_to_document document, :label=>document_show_link_field(document), :counter => map_counter(document) %>
+          <%= link_to_map_document document, {:label => document_show_link_field(document), :counter => map_counter(document), :search_context => map_building(document)} %>
         </h4>
       </div>
     </div>
