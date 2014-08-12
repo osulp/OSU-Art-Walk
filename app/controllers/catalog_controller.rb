@@ -58,11 +58,6 @@ class CatalogController < ApplicationController
   helper_method :cleaned_params
 
 
-  def building_context(building_name)
-    {:f => {:building_ss => building_name}}
-  end
-
-
   private
 
   def load_map_results
