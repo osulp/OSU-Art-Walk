@@ -6,8 +6,8 @@ module MapHelper
   end
   
   def map_counter(document)
-    return nil if @response.docs.length == 1
-    map_counter = @response.docs.index(document.to_hash)
+    return nil if !@map_results || @map_results.length == 1
+    map_counter = @map_results.index{|d| d["id"] == document.id}
     map_counter += 1 if map_counter
     return map_counter
   end
