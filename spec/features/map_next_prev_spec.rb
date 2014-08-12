@@ -61,10 +61,9 @@ describe "map show", :js => true do
         end
       end
       it "should have next and prev links" do
-      pending
         within("#previousNextDocument") do
           expect(page).to have_content("« Previous")
-          expect(page).to have_link("Next »")
+          expect(page).to have_content("Next »")
         end
       end
     end
