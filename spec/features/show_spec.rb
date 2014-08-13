@@ -12,6 +12,12 @@ describe "catalog show" do
       before do
         visit catalog_path(:id => art_piece.document_id) 
       end
+      it "should not have SMS This and Email links" do
+        within(".panel-heading", :text => "Tools") do
+          expect(page).to_not have_link("Email")
+          expect(page).to_not have_link("SMS This")
+        end
+      end
       it "should show the correct title" do
         expect(page).to have_content(art_piece.title)
       end
