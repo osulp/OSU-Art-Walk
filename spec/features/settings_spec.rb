@@ -100,7 +100,6 @@ describe "settings" do
     end
     context "when home information has been entered" do
       it "should have it on the home page" do
-        binding.pry
         expect(page).to have_content("Test Value")
       end
     end
