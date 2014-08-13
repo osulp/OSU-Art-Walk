@@ -92,4 +92,16 @@ describe "settings" do
       end
     end
   end
+  context "when on the root page" do
+    let(:setting2) {create(:setting, :setting_name => "Home", :value => "Test Value")}
+    before do
+      setting2
+      visit root_path
+    end
+    context "when home information has been entered" do
+      it "should have it on the home page" do
+        expect(page).to have_content("Test Value")
+      end
+    end
+  end
 end

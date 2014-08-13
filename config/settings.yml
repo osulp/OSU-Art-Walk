@@ -12,3 +12,8 @@ About:
     type: text
     class: tinymce
     default: ""
+Home:
+  tag_attributes:
+    type: text
+    class: tinymce
+    default: ""
