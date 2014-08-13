@@ -4,7 +4,7 @@ module ArtWalk
       extend ActiveSupport::Concern
       included do
         configure_blacklight do |config|
-          config.add_facet_field 'featured_artists_sms', :label => 'Featured Artists'
+          config.add_facet_field 'featured_artists_sms', :label => 'Featured Artists', :collapse => false
           config.add_facet_field 'artists_sms', :label => 'Artists'
           config.add_facet_field 'medium_ss', :label => 'Medium'
           config.add_facet_field 'building_ss', :label => 'Buildings'
