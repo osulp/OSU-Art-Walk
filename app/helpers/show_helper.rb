@@ -8,4 +8,9 @@ module ShowHelper
   def should_render_show_field? document, solr_field
     document[solr_field.field].present? && super
   end
+
+  def application_name
+    return Setting.Title unless Setting.Title.blank?
+    super
+  end
 end

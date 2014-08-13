@@ -73,11 +73,11 @@ describe "settings" do
               "tag_attributes" => {
                 "type" => "email"
               }
-            }, "Copyright" => {}
+            }, "Copyright" => {}, "Title" => ""
           })
         end
         before do
-          expect(page).to have_selector(".setting", :count => 2)
+          expect(page).to have_selector(".setting", :count => Setting.default_settings.length)
         end
         it "should use it" do
           expect(page).to have_selector("input[type=email]")
@@ -101,6 +101,17 @@ describe "settings" do
     context "when home information has been entered" do
       it "should have it on the home page" do
         expect(page).to have_content("Test Value")
+      end
+    end
+    context "when title information has been entered" do
+      let(:setting2) {create(:setting, :setting_name => "Title", :value => "Test Title")}
+      it "should have it on the home page" do
+        expect(page).to have_title "Test Title"
+      end
+    end
+    context "when no title information has been entered" do
+      it "should display the default title" do
+        expect(page).to have_title I18n.t('blacklight.application_name')
       end
     end
   end
