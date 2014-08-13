@@ -61,6 +61,9 @@ describe "faceting" do
       it "should have a featured artist facet" do
         expect(page).to have_link("Featured Artists")
       end
+      it "should have the featured artists facet open by default" do
+        expect(page).to have_selector(".in")
+      end
       it "should not be displayed" do
         artist_links = all("#facet-featured_artists_sms ul li")
         expect(artist_links.length).to eq 1
