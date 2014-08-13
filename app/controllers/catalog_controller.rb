@@ -25,8 +25,6 @@ class CatalogController < ApplicationController
       :rows => 10
     }
     
-    #gets rid of email this and sms this links in show view
-
     # If there are more than this many search results, no spelling ("did you 
     # mean") suggestion is offered.
     config.spell_max = 5
