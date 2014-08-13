@@ -17,3 +17,7 @@ Home:
     type: text
     class: tinymce
     default: ""
+Title:
+  tag_attributes:
+    type: string
+    default: ""
