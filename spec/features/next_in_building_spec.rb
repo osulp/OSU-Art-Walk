@@ -63,7 +63,7 @@ describe "map index", :js => true do
           art3.building = building2
           art3.save
           visit root_path
-          page.find(".leaflet-marker-icon", text: "2").click
+          page.find(".leaflet-marker-icon", text: "2").trigger("click")
           within("#blacklight-map-sidebar") do
             click_link art1.title
           end
