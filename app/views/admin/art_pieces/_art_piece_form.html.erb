@@ -16,6 +16,7 @@
     <%= f.fields_for :art_piece_building do |builder| %>
       <%= builder.input :building_id, :collection => Building.all, :label => "Building" %>
       <%= builder.input :location, :label => "Location" %>
+      <%= builder.input :position_num, :label => "Position Number" %>
       <%= builder.input :art_piece_id, :as => :hidden %>
     <% end %>
     <%= f.simple_fields_for :art_piece_photos do |builder| %>

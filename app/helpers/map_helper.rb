@@ -2,7 +2,7 @@ module MapHelper
   include BlacklightMapsHelper
   include Blacklight::UrlHelperBehavior
   def serialize_geojson
-    export = BlacklightMaps::GeojsonExport.new(controller,map_results)
+    export = BlacklightMaps::GeojsonExport.new(controller, map_results.reverse)
     export.to_geojson
   end
   
@@ -33,7 +33,7 @@ module MapHelper
 
   def map_building(document)
     return nil unless params[:action] == "index" && cleaned_params.blank?
-    {:f => {:building_ss => document["building_ss"]}}
+    {:f => {:building_ss => document["building_ss"]}, :sort => "art_piece_building_position_num_is asc"}
   end
 
 
