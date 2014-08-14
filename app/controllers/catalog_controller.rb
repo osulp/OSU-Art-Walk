@@ -61,7 +61,7 @@ class CatalogController < ApplicationController
   private
 
   def load_map_results
-    @map_results = get_search_results(params.merge(:map_view => true), {:rows => 10000}).first.docs
+    @map_results = get_search_results(params.merge(:map_view => true), {:rows => 10000}).first.docs unless params[:controller] == 'bookmarks'
   end
 
   def exclude_displayed_facet(solr_params, user_params)
