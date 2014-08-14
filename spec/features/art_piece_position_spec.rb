@@ -33,7 +33,7 @@ describe "art piece location num" do
         before do
           visit root_path
           find(".leaflet-marker-icon").click
-          click_link art_piece2.title
+          click_link art_piece1.title
         end
         it "should be ordered by the position number" do
           expect(page).to have_content("2 of 3")
@@ -44,7 +44,7 @@ describe "art piece location num" do
           end
           it "should show the second art piece by position num" do
             expect(page).to have_content("3 of 3")
-            expect(page).to have_content(art_piece1.title)
+            expect(page).to have_content(art_piece2.title)
           end
         end
       end
