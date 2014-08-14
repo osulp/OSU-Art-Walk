@@ -2,10 +2,14 @@ module MapHelper
   include BlacklightMapsHelper
   include Blacklight::UrlHelperBehavior
   def serialize_geojson
-    export = BlacklightMaps::GeojsonExport.new(controller,@map_results)
+    export = BlacklightMaps::GeojsonExport.new(controller,map_results)
     export.to_geojson
   end
   
+  def map_results
+    @map_results || @document_list
+  end
+
   def map_counter(document)
     return nil if !@map_results || @map_results.length == 1
     return building_counter(document) if cleaned_params.blank?
