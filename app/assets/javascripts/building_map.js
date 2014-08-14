@@ -33,6 +33,7 @@ $(document).ready(function(){
 
     //event handlers
     map.on('mouseup', function(e){marker.setLatLng(e.latlng)});
+    map.on('mouseup', injectCoords);
     map.on('mousedown', injectCoords);
   });
 });
