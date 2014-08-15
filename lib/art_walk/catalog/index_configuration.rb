@@ -12,6 +12,7 @@ module ArtWalk
           config.add_index_field 'artists_sms', :label => 'Artists'
           config.add_index_field 'art_piece_building_location_ss', :label => 'Location'
           config.add_index_field 'building_ss', :label => 'Building'
+          config.add_index_field 'artist_comments_ss', :label => 'Artist Comments'
           config.add_index_field 'collections_sms', :label => 'Collections'
         end
       end
