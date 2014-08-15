@@ -69,11 +69,11 @@ describe "Art Piece Manipulation" do
           expect(page).to have_content("Edit")
         end
         it "should have artist comments field" do
-          expect(page).to have_field("Artist Comments")
+          expect(page).to have_field("Artist comments")
         end
         context "whe submitting the edits" do
           before do
-            fill_in "Artist Comments", :with => "These are comments from the artist."
+            fill_in "Artist comments", :with => "These are comments from the artist."
             click_button "Update Art piece"
           end
           it "should submit and save changes" do

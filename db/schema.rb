@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(version: 20140815152549) do
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
-  add_index "art_pieces", ["artist_comments"], name: "index_art_pieces_on_artist_comments"
 
   create_table "artists", force: true do |t|
     t.string   "name"
