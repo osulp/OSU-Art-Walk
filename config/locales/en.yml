@@ -6,6 +6,8 @@ en:
   art_piece:
     faculty_string: "Created by Faculty"
     student_string: "Created by Students"
+    on_display_string: "On Display"
+    not_on_display_string: "Not On Display"
   permission_error:
     error_string: "You do not have sufficient permissions to view this art piece."
 

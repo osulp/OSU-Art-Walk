@@ -59,11 +59,28 @@ describe "Art Piece Manipulation" do
           expect(page).to have_link "Delete"
         end
       end
-      it "should take you to the edit page" do
-        within "#piece-#{art.id}" do
-          click_link "Edit"
+      context "when editing the art piece" do
+        before do
+          within "#piece-#{art.id}" do
+            click_link "Edit"
+          end
         end
-        expect(page).to have_content("Edit")
+        it "should take you to the edit page" do
+          expect(page).to have_content("Edit")
+        end
+        it "should have artist comments field" do
+          expect(page).to have_field("Artist comments")
+        end
+        context "whe submitting the edits" do
+          before do
+            fill_in "Artist comments", :with => "These are comments from the artist."
+            click_button "Update Art piece"
+          end
+          it "should submit and save changes" do
+            expect(page).to have_content("Edit Art Piece Information")
+            expect(page).to have_content("These are comments from the artist.")
+          end
+        end
       end
 
       it "should delete the art piece" do

@@ -9,18 +9,32 @@
     </div>
     <div class="panel-collapse collapse" id="collapse-<%= art.id %>">
       <div class="panel panel-body">
-        <p>Which Medium? <%= art.art_medium %> </p>
-        <p>Created On: <%= art.creation_date %></p>
-        <p>Size: <%= art.size %></p>
-        <p>Legal Info: <%= art.legal_info %></p>
-        <p>Is this a private piece? <%= art.private? %></p>
-        <p>Contact Info: <%= art.contact_info %></p>
+        <p>Artists: <%= art.artists.map(&:name).join(", ") %></p>
+        <p>Artist Comments: <%= art.artist_comments %></p>
         <p>Description: <%= art.description %></p>
-        <p>Is this Art On Display? <%= art.displayed? %></p>
-        <p>Which Building is it in? <%= art.building_name %> </p>
-        <p>Art Piece: <% art.art_piece_photos.each do |p| %>
-          <%= image_tag p.photo_url(:thumb) %>
-        <% end %></p>
+        <p>Medium: <%= art.art_medium %> </p>
+        <p>Size: <%= art.size %></p>
+        <p>Created On: <%= art.creation_date %></p>
+        <p>Legal Info: <%= art.legal_info %></p>
+        <p>Private Piece Status: <%= art.private? %></p>
+        <% if art.private? %>
+          <p>Contact Info: <%= art.contact_info %></p>
+        <% end %>
+        <p>On Display Status: <%= art.display_status %></p>
+        <% if art.art_piece_building %>
+          <p>Location Information:<br>
+            <ul>
+              <li>Building: <%= art.building_name %><br></li>
+              <li>Location In Building: <%= art.art_piece_building.location %><br></li>
+              <li>Position In Building: <%= art.art_piece_building.position_num %></li>
+            </ul>
+          </p>
+        <% end %>
+        <% if art.art_piece_photos.length > 0 %>
+          <p>Photos: <% art.art_piece_photos.each do |p| %>
+            <%= image_tag p.photo_url(:thumb) %>
+          <% end %></p>
+        <% end %>
       </div>
     </div>
   </div>
