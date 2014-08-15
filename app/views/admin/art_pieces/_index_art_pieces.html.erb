@@ -20,7 +20,7 @@
         <% if art.private? %>
           <p>Contact Info: <%= art.contact_info %></p>
         <% end %>
-        <p>On Display Status: <%= I18n.t('art_piece.on_display_string') if art.displayed? %><%= I18n.t('art_piece.not_on_display_string') unless art.displayed? %></p>
+        <p>On Display Status: <%= art.display_status %></p>
         <% if art.art_piece_building %>
           <p>Location Information:<br>
             <ul>
