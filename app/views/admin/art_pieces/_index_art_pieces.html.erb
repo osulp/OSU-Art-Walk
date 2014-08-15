@@ -9,7 +9,7 @@
     </div>
     <div class="panel-collapse collapse" id="collapse-<%= art.id %>">
       <div class="panel panel-body">
-        <p>Artists: <%= art.art_piece_artists.map(&:artist).map(&:name).join(", ") %></p>
+        <p>Artists: <%= art.artists.map(&:name).join(", ") %></p>
         <p>Artist Comments: <%= art.artist_comments %></p>
         <p>Description: <%= art.description %></p>
         <p>Medium: <%= art.art_medium %> </p>
