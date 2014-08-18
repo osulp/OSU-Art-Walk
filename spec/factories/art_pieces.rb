@@ -10,6 +10,7 @@ FactoryGirl.define do
     contact_info "555-0123"
     description "MyText"
     displayed true
+    artist_comments "MyText"
 
     trait :with_building do
       after(:build) do |art_piece|
@@ -32,6 +33,12 @@ FactoryGirl.define do
     trait :with_collection do
       after(:build) do |art_piece|
         art_piece.collections = [build(:collection)]
+      end
+    end
+
+    trait :with_media do
+      after(:build) do |art_piece|
+        art_piece.media = [build(:medium), build(:medium)]
       end
     end
 

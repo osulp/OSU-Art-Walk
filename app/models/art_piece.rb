@@ -21,12 +21,12 @@ class ArtPiece < ActiveRecord::Base
   has_many :art_piece_photos
 
   #Medium association
-  belongs_to :medium
+  has_many :media, :through => :art_piece_media
+  has_many :art_piece_media
 
   #Delegations
   delegate :name, :coords, :to => :building, :prefix => true, :allow_nil => true
   delegate :location, :position_num, :to => :art_piece_building, :prefix => true, :allow_nil => true
-  delegate :medium, :to => :medium, :prefix => :art, :allow_nil => true
 
   accepts_nested_attributes_for :art_piece_photos, :art_piece_building, :allow_destroy => true
 

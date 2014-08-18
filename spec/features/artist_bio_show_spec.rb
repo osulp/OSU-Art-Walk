@@ -14,7 +14,7 @@ describe "showing artists with bios" do
     context "and the art piece does not have an artist" do
       let(:art_piece) {create(:art_piece)}
       it "should not display that art_piece's artist" do
-        expect(page).to_not have_content("Artist")
+        expect(page).to_not have_content("Artist: ")
       end
     end
     context "and the art piece has many artists" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815152549) do
+ActiveRecord::Schema.define(version: 20140815173044) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 20140815152549) do
   add_index "art_piece_collections", ["art_piece_id"], name: "index_art_piece_collections_on_art_piece_id"
   add_index "art_piece_collections", ["collection_id"], name: "index_art_piece_collections_on_collection_id"
 
+  create_table "art_piece_media", force: true do |t|
+    t.integer  "art_piece_id"
+    t.integer  "medium_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "art_piece_media", ["art_piece_id"], name: "index_art_piece_media_on_art_piece_id"
+  add_index "art_piece_media", ["medium_id"], name: "index_art_piece_media_on_medium_id"
+
   create_table "art_piece_photos", force: true do |t|
     t.string   "photo"
     t.datetime "created_at"
@@ -72,7 +82,6 @@ ActiveRecord::Schema.define(version: 20140815152549) do
     t.string   "number"
     t.string   "series"
     t.boolean  "percent_for_art"
-    t.integer  "medium_id"
     t.text     "artist_comments"
   end
 
@@ -126,11 +135,8 @@ ActiveRecord::Schema.define(version: 20140815152549) do
   end
 
   create_table "media", force: true do |t|
-    t.string  "medium"
-    t.integer "art_pieces_id"
+    t.string "medium"
   end
-
-  add_index "media", ["art_pieces_id"], name: "index_media_on_art_pieces_id"
 
   create_table "searches", force: true do |t|
     t.text     "query_params"
