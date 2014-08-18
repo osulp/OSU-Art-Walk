@@ -15,9 +15,6 @@ module MakeSearchable
       text :collections do
         collections.map(&:name)
       end
-      text :series do
-        series.map(&:name)
-      end
       # Facets
       string :coords, :stored => true, :multiple => true do
         building_coords

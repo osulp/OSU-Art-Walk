@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818174227) do
+ActiveRecord::Schema.define(version: 20140818230840) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -90,11 +90,9 @@ ActiveRecord::Schema.define(version: 20140818174227) do
     t.string   "number"
     t.boolean  "percent_for_art"
     t.text     "artist_comments"
-    t.integer  "series_id"
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
-  add_index "art_pieces", ["series_id"], name: "index_art_pieces_on_series_id"
 
   create_table "artists", force: true do |t|
     t.string   "name"
@@ -158,11 +156,8 @@ ActiveRecord::Schema.define(version: 20140818174227) do
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
 
   create_table "series", force: true do |t|
-    t.string  "name"
-    t.integer "artpieces_id"
+    t.string "name"
   end
-
-  add_index "series", ["artpieces_id"], name: "index_series_on_artpieces_id"
 
   create_table "settings", force: true do |t|
     t.datetime "created_at"
