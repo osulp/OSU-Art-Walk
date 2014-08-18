@@ -17,5 +17,6 @@ Rails.application.routes.draw do
     resources :collections
     resources :settings
     resources :media
+    resources :series
   end
 end

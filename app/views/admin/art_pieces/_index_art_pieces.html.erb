@@ -12,7 +12,7 @@
         <p>Artists: <%= art.artists.map(&:name).join(", ") %></p>
         <p>Artist Comments: <%= art.artist_comments %></p>
         <p>Description: <%= art.description %></p>
-        <p>Which Medium? <%= art.media.map(&:medium).join(', ') %> </p>
+        <p>Medium: <%= art.media.map(&:medium).join(', ') %> </p>
         <p>Created On: <%= art.creation_date %></p>
         <p>Size: <%= art.size %></p>
         <p>Created On: <%= art.creation_date %></p>

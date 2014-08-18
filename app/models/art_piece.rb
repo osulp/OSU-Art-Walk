@@ -24,6 +24,10 @@ class ArtPiece < ActiveRecord::Base
   has_many :media, :through => :art_piece_media
   has_many :art_piece_media
 
+  # Series
+  has_many :series, :through => :art_piece_series
+  has_many :art_piece_series
+
   #Delegations
   delegate :name, :coords, :to => :building, :prefix => true, :allow_nil => true
   delegate :location, :position_num, :to => :art_piece_building, :prefix => true, :allow_nil => true
