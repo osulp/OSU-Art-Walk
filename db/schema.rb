@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140815152549) do
-=======
 ActiveRecord::Schema.define(version: 20140815173044) do
->>>>>>> changed media to has many through
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -86,7 +82,6 @@ ActiveRecord::Schema.define(version: 20140815173044) do
     t.string   "number"
     t.string   "series"
     t.boolean  "percent_for_art"
-    t.integer  "medium_id"
     t.text     "artist_comments"
   end
 

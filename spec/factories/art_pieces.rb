@@ -10,6 +10,7 @@ FactoryGirl.define do
     contact_info "555-0123"
     description "MyText"
     displayed true
+    artist_comments "MyText"
 
     trait :with_building do
       after(:build) do |art_piece|
