@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :medium do
-    medium "MyString"
+    sequence(:medium) { |n| "Medium#{n}" }
   end
 end

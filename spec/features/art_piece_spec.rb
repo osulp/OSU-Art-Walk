@@ -39,6 +39,14 @@ describe "Art Piece Manipulation" do
         art
         visit admin_art_pieces_path
       end
+
+      context "with multiple media" do
+        let(:art) {create(:art_piece, :with_media)}
+
+        it "should display two media comma delimited" do
+          expect(page).to have_content("#{art.media.first.medium}, #{art.media.last.medium}")
+        end
+      end
       it "should have a panel-primary selector" do
         expect(page).to have_selector(".panel-default")
       end
