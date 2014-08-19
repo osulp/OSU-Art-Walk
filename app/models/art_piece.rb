@@ -42,7 +42,8 @@ class ArtPiece < ActiveRecord::Base
   end
 
   def coords
-    [name, lat, long].join("-|-")
+    return nil if lat.blank? || long.blank?
+    [title, lat, long].join("-|-")
   end
   
   private
