@@ -210,8 +210,6 @@ describe "Art Piece Manipulation" do
           end
         end
       end
-
     end
-
   end
 end

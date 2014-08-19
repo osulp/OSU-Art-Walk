@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140818230840) do
+ActiveRecord::Schema.define(version: 20140819161414) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -84,12 +84,14 @@ ActiveRecord::Schema.define(version: 20140818230840) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "art_piece_photo_id"
-    t.boolean  "display",            default: true
-    t.boolean  "private",            default: true
-    t.boolean  "displayed",          default: true
+    t.boolean  "display",                                     default: true
+    t.boolean  "private",                                     default: true
+    t.boolean  "displayed",                                   default: true
     t.string   "number"
     t.boolean  "percent_for_art"
     t.text     "artist_comments"
+    t.decimal  "lat",                precision: 10, scale: 6
+    t.decimal  "long",               precision: 10, scale: 6
   end
 
   add_index "art_pieces", ["art_piece_photo_id"], name: "index_art_pieces_on_art_piece_photo_id"
