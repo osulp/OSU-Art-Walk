@@ -40,9 +40,6 @@ describe ArtWalk::RowCreator do
     it "should have a medium" do
       expect(result.media.first.medium).to eq "mural"
     end
-    #it "should have many media" do
-    #  expect(result.media.count).to eq 4
-    #end
     it "should have a description" do
       expect(result.description).to eq "Test Description"
     end
@@ -72,6 +69,9 @@ describe ArtWalk::RowCreator do
     end
     it "should have an art piece building location" do
       expect(result.art_piece_building.location).to eq "second floor, near room 241, through KOAC door"
+    end
+    it "should have a series" do
+      expect(result.series.count).to eq 2
     end
     context "if the title that is read in is blank" do
       let(:row) {ArtWalk::Importer.new(file).rows.to_a.last}

@@ -90,6 +90,16 @@ module ArtWalk
       art_piece.save
     end
 
+    def assign_series(value)
+      new_val = value.to_s.split(/[,]/)
+      art_piece.series = []
+      new_val.each do |val|
+        new_series = Series.find_or_initialize_by(:name => val.strip)
+        art_piece.series << new_series
+      end
+      art_piece.save
+    end
+
     def assign_medium(value)
       new_val = value.to_s.gsub("and", ",").split(/[;,]/).delete_if(&:blank?)
       art_piece.media = []
