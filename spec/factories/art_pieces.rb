@@ -30,6 +30,12 @@ FactoryGirl.define do
       end
     end
 
+    trait :with_series do
+      after(:build) do |art_piece|
+        art_piece.series = [build(:series)]
+      end
+    end
+
     trait :with_collection do
       after(:build) do |art_piece|
         art_piece.collections = [build(:collection)]

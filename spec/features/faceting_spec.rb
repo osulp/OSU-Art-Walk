@@ -14,6 +14,16 @@ describe "faceting" do
       it "should have a link for that building" do
         expect(page).to have_link subject.building.name
       end
+      context "and when there is a series containing art pieces" do
+        let(:art_piece) {create(:art_piece, :with_series)}
+        before do
+          art_piece
+          visit root_path
+        end
+        it "should display the series facet" do
+          expect(page).to have_content("Series")
+        end
+      end
       context "and the facet is clicked" do
         before do
           click_link subject.building.name

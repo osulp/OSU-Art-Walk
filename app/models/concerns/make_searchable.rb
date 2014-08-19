@@ -3,7 +3,7 @@ module MakeSearchable
 
   included do
       #indexing
-    searchable :auto_index => true, :include => [:building, :artists, :collections, :art_piece_photos, :art_piece_media] do
+    searchable :auto_index => true, :include => [:building, :artists, :collections, :series, :art_piece_photos, :art_piece_media] do
       # Searchable Text
       text "title"
       text :artists do
@@ -37,6 +37,9 @@ module MakeSearchable
       string :collections, :stored => true, :multiple => true do
         collections.map(&:name)
       end
+      string :series, :stored => true, :multiple => true do
+        series.map(&:name)
+      end
       string :status, :stored => true, :multiple => true do
         self.status
       end
@@ -59,7 +62,7 @@ module MakeSearchable
 
   module ClassMethods
     def displayed_texts
-      [:title, :description, :artist_comments, :size, :creation_date, :legal_info, :contact_info, :art_piece_building_location, :number, :series]
+      [:title, :description, :artist_comments, :size, :creation_date, :legal_info, :contact_info, :art_piece_building_location, :number]
     end
   end
 end

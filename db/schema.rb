@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815173044) do
+ActiveRecord::Schema.define(version: 20140818230840) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 20140815173044) do
 
   add_index "art_piece_photos", ["art_piece_id"], name: "index_art_piece_photos_on_art_piece_id"
 
+  create_table "art_piece_series", force: true do |t|
+    t.integer "art_piece_id"
+    t.integer "series_id"
+  end
+
+  add_index "art_piece_series", ["art_piece_id"], name: "index_art_piece_series_on_art_piece_id"
+  add_index "art_piece_series", ["series_id"], name: "index_art_piece_series_on_series_id"
+
   create_table "art_pieces", force: true do |t|
     t.string   "title"
     t.string   "creation_date"
@@ -80,7 +88,6 @@ ActiveRecord::Schema.define(version: 20140815173044) do
     t.boolean  "private",            default: true
     t.boolean  "displayed",          default: true
     t.string   "number"
-    t.string   "series"
     t.boolean  "percent_for_art"
     t.text     "artist_comments"
   end
@@ -147,6 +154,10 @@ ActiveRecord::Schema.define(version: 20140815173044) do
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
+
+  create_table "series", force: true do |t|
+    t.string "name"
+  end
 
   create_table "settings", force: true do |t|
     t.datetime "created_at"

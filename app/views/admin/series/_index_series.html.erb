@@ -1,0 +1,9 @@
+<% @series.each do |series| %>
+  <div class="panel panel-default" id="series-<%= series.id %>">
+    <div class="panel panel-heading">
+      <p>Name of Series: <%= series.name %>
+      <%= link_to "Edit", edit_admin_series_path(series), :class => "pull-right", :style => "padding-left: 10px;" %>
+      <%= link_to "Delete", admin_series_path(series), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %></p>
+    </div>
+  </div>
+<% end %>

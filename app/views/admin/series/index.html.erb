@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1> Edit Series Information </h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-8">
+      <div class="panel-group" id="accordion">
+        <% if @series.count == 0 %>
+        No Series Found In Database
+        <% else %>
+        <%= render "index_series" %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-4">
+      <div class="panel panel-default">
+        <div class="panel panel-heading">
+          Add New
+        </div>
+        <div class="panel panel-body">
+          <%= link_to "Add Series", new_admin_series_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
