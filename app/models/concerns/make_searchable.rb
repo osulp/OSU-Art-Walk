@@ -55,7 +55,6 @@ module MakeSearchable
       end
       boolean :displayed, :stored => true
       boolean :private, :stored => true
-      boolean :percent_for_art, :stored => true
       integer :art_piece_building_position_num, :stored => true
     end
   end

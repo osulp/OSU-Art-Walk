@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140819161414) do
+ActiveRecord::Schema.define(version: 20140820170457) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -88,7 +88,6 @@ ActiveRecord::Schema.define(version: 20140819161414) do
     t.boolean  "private",                                     default: true
     t.boolean  "displayed",                                   default: true
     t.string   "number"
-    t.boolean  "percent_for_art"
     t.text     "artist_comments"
     t.decimal  "lat",                precision: 10, scale: 6
     t.decimal  "long",               precision: 10, scale: 6
