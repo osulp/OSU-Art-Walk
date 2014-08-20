@@ -8,7 +8,6 @@ module ArtWalk
           config.add_show_field 'medium_sms', :label => 'Medium'
           config.add_show_field 'legal_info_ss', :label => 'Legal Info'
           config.add_show_field 'creation_date_ss', :label => 'Created On'
-          config.add_show_field 'percent_for_art_bs', :label => 'Percent For Art Status'
           config.add_show_field 'number_ss', :label => 'Number'
           config.add_show_field 'series_sms', :label => 'Series'
           config.add_show_field 'contact_info_ss', :label => 'Contact Info', :if => :private_document?
