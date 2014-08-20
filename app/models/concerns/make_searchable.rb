@@ -3,7 +3,7 @@ module MakeSearchable
 
   included do
       #indexing
-    searchable :auto_index => true, :include => [:building, :artists, :collections, :series, :art_piece_photos, :art_piece_media] do
+    searchable :auto_index => true, :include => [:building, :artists, :collections, :series, :art_piece_photos, :media] do
       # Searchable Text
       text "title"
       text :artists do
@@ -22,8 +22,8 @@ module MakeSearchable
       string :building, :stored => true do
         building_name
       end
-      string :art_piece_media, :stored => true, :multiple => true do
-        art_piece_media.map(&:medium)
+      string :media, :stored => true, :multiple => true do
+        media.map(&:medium)
       end
       string :featured_artists, :stored => true, :multiple => true do
         artists.map {|artist| artist.featured_artists}.compact

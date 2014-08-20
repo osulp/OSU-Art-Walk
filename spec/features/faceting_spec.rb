@@ -85,6 +85,12 @@ describe "faceting" do
         expect(page).to have_link subject.collections.name
       end
     end
+    context "with a medium" do
+      subject {create(:art_piece, :with_media)}
+      it "should have a link for that medium" do
+        expect(page).to have_link subject.media.first.medium
+      end
+    end
     context "with a status" do
       context "of student" do
         subject {create(:art_piece, :with_student)}
