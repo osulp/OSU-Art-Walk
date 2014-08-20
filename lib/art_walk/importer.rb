@@ -90,6 +90,13 @@ module ArtWalk
       art_piece.save
     end
 
+    def assign_collection(value)
+      new_collection = Collection.find_or_initialize_by(:name => value)
+      new_collection.save
+      art_piece.collections << new_collection
+      art_piece.save
+    end
+
     def assign_series(value)
       new_val = value.to_s.split(/[,]/)
       art_piece.series = []

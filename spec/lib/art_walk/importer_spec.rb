@@ -58,6 +58,9 @@ describe ArtWalk::RowCreator do
     it "should have private status" do
       expect(result.private?).to eq false
     end
+    it "should have a collection" do
+      expect(result.collections.first.name).to eq "New Collection"
+    end
     it "should have a number" do
       expect(result.number).to eq "1"
     end
