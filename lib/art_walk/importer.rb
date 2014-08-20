@@ -101,7 +101,7 @@ module ArtWalk
     end
 
     def assign_medium(value)
-      new_val = value.to_s.gsub("and", ",").split(/[;,]/).delete_if(&:blank?)
+      new_val = value.to_s.gsub(" and ", ",").split(/[;,]/).delete_if(&:blank?)
       art_piece.media = []
       new_val.each do |val|
         new_media = Medium.find_or_initialize_by(:medium => val.strip)
