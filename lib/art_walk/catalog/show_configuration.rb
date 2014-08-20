@@ -5,7 +5,7 @@ module ArtWalk
       included do
         configure_blacklight do |config|
           config.add_show_field 'size_ss', :label => 'Size'
-          config.add_show_field 'medium_sms', :label => 'Medium'
+          config.add_show_field 'media_sms', :label => 'Medium'
           config.add_show_field 'legal_info_ss', :label => 'Legal Info'
           config.add_show_field 'creation_date_ss', :label => 'Created On'
           config.add_show_field 'percent_for_art_bs', :label => 'Percent For Art Status'
