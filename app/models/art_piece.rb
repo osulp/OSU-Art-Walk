@@ -40,6 +40,11 @@ class ArtPiece < ActiveRecord::Base
     status << I18n.t('art_piece.student_string') if by_student?
     status
   end
+
+  def coords
+    return nil if lat.blank? || long.blank?
+    [title, lat, long].join("-|-")
+  end
   
   private
 

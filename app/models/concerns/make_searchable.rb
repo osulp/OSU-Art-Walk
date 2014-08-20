@@ -17,7 +17,7 @@ module MakeSearchable
       end
       # Facets
       string :coords, :stored => true, :multiple => true do
-        building_coords
+        coords || building_coords
       end
       string :building, :stored => true do
         building_name

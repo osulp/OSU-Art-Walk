@@ -18,6 +18,8 @@
         <p>Created On: <%= art.creation_date %></p>
         <p>Legal Info: <%= art.legal_info %></p>
         <p>Private Piece Status: <%= art.private? %></p>
+        <p>Lat: <%= art.lat %></p>
+        <p>Long: <%= art.long %></p>
         <% if art.private? %>
           <p>Contact Info: <%= art.contact_info %></p>
         <% end %>

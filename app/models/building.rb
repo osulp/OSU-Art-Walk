@@ -4,6 +4,7 @@ class Building < ActiveRecord::Base
   after_save :reindex_art_pieces
 
   def coords
+    return nil if lat.blank? || long.blank?
     [name, lat, long].join("-|-")
   end
 
