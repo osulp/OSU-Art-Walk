@@ -38,6 +38,7 @@
       markers = new L.MarkerClusterGroup({
         showCoverageOnHover: false,
         spiderfyOnMaxZoom: false,
+        maxClusterRadius: 10,
         singleMarkerMode: true,
         animateAddingMarkers: true
       });
