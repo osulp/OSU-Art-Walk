@@ -163,7 +163,6 @@ module ArtWalk
         "year" => "creation_date",
         "dimensions" => "size",
         "artist_notes" => "artist_comments",
-        "percent_for_art" => "percent_for_art",
         "lost_moving_to_be_hidden" => "displayed",
         "number_on_plaque_valley_nw_art_exhibit_only" => "number"
       }

@@ -52,9 +52,6 @@ describe ArtWalk::RowCreator do
     it "should have artist comments" do
       expect(result.artist_comments).to eq "These are notes from the artist probably"
     end
-    it "should have percent for art status" do
-      expect(result.percent_for_art).to eq true
-    end
     it "should have displayed status" do
       expect(result.displayed).to eq false
     end
