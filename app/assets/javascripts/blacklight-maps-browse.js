@@ -70,7 +70,7 @@
      document.onload = getLocation();
       function getLocation() {
         if(navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(success, error, opts);
+          navigator.geolocation.watchPosition(success, error, opts);
         }
         else {
           console.warn("Geolocating is not supported on your device or browser.");
