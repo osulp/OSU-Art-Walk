@@ -49,30 +49,35 @@
         iconAnchor: [13, 12]
       });
 
+      // Sets the options for the getCurrentLocation function
       var opts = {
         enableHighAccuracy: true,
         timeout: 5000,
         maximumAge: 0
       };
 
+      // Puts the marker on the map if the get location was successful
       var success = function (position) {
         locationMarker = new L.Marker([position.coords.latitude, position.coords.longitude], {icon: locationIcon}).addTo(map)
       }
+
+      // Puts an error to the console if the get location errored
       function error(err) {
         console.warn('ERROR(' + err.code + '): ' + err.message);
       }
 
-      // Create location marker
+      // Gets the current location on map load
      document.onload = getLocation();
       function getLocation() {
         if(navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(success, error, opts);
         }
         else {
+          console.warn("Geolocating is not supported on your device or browser.");
         }
       }
 
-
+      // Creates the geoJsonLayer
       geoJsonLayer = L.geoJson(geojson_docs, {
         onEachFeature: function(feature, layer){
           layer.defaultOptions.title = getMapTitle(options.type, feature.properties.name);
@@ -89,11 +94,6 @@
 
       // Add marker cluster object to map
       map.addLayer(markers);
-
-      // Add location marker object to map
-     // if(locationMarker) {
-       // locationMarker.addTo(map);
-     // }
 
       // Zooms to show all points on map
       if(geojson_docs.features.length > 0) {
