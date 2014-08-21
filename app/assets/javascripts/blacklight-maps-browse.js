@@ -1,7 +1,7 @@
 ;(function( $ ) {
 
   $.fn.blacklight_leaflet_map = function(geojson_docs, arg_opts) {
-    var map, sidebar, markers, geoJsonLayer, currentLayer;
+    var map, sidebar, locationMarker, markers, geoJsonLayer, currentLayer;
 
     // Configure default options and those passed via the constructor options
     var options = $.extend({
@@ -43,6 +43,36 @@
         animateAddingMarkers: true
       });
 
+      // Create location marker icon
+      var locationIcon = L.icon({
+        iconUrl: 'http://www.lscarolinas.net/assets/leaflet/images/marker-icon-blue.png',
+        iconAnchor: [13, 12]
+      });
+
+      var opts = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+      };
+
+      var success = function (position) {
+        locationMarker = new L.Marker([position.coords.latitude, position.coords.longitude], {icon: locationIcon}).addTo(map)
+      }
+      function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      }
+
+      // Create location marker
+     document.onload = getLocation();
+      function getLocation() {
+        if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(success, error, opts);
+        }
+        else {
+        }
+      }
+
+
       geoJsonLayer = L.geoJson(geojson_docs, {
         onEachFeature: function(feature, layer){
           layer.defaultOptions.title = getMapTitle(options.type, feature.properties.name);
@@ -59,6 +89,11 @@
 
       // Add marker cluster object to map
       map.addLayer(markers);
+
+      // Add location marker object to map
+     // if(locationMarker) {
+       // locationMarker.addTo(map);
+     // }
 
       // Zooms to show all points on map
       if(geojson_docs.features.length > 0) {
