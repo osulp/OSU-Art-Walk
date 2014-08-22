@@ -57,7 +57,9 @@
       };
 
       // Creates the marker at the default location
-      var  locationMarker = new L.Marker([44.5649730045019, -123.275924921036], {icon: locationIcon}).addTo(map)
+      if(navigator.geolocation) {
+        var  locationMarker = new L.Marker([44.5649730045019, -123.275924921036], {icon: locationIcon}).addTo(map)
+      }
 
       // Puts the marker on the map if the get location was successful
       var success = function (position) {
