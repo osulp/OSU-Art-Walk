@@ -66,11 +66,16 @@
         locationMarker.setLatLng([position.coords.latitude, position.coords.longitude]);
       }
 
+      // Empty error function to keep everything from breaking
+      // DO NOT DELETE
+      var error = function (err) {
+      }
+
       // Gets the current location on map load
      document.onload = getLocation();
       function getLocation() {
         if(navigator.geolocation) {
-          navigator.geolocation.watchPosition(success, opts);
+          navigator.geolocation.watchPosition(success, error, opts);
         }
       }
 
