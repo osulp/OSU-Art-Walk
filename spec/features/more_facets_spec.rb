@@ -16,10 +16,8 @@ describe "more button" do
   end
   context "when there are more than 10 buildings with art pieces" do
     before do
-      i = 0;
-      while i < 12 do
+      12.times do
         create(:art_piece, :with_building)
-        i+=1
       end
       visit root_path
     end
