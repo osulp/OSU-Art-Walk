@@ -15,10 +15,10 @@ describe ArtWalk::Importer do
   end
 end
 
-describe ArtWalk::RowCreator do
+describe ArtWalk::Importer::RowCreator do
   let(:file) {csv}
   let(:row) {ArtWalk::Importer.new(file).rows.first}
-  subject {ArtWalk::RowCreator.new(row)}
+  subject {ArtWalk::Importer::RowCreator.new(row)}
 
   describe "#import!" do
     let(:result) {subject.import!}
