@@ -22,6 +22,7 @@
 //= require leaflet.markercluster
 //= require L.Control.Sidebar
 //= require blacklight-maps-browse
+//= require easyButton
 //
 // Lightbox
 //= require ekko-lightbox

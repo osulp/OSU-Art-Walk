@@ -82,6 +82,8 @@
 
     });
 
+    var myButton = L.easyButton('glyphicon glyphicon-screenshot',function(){map.fitBounds(markers.getBounds())},'Reset Map')
+
     function setupSidebarDisplay(e, placenames){
       hideSidebar();
       offsetMap(e);

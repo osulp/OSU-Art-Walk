@@ -1,0 +1,28 @@
+.leaflet-marker-icon {
+  width: 30px !important;
+  height: 30px !important;
+}
+.marker-cluster-medium > div {
+  width: 20px !important;
+  height: 20px !important;
+}
+.marker-cluster-small > div {
+  width: 20px !important;
+  height: 20px !important;
+}
+.marker-cluster-large > div {
+  width: 20px !important;
+  height: 20px !important;
+}
+.marker-cluster > div > span {
+  line-height: 18px;
+}
+.navbar-fixed-bottom {
+  background-color: transparent;
+  border: 10px solid transparent
+}
+.btn-default {
+  height:35px;
+  width:50px;
+  background-color: transparent;
+}
