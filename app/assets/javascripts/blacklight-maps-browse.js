@@ -66,19 +66,11 @@
         locationMarker.setLatLng([position.coords.latitude, position.coords.longitude]);
       }
 
-      // Puts an error to the console if the get location errored
-      function error(err) {
-        console.warn('ERROR(' + err.code + '): ' + err.message);
-      }
-
       // Gets the current location on map load
      document.onload = getLocation();
       function getLocation() {
         if(navigator.geolocation) {
-          navigator.geolocation.watchPosition(success, error, opts);
-        }
-        else {
-          console.warn("Geolocating is not supported on your device or browser.");
+          navigator.geolocation.watchPosition(success, opts);
         }
       }
 
