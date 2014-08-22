@@ -1,7 +1,7 @@
 ;(function( $ ) {
 
   $.fn.blacklight_leaflet_map = function(geojson_docs, arg_opts) {
-    var map, sidebar, locationMarker, markers, geoJsonLayer, currentLayer;
+    var map, sidebar, markers, geoJsonLayer, currentLayer;
 
     // Configure default options and those passed via the constructor options
     var options = $.extend({
@@ -56,9 +56,12 @@
         maximumAge: 0
       };
 
+      // Creates the marker at the default location
+      var  locationMarker = new L.Marker([44.5649730045019, -123.275924921036], {icon: locationIcon}).addTo(map)
+
       // Puts the marker on the map if the get location was successful
       var success = function (position) {
-        locationMarker = new L.Marker([position.coords.latitude, position.coords.longitude], {icon: locationIcon}).addTo(map)
+        locationMarker.setLatLng([position.coords.latitude, position.coords.longitude]);
       }
 
       // Puts an error to the console if the get location errored
