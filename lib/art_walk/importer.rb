@@ -22,6 +22,7 @@ module ArtWalk
 
       def assign_collection(value)
         if value != nil
+          value = value.gsub("part of ", "")
           new_collection = Collection.find_or_initialize_by(:name => value.strip)
           new_collection.save
           resource.collections << new_collection
@@ -30,6 +31,7 @@ module ArtWalk
       end
 
       def assign_series(value)
+        value = value.gsub("part of ", "") unless value == nil
         new_val = value.to_s.split(/[,]/)
         resource.series = []
         new_val.each do |val|
