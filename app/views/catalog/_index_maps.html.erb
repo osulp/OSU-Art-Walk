@@ -16,8 +16,13 @@
         <div class="col-xs-8">
           <% if document[:artists_sms] %>
             By <%= document[:artists_sms].join(", ") %>
+            <br>
+            <br>
           <% end %>
-          <br>
+          <% if document[:number_ss].present? %>
+            Plaque Number: <%= document[:number_ss] %>
+            <br>
+          <% end %>
           <% if document[:art_piece_building_location_ss].present? %>
             Location: <%= document[:art_piece_building_location_ss] %>
           <% end %>
