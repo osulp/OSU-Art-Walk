@@ -15,6 +15,7 @@ module ArtWalk
           config.add_index_field 'artist_comments_ss', :label => 'Artist Comments'
           config.add_index_field 'collections_sms', :label => 'Collections'
           config.add_index_field 'series_sms', :label => 'Series'
+          config.add_index_field 'number_ss', :label => 'Number'
         end
       end
     end

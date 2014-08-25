@@ -8,7 +8,7 @@ module ArtWalk
           config.add_show_field 'media_sms', :label => 'Medium'
           config.add_show_field 'legal_info_ss', :label => 'Legal Info'
           config.add_show_field 'creation_date_ss', :label => 'Created On'
-          config.add_show_field 'number_ss', :label => 'Number'
+          config.add_show_field 'number_ss', :label => 'Plaque Number'
           config.add_show_field 'series_sms', :label => 'Series'
           config.add_show_field 'contact_info_ss', :label => 'Contact Info', :if => :private_document?
           config.add_show_field 'building_ss', :label => 'Building'
