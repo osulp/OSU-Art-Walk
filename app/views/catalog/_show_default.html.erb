@@ -33,7 +33,9 @@
   <% if document['artists_sms'] != nil %> 
     <% document['artists_sms'].each_with_index do |artist, i| %>
       <dt> Artist: <dd> <%= artist %> </dd> </dt>
-      <dt> Artist Bio: <dd> <%= document['artist_bio_sms'][i] %> </dd> </dt>
+      <% if document['artist_bio_sms'][i].present? %>
+        <dt> Artist Bio: <dd> <%= document['artist_bio_sms'][i] %> </dd> </dt>
+      <% end %>
     <% end %>
   <% end %>
 </dl>
