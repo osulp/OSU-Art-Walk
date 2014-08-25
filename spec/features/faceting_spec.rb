@@ -14,42 +14,6 @@ describe "faceting" do
       it "should have a link for that building" do
         expect(page).to have_link subject.building.name
       end
-      context "and when there is a series containing art pieces" do
-        let(:art_piece) {create(:art_piece, :with_series)}
-        before do
-          art_piece
-          visit root_path
-        end
-        it "should display the series facet" do
-          expect(page).to have_content("Series")
-        end
-      end
-      context "and the facet is clicked" do
-        before do
-          click_link subject.building.name
-          click_link "List"
-        end
-        it "should show the title for the art piece" do
-          within(".document .index_title") do
-            expect(page).to have_content(subject.title)
-          end
-        end
-        context "and there is an unrelated art piece" do
-          subject do
-            art_piece_2
-            create(:art_piece, :with_building)
-          end
-          before do
-            click_link "List"
-          end
-          let(:art_piece_2) {create(:art_piece)}
-          it "should not show it" do
-            expect(page).not_to have_content art_piece_2.title
-            expect(page).to have_selector(".document", :count => 1)
-          end
-        end
-      end
-
     end
     context "with an artist" do
       subject {create(:art_piece, :with_artist)}

@@ -9,7 +9,6 @@ module ArtWalk
           config.add_facet_field 'media_sms', :label => 'Media', :limit => 10
           config.add_facet_field 'building_ss', :label => 'Buildings', :limit => 10
           config.add_facet_field 'collections_sms', :label => 'Collections', :limit => 10
-          config.add_facet_field 'series_sms', :label => 'Series', :limit => 10
           config.add_facet_field 'status_sms', :label => 'Status', :limit => 10
           config.add_facet_field 'displayed_bs', :label => 'Displayed', :limit => 10
           config.add_search_field 'all-fields', :label => 'All Fields'
