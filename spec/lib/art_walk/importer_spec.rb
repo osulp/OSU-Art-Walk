@@ -73,6 +73,9 @@ describe ArtWalk::Importer::RowCreator do
     it "should have a series" do
       expect(result.series.count).to eq 2
     end
+    it "should create a percent for art collection if it is labeled true in CSV" do
+      expect(result.collections.last.name).to eq "Percent For Art Collection"
+    end
     context "if the title that is read in is blank" do
       let(:row) {ArtWalk::Importer.new(file).rows.to_a.last}
 
@@ -87,7 +90,7 @@ describe ArtWalk::Importer::RowCreator do
     end
     context "if a collection 'has part' of in the name" do
       it "should not have it when it is imported" do
-        expect(result.collections.last.name).to eq "New Collection"
+        expect(result.collections.first.name).to eq "New Collection"
       end
     end
   end

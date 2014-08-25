@@ -41,6 +41,13 @@ module ArtWalk
         resource.save
       end
 
+      def assign_percent_for_art(value)
+        if value == "TRUE"
+          resource.collections << Collection.find_or_initialize_by(:name => "Percent For Art Collection")
+          resource.save
+        end
+      end
+
       def assign_medium(value)
         new_val = value.to_s.gsub(" and ", ",").split(/[;,]/).delete_if(&:blank?)
         resource.media = []
