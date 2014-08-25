@@ -6,7 +6,7 @@ module ArtWalk
       def assign_artist_name(value)
         new_val = value.split(/[&;]/)
         new_val.each do |val|
-          new_artist = Artist.find_or_initialize_by(:name => val)
+          new_artist = Artist.find_or_initialize_by(:name => val.strip)
           new_artist.save
           resource.artists = [new_artist]
         end
@@ -14,20 +14,24 @@ module ArtWalk
       end
 
       def assign_building(value)
-        new_building = Building.find_or_initialize_by(:name => value)
+        new_building = Building.find_or_initialize_by(:name => value.strip)
         new_building.save
         resource.building = new_building
         resource.save
       end
 
       def assign_collection(value)
-        new_collection = Collection.find_or_initialize_by(:name => value)
-        new_collection.save
-        resource.collections << new_collection
-        resource.save
+        if value != nil
+          value = value.gsub("part of ", "")
+          new_collection = Collection.find_or_initialize_by(:name => value.strip)
+          new_collection.save
+          resource.collections << new_collection
+          resource.save
+        end
       end
 
       def assign_series(value)
+        value = value.gsub("part of ", "") unless value == nil
         new_val = value.to_s.split(/[,]/)
         resource.series = []
         new_val.each do |val|

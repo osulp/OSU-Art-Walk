@@ -80,5 +80,15 @@ describe ArtWalk::Importer::RowCreator do
         expect(result.title).to eq "untitled"
       end
     end
+    context "if a series has 'part of' in the name" do
+      it "should not have it when it is imported" do
+        expect(result.series.first.name).to eq "Banana Series"
+      end
+    end
+    context "if a collection 'has part' of in the name" do
+      it "should not have it when it is imported" do
+        expect(result.collections.last.name).to eq "New Collection"
+      end
+    end
   end
 end
