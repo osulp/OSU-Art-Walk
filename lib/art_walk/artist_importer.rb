@@ -10,7 +10,7 @@ module ArtWalk
       end
 
       def assign_artist_name(value)
-        @resource = model.find_or_initialize_by(:name => value)
+        @resource = model.find_or_initialize_by(:name => value.strip)
         @resource.save
       end
 

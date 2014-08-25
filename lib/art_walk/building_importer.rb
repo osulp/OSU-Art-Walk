@@ -8,7 +8,7 @@ module ArtWalk
       end
 
       def assign_building_name(value)
-        @resource = Building.find_or_initialize_by(:name => value)
+        @resource = Building.find_or_initialize_by(:name => value.strip)
         @resource.save
       end
 
