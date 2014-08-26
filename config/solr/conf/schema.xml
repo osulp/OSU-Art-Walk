@@ -80,6 +80,14 @@
         <filter class="solr.TrimFilterFactory"/>
       </analyzer>
     </fieldType>
+    <fieldType name="text_spell" class="solr.TextField">
+      <analyzer>
+        <tokenizer class="solr.ICUTokenizerFactory"/>
+        <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.TrimFilterFactory"/>
+      </analyzer>
+    </fieldType>
     <!-- *** This fieldType is used by Sunspot! *** -->
     <fieldType name="boolean" class="solr.BoolField" omitNorms="true"/>
     <!-- *** This fieldType is used by Sunspot! *** -->
@@ -136,6 +144,7 @@
     <field name="class_name" stored="false" type="string" multiValued="false" indexed="true"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="text" stored="false" type="text" multiValued="true" indexed="true" termVectors="true" termPositions="true" termOffsets="true"/>
+    <field name="spell" stored="false" type="text_spell" multiValued="true" indexed="true"/>
     <!-- *** This field is used by Sunspot! *** -->
     <field name="lat" stored="true" type="tdouble" multiValued="false" indexed="true"/>
     <!-- *** This field is used by Sunspot! *** -->
@@ -266,4 +275,5 @@
         is added to the index.  It's used either to index the same field differently,
         or to add multiple fields to the same field for easier/faster searching.  -->
   <copyField source="*_text" dest="text" />
+  <copyField source="*_text" dest="spell" />
 </schema>
