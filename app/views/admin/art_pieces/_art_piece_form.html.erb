@@ -21,7 +21,7 @@
       <%= builder.input :position_num, :label => "Position Number" %>
       <%= builder.input :art_piece_id, :as => :hidden %>
     <% end %>
-    <%= f.simple_fields_for :art_piece_photos do |builder| %>
+    <%= f.simple_fields_for :art_piece_photos, :html => {:multipart => true} do |builder| %>
       <%= render :partial => "photo_form", :locals => {f: builder} %>
     <% end %>
     <%= link_to_add_fields "Add Another Photo", f, :art_piece_photos %>
