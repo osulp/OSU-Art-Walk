@@ -16,11 +16,23 @@ describe "Multi Photo" do
       within ("#picture") do
         attach_file("art_piece_art_piece_photos_attributes_0_photo", "spec/fixtures/cats.jpg")
       end
-      click_button "Create Art piece"
     end
 
-    it "should save and display it" do
-      expect(page).to have_css("img")
+    it "should have a field for caption" do
+      expect(page).to have_content("Photo credit")
+    end
+    
+    context "When creating the art piece with the photo" do
+      before do
+        fill_in "Photo credit", :with => "I took this beautiful picture"
+        click_button "Create Art piece"
+      end
+      it "should save and display it" do
+        expect(page).to have_css("img")
+      end
+      it "should display the photo credit for the photo" do
+        expect(page).to have_content("I took this beautiful picture")
+      end
     end
   end
 
@@ -30,7 +42,9 @@ describe "Multi Photo" do
       click_link "Add Another Photo"
       photos = all("*[id^=art_piece_art_piece_photos]")
       photos.each do |photo_wrapper|
-        attach_file photo_wrapper[:id], Rails.root.join("spec", "fixtures", "cats.jpg")
+        unless photo_wrapper[:id].include? "photo_credit"
+          attach_file photo_wrapper[:id], Rails.root.join("spec", "fixtures", "cats.jpg")
+        end
       end
       click_button "Create Art piece"
       expect(page).to have_content("Successfully created art piece")

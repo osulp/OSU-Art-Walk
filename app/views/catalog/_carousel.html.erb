@@ -5,6 +5,9 @@
         <a href="<%= photo %>" id="photo-<%= index %>" data-toggle="lightbox" data-gallery="multiimages" data-parent=".carousel-inner">
           <%= image_tag photo %>
         </a>
+        <div class="carousel-caption">
+          <p><%= Array.wrap(document["art_piece_photo_credit_sms"]).at(index) %></p>
+        </div>
       </div>
     <% end %>
   </div>
