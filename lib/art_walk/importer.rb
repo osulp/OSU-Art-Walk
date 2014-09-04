@@ -5,7 +5,7 @@ module ArtWalk
     class RowCreator < GenericImporter::RowCreator
 
       def resource
-        if row[4].nil?
+        if row[4].blank?
           @resource ||= model.find_or_initialize_by(:title => "Untitled")
         else
           @resource ||= model.find_or_initialize_by(:title => row[4])
