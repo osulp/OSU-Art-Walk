@@ -3,6 +3,15 @@ require 'csv'
 module ArtWalk
   class Importer < GenericImporter
     class RowCreator < GenericImporter::RowCreator
+
+      def resource
+        if row[4].blank?
+          @resource ||= model.find_or_initialize_by(:title => "Untitled")
+        else
+          @resource ||= model.find_or_initialize_by(:title => row[4])
+        end
+      end
+
       def assign_artist_name(value)
         new_val = value.split(/[&;]/)
         new_val.each do |val|
@@ -87,15 +96,6 @@ module ArtWalk
         resource.save
       end
 
-      def assign_work_title(value)
-        if value.blank?
-          resource.title = "untitled"
-        else
-          resource.title = value
-        end
-        resource.save
-      end
-
       def field_mapping
         {
           "additional_information_including_all_data_collected_from_plaques_that_accompany_the_pieces" => "description",
@@ -106,7 +106,6 @@ module ArtWalk
           "number_on_plaque_valley_nw_art_exhibit_only" => "number"
         }
       end
-
     end
   end
 end
