@@ -7,6 +7,22 @@ describe "faceting" do
     visit root_path
   end
 
+  context "when there are two artists, with one and two piece" do
+    let(:art) {create(:art_piece, :with_artist)}
+    let(:art1) {create(:art_piece, :with_artist)}
+    let(:art2) {create(:art_piece)}
+
+    before do
+      art
+      art2.artists << art1.artists.first
+      art2.save
+      visit root_path
+    end
+    it "should display the artists in alphabetical order in the facets" do
+      expect(all(".facet_select").first).to have_content(art.artists.first.name)
+      expect(all(".facet_select").last).to have_content(art1.artists.first.name)
+    end
+  end
   context "when there is an art piece" do
     subject {create(:art_piece)}
     context "with a building" do
