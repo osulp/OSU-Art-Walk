@@ -36,6 +36,7 @@
         <% if art.art_piece_photos.length > 0 %>
           <p>Photos: <% art.art_piece_photos.each do |p| %>
             <%= image_tag p.photo_url(:thumb) %>
+            <%= p.photo_credit %>
           <% end %></p>
         <% end %>
       </div>
