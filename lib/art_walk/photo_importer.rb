@@ -2,8 +2,7 @@ module ArtWalk
   class PhotoImporter < GenericImporter
 
     def initialize(path_name)
-      Dir.chdir(path_name)
-      @dir = Dir.glob("*.jpg")
+      @dir = Dir.glob(Pathname.new(path_name).join("*.jpg"))
     end
 
     def import!
