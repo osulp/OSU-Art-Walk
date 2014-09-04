@@ -13,6 +13,16 @@ describe ArtWalk::BuildingImporter do
       expect(Building.all.count).to eq 1
     end
   end
+  describe "#import!" do
+    before do
+      2.times do
+        subject.import!
+      end
+    end
+    it "should create an art piece" do
+      expect(Building.all.count).to eq 1
+    end
+  end
 end
 
 describe ArtWalk::BuildingImporter::RowCreator do

@@ -2,16 +2,13 @@ require 'csv'
 
 module ArtWalk
   class ArtistImporter < GenericImporter
-
     class RowCreator< GenericImporter::RowCreator
-
       def model
         Artist
       end
 
-      def assign_artist_name(value)
-        @resource = model.find_or_initialize_by(:name => value.strip)
-        @resource.save
+      def resource
+        @resource ||= model.find_or_initialize_by(:name => row[0])
       end
 
       def field_mapping
@@ -26,5 +23,4 @@ module ArtWalk
       end
     end
   end
-
 end

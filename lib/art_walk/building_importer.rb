@@ -7,9 +7,8 @@ module ArtWalk
         Building
       end
 
-      def assign_building_name(value)
-        @resource = Building.find_or_initialize_by(:name => value.strip)
-        @resource.save
+      def resource
+        @resource ||= model.find_or_initialize_by(:name => row[0])
       end
 
       def field_mapping
@@ -20,5 +19,4 @@ module ArtWalk
       end
     end
   end
-
 end

@@ -13,6 +13,16 @@ describe ArtWalk::Importer do
       expect(ArtPiece.all.count).to eq 2
     end
   end
+  describe "#import!" do
+    before do
+      2.times do
+        subject.import!
+      end
+    end
+    it "should create an art piece" do
+      expect(ArtPiece.all.count).to eq 2
+    end
+  end
 end
 
 describe ArtWalk::Importer::RowCreator do
@@ -80,7 +90,7 @@ describe ArtWalk::Importer::RowCreator do
       let(:row) {ArtWalk::Importer.new(file).rows.to_a.last}
 
       it "should have untitled as the title" do
-        expect(result.title).to eq "untitled"
+        expect(result.title).to eq "Untitled"
       end
     end
     context "if a series has 'part of' in the name" do

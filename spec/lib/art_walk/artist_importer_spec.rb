@@ -13,6 +13,16 @@ describe ArtWalk::ArtistImporter do
       expect(Artist.all.count).to eq 1
     end
   end
+  describe "#import! ran two times" do
+    before do
+      2.times do
+        subject.import!
+      end
+    end
+    it "should create an art piece" do
+      expect(Artist.all.count).to eq 1
+    end
+  end
 end
 
 describe ArtWalk::ArtistImporter::RowCreator do
