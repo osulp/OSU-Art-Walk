@@ -1,6 +1,35 @@
 require 'spec_helper'
 
 describe 'blacklight maps' do
+  context "when there are 11 art pieces with buildings" do
+    let(:building) {create(:building)}
+    before do
+      11.times do
+        create(:art_piece, :building => building)
+      end
+    end
+    context "when on the first page", :js => true do
+      before do
+        visit root_path
+        click_button "Search"
+      end
+      it "should display all the art pieces" do
+        expect(page).to have_selector(".leaflet-marker-icon", :text => "11")
+      end
+    end
+    context "when on the second page", :js => true do
+      before do
+        visit root_path
+        click_button "Search"
+        within(".page_links") do
+          click_link "Next »"
+        end
+      end
+      it "should display all the art pieces" do
+        expect(page).to have_selector(".leaflet-marker-icon", :text => "11")
+      end
+    end
+  end
   context "when an art piece exists with a building", :js => true do
     let(:art_piece) {create(:art_piece, :with_building, :with_artist)}
     before do
