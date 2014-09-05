@@ -41,6 +41,13 @@ class ArtPiece < ActiveRecord::Base
     status
   end
 
+  def display_status
+    display = ""
+    display = I18n.t('art_piece.on_display_string') if displayed?
+    display = I18n.t('art_piece.not_on_display_string') if !displayed?
+    display
+  end
+
   def coords
     return nil if lat.blank? || long.blank?
     [title, lat, long].join("-|-")
