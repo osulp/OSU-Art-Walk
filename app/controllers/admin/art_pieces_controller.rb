@@ -43,6 +43,6 @@ class Admin::ArtPiecesController < AdminController
   end
 
   def art_piece_params
-    params.require(:art_piece).permit(:title, :creation_date, :size, :legal_info, :private, :contact_info, :description, :artist_comments, :displayed, :number, :lat, :long, :building, art_piece_photo_ids:[], art_piece_photos_attributes: [:photo, :photo_credit, :id, :_destroy], art_piece_building_attributes: [:building_id, :location, :art_piece_id, :position_num, :id], artist_ids: [], collection_ids:[], series_ids:[], medium_ids:[])
+    params.require(:art_piece).permit(:title, :global_photo_credit, :creation_date, :size, :legal_info, :private, :contact_info, :description, :artist_comments, :displayed, :number, :lat, :long, :building, art_piece_photo_ids:[], art_piece_photos_attributes: [:photo, :photo_credit, :id, :_destroy], art_piece_building_attributes: [:building_id, :location, :art_piece_id, :position_num, :id], artist_ids: [], collection_ids:[], series_ids:[], medium_ids:[])
   end
 end

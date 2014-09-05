@@ -64,7 +64,7 @@ module MakeSearchable
 
   module ClassMethods
     def displayed_texts
-      [:title, :description, :artist_comments, :size, :creation_date, :legal_info, :contact_info, :art_piece_building_location, :number]
+      [:title, :description, :artist_comments, :global_photo_credit, :size, :creation_date, :legal_info, :contact_info, :art_piece_building_location, :number]
     end
   end
 end
