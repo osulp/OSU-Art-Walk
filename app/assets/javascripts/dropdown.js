@@ -1,3 +1,3 @@
 $(document).ready(function(){
-  $('.dropdown-toggle').dropdown();
+  $.('#per_page_dropdown').children('.dropdown-toggle').dropdown();
 });
