@@ -33,20 +33,20 @@ describe "global photo credit" do
         end
       end
     end
-    context "when creating an art piece with global and indevidual credit" do
+    context "when creating an art piece with global and individual credit" do
       before do
         fill_in " Title", :with => "test title"
         fill_in "Global photo credit", :with => "credit for photo"
         within ("#picture") do
           attach_file("art_piece_art_piece_photos_attributes_0_photo", "spec/fixtures/cats.jpg")
         end
-        fill_in "Photo credit", :with => "indevidual photo credit"
+        fill_in "Photo credit", :with => "individual photo credit"
         click_button "Create Art piece"
         visit catalog_path(:id => ArtPiece.first.document_id)
       end
-      it "should display only the indevidual photo credit on the carousel" do
+      it "should display only the individual photo credit on the carousel" do
         within(".carousel") do
-          expect(page).to have_content("indevidual photo credit")
+          expect(page).to have_content("individual photo credit")
         end
       end
     end
