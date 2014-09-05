@@ -74,5 +74,26 @@ describe ArtPiece do
       end
     end 
   end
+  describe "#display_status" do
+    let(:art_piece_1) {create(:art_piece, :displayed => true)}
+    let(:art_piece_2) {create(:art_piece, :displayed => false)}
+
+    context "When displayed" do    
+      before do
+        art_piece_1
+      end
+      it "Should return translated string for art_piece.on_display_string" do
+        expect(art_piece_1.display_status).to eq I18n.t('art_piece.on_display_string')
+      end
+    end
+    context "when not displayed" do
+      before do
+        art_piece_2
+      end   
+      it "Should return Translated String for art_piece.not_on_display_string" do
+        expect(art_piece_2.display_status).to eq I18n.t('art_piece.not_on_display_string')
+      end
+    end 
+  end
 
 end

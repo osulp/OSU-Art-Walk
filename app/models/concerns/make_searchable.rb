@@ -56,6 +56,9 @@ module MakeSearchable
       ArtPiece.displayed_texts.each do |text|
         string text, :stored => true
       end
+      string :display, :stored => true do
+        self.display_status
+      end
       boolean :displayed, :stored => true
       boolean :private, :stored => true
       integer :art_piece_building_position_num, :stored => true
