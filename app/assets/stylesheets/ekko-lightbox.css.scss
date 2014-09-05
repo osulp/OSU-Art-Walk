@@ -7,9 +7,11 @@
 
 .ekko-lightbox-container {
   position: relative;
-  height: 400px;
+  width: 600px;
+  height: relative;
   img {
-    height: 100%;
+    height: relative;
+    width: 100%;
   }
   div:last-child {
     height: 100%;
