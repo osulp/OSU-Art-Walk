@@ -6,7 +6,11 @@
           <%= image_tag photo %>
         </a>
         <div class="carousel-caption">
-          <p><%= Array.wrap(document["art_piece_photo_credit_sms"]).at(index) %></p>
+          <p><% if !Array.wrap(document["art_piece_photo_credit_sms"]).at(index).blank? %>
+            <%= Array.wrap(document["art_piece_photo_credit_sms"]).at(index) %>
+          <% else %>
+            <%= document["global_photo_credit_ss"] %>
+          <% end %></p>
         </div>
       </div>
     <% end %>
