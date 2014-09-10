@@ -2,7 +2,7 @@ module ArtWalk
   class PhotoImporter < GenericImporter
 
     def initialize(path_name)
-      @dir = Dir.glob(Pathname.new(path_name).join("*.jpg"))
+      @dir = Dir.glob(Pathname.new(path_name).join("*.*")).select{|x| x.split(".").last.downcase == "jpg"}
     end
 
     def import!
