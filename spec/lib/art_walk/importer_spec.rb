@@ -83,6 +83,9 @@ describe ArtWalk::Importer::RowCreator do
     it "should have a series" do
       expect(result.series.count).to eq 2
     end
+    it "should have photo credit" do
+      expect(result.global_photo_credit).to eq "Photo Credit"
+    end
     it "should create a percent for art collection if it is labeled true in CSV" do
       expect(result.collections.last.name).to eq "Percent For Art Collection"
     end
