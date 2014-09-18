@@ -11,7 +11,7 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-xs-3">
-          <%= render_thumbnail_tag document, {class: 'sidebar-thumb media-object'}, {class: 'pull-left'} %>
+          <%= link_to render_thumbnail_tag document, {class: 'sidebar-thumb media-object pull-left'}, {:label => document_show_link_field(document), :counter => map_counter(document), :search_context => map_building(document) }if document[:art_piece_photos_sms] %>
         </div>
         <div class="col-xs-8">
           <% if document[:artists_sms] %>

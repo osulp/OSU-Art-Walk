@@ -8,6 +8,22 @@ describe 'blacklight maps' do
         create(:art_piece, :building => building)
       end
     end
+    context "when visiting the view by clicking the thumbnail", :js => true do
+      before do
+        create(:art_piece, :with_photo, :building => building)
+        visit root_path
+        click_button "Search"
+        find(".leaflet-marker-icon", :text => "12").click
+        within("#blacklight-map-sidebar") do
+          find("img").click
+        end
+      end
+      it "should take you to the show with next and prev arrows" do
+        expect(page).to have_content(ArtPiece.last.title)
+        expect(page).to have_link("« Previous")
+        expect(page).to have_text("Next »")
+      end
+    end
     context "when on the first page", :js => true do
       before do
         visit root_path
