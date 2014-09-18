@@ -1,22 +1,28 @@
-<div id="my-carousel" class="carousel slide"><!-- class of slide for animation -->
-  <div class="carousel-inner">
-    <% Array.wrap(document["art_piece_photos_sms"]).each_with_index do |photo, index| %>
-      <div class="item <%= "active" if index == 0 %>">
-        <a href="<%= photo %>" id="photo-<%= index %>" data-toggle="lightbox" data-gallery="multiimages" data-parent=".carousel-inner">
-        <%= image_tag photo %>
-        <div class="carousel-caption">
-          <p><% if !Array.wrap(document["art_piece_photo_credit_sms"]).at(index).blank? %>
-            <%= Array.wrap(document["art_piece_photo_credit_sms"]).at(index) %>
-          <% else %>
-            <%= document["global_photo_credit_ss"] %>
-          <% end %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-sm-6">
+      <div id="my-carousel" class="carousel slide"><!-- class of slide for animation -->
+        <div class="carousel-inner">
+          <% Array.wrap(document["art_piece_photos_sms"]).each_with_index do |photo, index| %>
+            <div class="item <%= "active" if index == 0 %>">
+              <a href="<%= photo %>" id="photo-<%= index %>" data-toggle="lightbox" data-gallery="multiimages" data-parent=".carousel-inner">
+                <%= image_tag photo %>
+              </a>
+              <div class="carousel-caption">
+                <p><% if !Array.wrap(document["art_piece_photo_credit_sms"]).at(index).blank? %>
+                  <%= Array.wrap(document["art_piece_photo_credit_sms"]).at(index) %>
+                <% else %>
+                  <%= document["global_photo_credit_ss"] %>
+                <% end %></p>
+              </div>
+            </div>
+          <% end %>
         </div>
-        </a>
+        <% if Array.wrap(document["art_piece_photos_sms"]).count > 1 %>
+          <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" ><span class="glyphicon glyphicon-chevron-left"></span></a>
+          <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button"><span class="glyphicon glyphicon-chevron-right"></span></a>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
-  <% if Array.wrap(document["art_piece_photos_sms"]).count > 1 %>
-    <a class="carousel-control left" href="#my-carousel" data-slide="prev" role="button" ><span class="glyphicon glyphicon-chevron-left"></span></a>
-    <a class="carousel-control right" href="#my-carousel" data-slide="next" role="button"><span class="glyphicon glyphicon-chevron-right"></span></a>
-  <% end %>
 </div>
