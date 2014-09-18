@@ -3,8 +3,7 @@
     <% Array.wrap(document["art_piece_photos_sms"]).each_with_index do |photo, index| %>
       <div class="item <%= "active" if index == 0 %>">
         <a href="<%= photo %>" id="photo-<%= index %>" data-toggle="lightbox" data-gallery="multiimages" data-parent=".carousel-inner">
-          <%= image_tag photo %>
-        </a>
+        <%= image_tag photo %>
         <div class="carousel-caption">
           <p><% if !Array.wrap(document["art_piece_photo_credit_sms"]).at(index).blank? %>
             <%= Array.wrap(document["art_piece_photo_credit_sms"]).at(index) %>
@@ -12,6 +11,7 @@
             <%= document["global_photo_credit_ss"] %>
           <% end %></p>
         </div>
+        </a>
       </div>
     <% end %>
   </div>
