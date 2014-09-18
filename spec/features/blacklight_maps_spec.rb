@@ -3,7 +3,6 @@ require 'spec_helper'
 describe 'blacklight maps' do
   context "when there are 11 art pieces with buildings" do
     let(:building) {create(:building)}
-    let(:user) {create(:user, :admin)}
     before do
       11.times do
         create(:art_piece, :building => building)
@@ -11,15 +10,7 @@ describe 'blacklight maps' do
     end
     context "when visiting the view by clicking the thumbnail", :js => true do
       before do
-        capybara_login(user) if user
-        visit new_admin_art_piece_path
-        fill_in "Title", :with => "test title with photo"
-        within("#picture") do
-          attach_file("art_piece_art_piece_photos_attributes_0_photo", "spec/fixtures/cats.jpg")
-        end
-        click_button "Create Art piece"
-        ArtPiece.last.building = building
-        ArtPiece.last.save
+        create(:art_piece, :with_photo, :building => building)
         visit root_path
         click_button "Search"
         find(".leaflet-marker-icon", :text => "12").click
