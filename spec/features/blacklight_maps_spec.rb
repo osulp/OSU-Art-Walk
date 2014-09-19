@@ -12,7 +12,6 @@ describe 'blacklight maps' do
       before do
         create(:art_piece, :with_photo, :building => building)
         visit root_path
-        click_button "Search"
         find(".leaflet-marker-icon", :text => "12").click
         within("#blacklight-map-sidebar") do
           find("img").click
@@ -20,8 +19,8 @@ describe 'blacklight maps' do
       end
       it "should take you to the show with next and prev arrows" do
         expect(page).to have_content(ArtPiece.last.title)
-        expect(page).to have_link("« Previous")
-        expect(page).to have_text("Next »")
+        expect(page).to have_content("« Previous")
+        expect(page).to have_link("Next »")
       end
     end
     context "when on the first page", :js => true do
