@@ -31,10 +31,25 @@ module MapHelper
     link_to label, catalog_path(doc, :search_context => search_context), document_link_params(doc, opts)
   end
 
+  def render_thumbnail_img(doc, img_opts = {}, url_opts = {})
+    value = if blacklight_config.view_config(document_index_view_type).thumbnail_method
+      send(blacklight_config.view_config(document_index_view_type).thumbnail_method, doc, img_opts)
+    elsif blacklight_config.view_config(document_index_view_type).thumbnail_field
+      image_tag thumbnail_url(doc), img_opts
+    end
+
+    if value
+      if url_opts === false || url_opts[:suppress_link]
+        value
+      else
+        link_to_map_document doc, url_opts.merge(:label => value)
+      end
+    end
+  end
+
   def map_building(document)
     return nil unless params[:action] == "index" && cleaned_params.blank?
     {:f => {:building_ss => document["building_ss"]}, :sort => "art_piece_building_position_num_is asc"}
   end
-
 
 end
