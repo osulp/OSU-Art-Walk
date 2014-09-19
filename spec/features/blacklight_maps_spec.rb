@@ -20,7 +20,7 @@ describe 'blacklight maps' do
       it "should take you to the show with next and prev arrows" do
         expect(page).to have_content(ArtPiece.last.title)
         expect(page).to have_content("« Previous")
-        expect(page).to have_link("Next »")
+        expect(page).to have_content("Next »")
       end
     end
     context "when on the first page", :js => true do
