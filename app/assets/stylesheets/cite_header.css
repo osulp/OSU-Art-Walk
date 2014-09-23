@@ -1,0 +1,28 @@
+#header-navbar {
+  background-color: rgb(50,49,49);
+};
+#search-navbar {
+  background-color: rgb(243,115,33);
+};
+#search {
+  background-color: rgb(93,135,161);
+  border-color: rgb(93,135,161);
+};
+.input-group-addon {
+  background-color: white;
+};
+ul.navbar {
+  list-style-type: none;
+  margin: 10px 0 0 0;
+  float: right;
+};
+li {
+  display: inline;
+  padding-right: 10px;
+};
+#header-navbar a {
+  color: white;
+};
+#header-navbar a:hover {
+  color: lighten(#000, 93.5%)
+};

@@ -1,5 +1,5 @@
-<div class="navbar-right">
-  <ul class="nav navbar-nav">
+<div class="cite-navbar">
+  <ul class="navbar">
     <% if render_bookmarks_control? %>
     <li>
       <%= link_to "Home", root_path %>
@@ -27,10 +27,8 @@
     <li>
     <%= link_to t('blacklight.header_links.search_history'), search_history_path %>
     </li>
-  </ul>
 
   <% if has_user_authentication_provider? %>
-    <ul class="nav navbar-nav">
       <% if current_user %>
       <li>
         <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path %>
@@ -45,7 +43,7 @@
         <%= link_to t('blacklight.header_links.login'), new_user_session_path %>
       </li>
       <% end %>
-      </ul>
   <% end %>
+  </ul>
 </div>
 
