@@ -1,0 +1,9 @@
+.verticalLine {
+  border-right: thin solid rgb(243,115,33);
+  border-right-width: 3px;
+  padding-bottom: 60px;
+}
+h1 {
+  position: relative;
+  top: -20px;
+}
