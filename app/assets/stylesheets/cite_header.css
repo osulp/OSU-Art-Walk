@@ -20,9 +20,9 @@ li {
   display: inline;
   padding-right: 10px;
 };
-a {
+#header-navbar a {
   color: white;
 };
-a:hover {
+#header-navbar a:hover {
   color: lighten(#000, 93.5%)
 };
