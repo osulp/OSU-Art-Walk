@@ -25,4 +25,15 @@
   height:35px;
   width:50px;
   background-color: transparent;
+  border-color: transparent;
+}
+.theButton:active {
+  height:35px;
+  width:50px;
+  background-color: transparent;
+  border-color: transparent;
+}
+.theButton:hover {
+  background-color: #F59444;  
+  border-color: transparent;
 }
