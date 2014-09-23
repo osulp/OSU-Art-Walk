@@ -1,9 +1,16 @@
-<h1>Contact Us</h1>
-
-<%= current_user.email if current_user %>
-<br>
-<%= simple_form_for "Contact", :url => contact_path do |f| %>
-  <%= f.input :email, input_html: { :value => @email } unless current_user%>
-  <%= f.input :message, :as => :text, :input_html => {:value => @message } %>
-  <%= f.button :submit, "Submit" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2 verticalLine">
+      <h1 align="right">Contact Us</h1>
+    </div>
+    <div class='col-xs-10'>
+      <%= current_user.email if current_user %>
+      <br>
+      <%= simple_form_for "Contact", :url => contact_path do |f| %>
+        <%= f.input :email, input_html: { :value => @email } unless current_user%>
+        <%= f.input :message, :as => :text, :input_html => {:value => @message } %>
+        <%= f.button :submit, "Submit" %>
+      <% end %>
+    </div>
+  </div>
+</div>
