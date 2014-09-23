@@ -88,6 +88,7 @@ describe "settings" do
           expect(page).to have_content("Email")
           expect(page).to have_content("Copyright")
           expect(page).to have_content("About")
+          expect(page).to have_content("Help")
         end
       end
     end
