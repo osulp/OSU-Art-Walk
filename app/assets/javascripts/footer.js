@@ -7,7 +7,7 @@ function resizeMain() {
   var footerHeight = $("#dynamicFooter").outerHeight(true);
   var mainHeight = headerHeight + searchHeight + contentHeight
   if (mainHeight < windowHeight){
-    $("#main-container").css("min-height", windowHeight - searchHeight - headerHeight - footerHeight - 51);
+    $("#main-container").css("min-height", windowHeight - searchHeight - headerHeight - footerHeight);
     $("#dynamicFooter").css("visibility", "visible");
   }else{
     $("#dynamicFooter").css("visibility", "visible");
