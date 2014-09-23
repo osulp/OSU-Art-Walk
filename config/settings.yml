@@ -17,6 +17,11 @@ Home:
     type: text
     class: tinymce
     default: ""
+Help:
+  tag_attributes:
+    type: text
+    class: tinymce
+    default: ""
 Title:
   tag_attributes:
     type: string
