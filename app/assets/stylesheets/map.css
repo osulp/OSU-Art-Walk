@@ -1,0 +1,15 @@
+#blacklight-map-sidebar > a {
+  color: rgb(93,135,161);
+};
+#blacklight-map-sidebar > a:hover {
+  color: darken(#61849c, 20%);
+};
+.panel > #art-piece-panel a {
+  color: #61849c;
+};
+.panel > #art-piece-panel a:hover {
+  color: darken(#61849c, 20%);
+};
+.panel > #art-piece-panel {
+  background-color: #f4f4f4;
+};

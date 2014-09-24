@@ -1,16 +1,16 @@
-.panel-default {
+.facet_limit.panel-default {
   border: 2;
   border-color: rgb(93,135,161);
 };
-.panel-default > .panel-heading.collapse-toggle {
+.facet_limit.panel-default > .panel-heading.collapse-toggle {
   background-color: rgb(93,135,161);
   color: white;
 };
-.panel-default > .panel-heading.collapse-toggle.collapsed {
+.facet_limit.panel-default > .panel-heading.collapse-toggle.collapsed {
   background-color: rgb(50,49,49);
   color: white;
 };
-.panel-default > .panel-collapse.in {
+.facet_limit.panel-default > .panel-collapse.in {
   background-color: lighten(rgb(93,135,161), 47%);
 };
 a.facet_select {
