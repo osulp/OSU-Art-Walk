@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//
+// Required for Dynamic Styling
 //= require footer
+//
 // Required by Blacklight
 //= require blacklight/blacklight
 //
