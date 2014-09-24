@@ -11,7 +11,6 @@ describe "help page" do
   context "when there is help text entered" do
     before do 
       help
-      visit root_path
       click_link "Help"
     end
     it "should display the help text" do
@@ -21,7 +20,6 @@ describe "help page" do
   end
   context "when there is not help text entered" do
     before do
-      visit root_path
       click_link "Help"
     end
     it "should take you to the help page but not display content" do
