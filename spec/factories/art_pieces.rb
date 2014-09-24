@@ -32,7 +32,7 @@ FactoryGirl.define do
 
     trait :with_series do
       after(:build) do |art_piece|
-        art_piece.series = [build(:series)]
+        art_piece.series = [build(:series, :name => "series1")]
       end
     end
 

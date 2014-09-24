@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe "search field dropdown" do
-  let(:art_piece) {create(:art_piece, :with_artist, :with_building, :with_media, :with_collection)}
+  let(:art_piece) {create(:art_piece, :with_artist, :with_building, :with_media, :with_collection, :with_series)}
   before do
     art_piece
     visit root_path
   end
   context "when on the index page" do
     it "should have the dropdown with all the options" do
-      expect(page).to have_selector("option", :count => 6)
+      expect(page).to have_selector("option", :count => 7)
       within(".search_field") do
         expect(page).to have_content("All Fields")
         expect(page).to have_content("Artists")
@@ -78,6 +78,19 @@ describe "search field dropdown" do
           find("option", :text => "Collections").click
         end
         fill_in "Search...", :with => art_piece.collections.first.name
+        click_button "Search"
+        click_link "List"
+      end
+      it "should find the art piece" do
+        expect(page).to have_content(art_piece.title)
+      end
+    end
+    context "when searching by series" do
+      before do
+        within("#search_field") do
+          find("option", :text => "Series").click
+        end
+        fill_in "Search...", :with => art_piece.series.first.name
         click_button "Search"
         click_link "List"
       end

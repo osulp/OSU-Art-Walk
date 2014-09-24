@@ -19,6 +19,9 @@ module ArtWalk
           config.add_search_field('collections') do |field|
             field.solr_parameters = { :qf => "collections_text" }
           end
+          config.add_search_field('series') do |field|
+            field.solr_parameters = { :qf => "series_text" }
+          end
         end
       end
     end
