@@ -1,0 +1,7 @@
+.carousel-caption > p {
+  background: rgb(50,49,49);
+  margin-bottom: 0;
+};
+.carousel-caption {
+  padding-bottom: 5px;
+};
