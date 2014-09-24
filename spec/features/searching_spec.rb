@@ -18,6 +18,14 @@ describe "searching" do
         expect(page).to have_selector(".document")
         expect(page).to have_content(item.title)
       end
+      context "and the 10 per page button is clicked", :js => true do
+        before do
+          click_button "10 per page"
+        end
+        it "should open the dropdown" do
+          expect(page).to have_selector(".open")
+        end
+      end
     end
     context "and a part is searched for" do
       before do
