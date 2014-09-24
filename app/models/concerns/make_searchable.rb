@@ -6,6 +6,9 @@ module MakeSearchable
     searchable :auto_index => true, :include => [:building, :artists, :collections, :series, :art_piece_photos, :media] do
       # Searchable Text
       text "title"
+      text :media do
+        media.map(&:medium)
+      end
       text :artists do
         artists.map(&:name)
       end

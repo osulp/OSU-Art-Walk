@@ -8,6 +8,7 @@ class CatalogController < ApplicationController
   include ArtWalk::Catalog::FacetConfiguration
   include ArtWalk::Catalog::ShowConfiguration
   include ArtWalk::Catalog::MapConfiguration
+  include ArtWalk::Catalog::SearchConfiguration
 
   rescue_from ArtWalk::Exceptions::AccessDenied, :with => :no_permissions
 
