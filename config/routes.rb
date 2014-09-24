@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/about', :to => 'about#index', :as => "about_us"
 
+  get '/help', :to => 'help#index', :as => "help"
+
   namespace :admin do
     resources :users
     resources :art_pieces
