@@ -32,3 +32,6 @@ a.facet_select:hover {
 .panel-default > .panel-heading  a:hover {
   color: lighten(#000, 93.5%);
 };
+.panel-heading.collapse-toggle .panel-title:after {
+  color: white;
+}
