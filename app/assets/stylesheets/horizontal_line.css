@@ -1,0 +1,15 @@
+.horizontalLine {
+  border-bottom: thin solid rgb(243,115,33);
+  border-bottom-width: 2px;
+  margin-bottom: 10px;
+  padding-left: 0px;
+}
+h3 {
+  margin-bottom: 0px;
+}
+.noLeftPadding {
+  padding-left: 0px;
+}
+.largerFont{
+  font-size: 22px;
+}
