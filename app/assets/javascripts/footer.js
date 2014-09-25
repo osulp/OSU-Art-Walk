@@ -1,15 +1,8 @@
-$(window).load(resizeMain);
+jQuery(resizeMain);
+$(window).resize(resizeMain);
 function resizeMain() {
-  var windowHeight = window.innerHeight;
-  var headerHeight = $("#header-navbar").outerHeight(true);
-  var searchHeight = $("#search-navbarr").outerHeight(true);
-  var contentHeight = $("#main-container").outerHeight(true);
+  var windowHeight = $(window).height();
   var footerHeight = $("#dynamicFooter").outerHeight(true);
-  var mainHeight = headerHeight + searchHeight + contentHeight
-  if (mainHeight < windowHeight){
-    $("#main-container").css("min-height", windowHeight - searchHeight - headerHeight - footerHeight);
-    $("#dynamicFooter").css("visibility", "visible");
-  }else{
-    $("#dynamicFooter").css("visibility", "visible");
-  }
+  var containerPos = $("#main-container").offset().top
+  $("#main-container").css("min-height", windowHeight-containerPos-footerHeight)
 }
