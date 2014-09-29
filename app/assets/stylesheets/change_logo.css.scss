@@ -1,0 +1,14 @@
+#header-navbar {
+  .navbar-brand {  /* The main logo image for the Blacklight instance */
+    width: 200px;
+    height: 57px;
+    background:transparent image_url('art_walk_logo.png') no-repeat top left;
+    display: inline-block;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-right:0;
+    margin-right:20px;
+    padding-left: 0;
+  }
+}
