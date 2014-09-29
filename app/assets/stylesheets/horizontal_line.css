@@ -11,5 +11,9 @@ h3 {
   padding-left: 0px;
 }
 .largerFont{
-  font-size: 22px;
+  font-size: 32px;
+  margin-bottom: -5px;
+}
+#welcomeSection {
+  padding-left: 14px;
 }
