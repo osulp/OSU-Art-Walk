@@ -116,4 +116,14 @@ describe "settings" do
       end
     end
   end
+  context "When on the contact page" do
+    let(:setting2){create(:setting, :setting_name => 'ContactUs', :value => "Here we go!")}
+    before do
+      setting2
+      visit contact_path
+    end
+    it "should display the setting" do
+      expect(page).to have_content("Here we go!")
+    end
+  end
 end
