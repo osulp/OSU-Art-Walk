@@ -18,7 +18,7 @@
       options.id = this.id;
 
       // Setup Leaflet map
-      map = L.map(this.id).setView([0,0], 2);
+      map = L.map(this.id, {dragging: false}).setView([0,0], 2);
       window.map = map
       L.tileLayer(options.tileurl, {
         attribution: options.mapattribution,
