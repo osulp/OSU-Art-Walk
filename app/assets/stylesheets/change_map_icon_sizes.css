@@ -25,10 +25,12 @@
 .theButton {
   height:35px;
   width:50px;
-  background-color: transparent;
+  background-color: rgb(50,49,49);
   border-color: transparent;
+  color: white;
 }
 .theButton:hover {
-  background-color: #F59444;  
+  background-color: rgb(93,135,161);  
   border-color: transparent;
+  color: white;
 }
