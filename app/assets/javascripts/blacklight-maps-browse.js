@@ -18,12 +18,21 @@
       options.id = this.id;
 
       // Setup Leaflet map
-      map = L.map(this.id, {dragging: false, tap: false}).setView([0,0], 2);
-      window.map = map
-      L.tileLayer(options.tileurl, {
-        attribution: options.mapattribution,
-        maxZoom: options.maxzoom
-      }).addTo(map);
+      if(L.Browser.mobile){
+        map = L.map(this.id, {dragging: false, tap: false}).setView([0,0], 2);
+        window.map = map
+        L.tileLayer(options.tileurl, {
+          attribution: options.mapattribution,
+          maxZoom: options.maxzoom
+        }).addTo(map);
+      }else{
+        map = L.map(this.id).setView([0,0], 2);
+        window.map = map
+        L.tileLayer(options.tileurl, {
+          attribution: options.mapattribution,
+          maxZoom: options.maxzoom
+        }).addTo(map);
+      }
 
       // Initialize sidebar
       sidebar = L.control.sidebar(options.sidebar, {
