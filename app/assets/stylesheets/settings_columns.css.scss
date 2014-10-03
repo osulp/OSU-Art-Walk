@@ -1,0 +1,8 @@
+.column-settings-12-9{
+  @include make-xs-column(12);
+  @include make-sm-column(9);
+}
+.column-settings-12-10{
+  @include make-xs-column(12);
+  @include make-sm-column(10);
+}

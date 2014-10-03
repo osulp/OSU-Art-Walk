@@ -8,7 +8,7 @@
     <div class="verticalLine">
       <h1 align="right">Contact Us</h1>
     </div>
-    <div class='col-xs-12 col-sm-9'>
+    <div class='column-settings-12-9'>
       <%= current_user.email if current_user %>
       <br>
       <%= simple_form_for "Contact", :url => contact_path do |f| %>
