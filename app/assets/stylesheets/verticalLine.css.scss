@@ -1,0 +1,25 @@
+.verticalLine {
+  @include make-xs-column(12);
+  @include make-sm-column(2);
+  @media (min-width: $screen-sm-min) {
+    border-right: thin solid rgb(243,115,33);
+    border-right-width: 3px;
+    padding-bottom: 60px;
+    width:150px;
+  }
+  @media (max-width: $screen-sm-min) {
+
+    padding-bottom: 0;
+    h1 {
+      text-align: center;
+      border-bottom: thin solid rgb(243,115,33);
+      border-bottom-width: 3px;
+    }
+  }
+
+
+}
+h1 {
+  position: relative;
+  top: -20px;
+}
