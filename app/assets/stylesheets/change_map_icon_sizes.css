@@ -20,7 +20,7 @@
 .navbar-fixed-bottom {
   background-color: transparent;
   border: 10px solid transparent;
-  margin: 0;
+  left: initial;
 }
 .theButton {
   height:35px;
