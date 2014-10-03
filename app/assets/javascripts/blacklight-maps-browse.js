@@ -18,12 +18,17 @@
       options.id = this.id;
 
       // Setup Leaflet map
-      map = L.map(this.id).setView([0,0], 2);
-      window.map = map
-      L.tileLayer(options.tileurl, {
-        attribution: options.mapattribution,
-        maxZoom: options.maxzoom
-      }).addTo(map);
+        if(L.Browser.mobile){
+          var map_opts = {dragging: false, tap: false}
+        }else{
+          var map_opts = {}
+        }
+        map = L.map(this.id, map_opts).setView([0,0], 2);
+        window.map = map
+        L.tileLayer(options.tileurl, {
+          attribution: options.mapattribution,
+          maxZoom: options.maxzoom
+        }).addTo(map);
 
       // Initialize sidebar
       sidebar = L.control.sidebar(options.sidebar, {
