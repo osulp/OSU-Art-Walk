@@ -19,7 +19,8 @@
 }
 .navbar-fixed-bottom {
   background-color: transparent;
-  border: 10px solid transparent
+  border: 10px solid transparent;
+  margin: 0;
 }
 .theButton {
   height:35px;
