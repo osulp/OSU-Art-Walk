@@ -62,4 +62,5 @@ class ArtPiece < ActiveRecord::Base
   def by_student?
     artists.find{|x| x.student?}.present?
   end
+
 end

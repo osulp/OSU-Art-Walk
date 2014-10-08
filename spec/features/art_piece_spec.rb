@@ -9,6 +9,21 @@ describe "Art Piece Manipulation" do
     visit root_path
   end 
 
+  context "When there are more than 25 art pieces in the database" do
+    let(:user) {create(:user, :admin)}
+    before do
+      40.times {create(:art_piece)}
+    end
+    context "and visiting the index page of the art pieces" do
+      before do
+        visit admin_art_pieces_path
+      end
+      it "should paginate the art pieces" do
+        expect(page).to have_selector('.pagination')
+      end
+    end
+  end
+
   context "when visiting the show page of a not displayed piece" do
     let(:art) {create(:art_piece, :displayed => false)}
     before do
