@@ -1,5 +1,10 @@
 <div class="container">
   <div class="row">
+    <div id='smallPanel' class='panel panel-default'>
+      <div class='panel panel-heading'>
+        <%= link_to "Edit This Art Piece", edit_admin_art_piece_path(document[:id]) if current_user && current_user.admin? %>
+      </div>
+    </div>
     <ul class="nav nav-tabs" role="tablist">
       <li class="active"><a href="#carousel-pane" role="tab" data-toggle="tab">Carousel</a></li>
       <li><a href="#map-pane" role="tab" data-toggle="tab">Map</a></li>
