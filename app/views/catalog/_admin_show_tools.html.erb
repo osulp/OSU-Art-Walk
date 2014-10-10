@@ -1,0 +1,18 @@
+<% if current_user && current_user.admin? %> 
+  <div class="panel panel-default show-tools">
+    <div class="panel-heading">
+      Admin
+    </div>
+
+    <div class="panel-body">
+      <ul class="nav">
+          <li>
+             <%= link_to "Edit This Art Piece", edit_admin_art_piece_path(@document[:id]) %>
+          </li>
+          <li>
+            <%= link_to "Delete This Art Piece", admin_art_piece_path(@document[:id]), :method => :delete, :data => {:confirm => "Are you sure?"} %>
+          </li>
+      </ul>
+    </div>
+  </div>
+<% end %> 
