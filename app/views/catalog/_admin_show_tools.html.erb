@@ -7,10 +7,10 @@
     <div class="panel-body">
       <ul class="nav">
           <li>
-             <%= link_to "Edit This Art Piece", edit_admin_art_piece_path(@document[:id]) %>
+             <%= link_to "Edit This Art Piece", edit_admin_art_piece_path(@document[:id].gsub('ArtPiece ','')) %>
           </li>
           <li>
-            <%= link_to "Delete This Art Piece", admin_art_piece_path(@document[:id]), :method => :delete, :data => {:confirm => "Are you sure?"} %>
+            <%= link_to "Delete This Art Piece", admin_art_piece_path(@document[:id].gsub('ArtPiece ','')), :method => :delete, :data => {:confirm => "Are you sure?"} %>
           </li>
       </ul>
     </div>
