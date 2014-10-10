@@ -5,5 +5,8 @@
       <%= link_to "Edit", edit_admin_collection_path(collection), :class => "pull-right", :style => "padding-left: 10px;" %>
       <%= link_to "Delete", admin_collection_path(collection), :class => "pull-right", :method => :delete, :data => {:confirm => "Are you sure?"} %></p>
     </div>
+    <div class='panel panel-body'>
+      Collection Location: <%= collection.collection_url %> 
+    </div>
   </div>
 <% end %>

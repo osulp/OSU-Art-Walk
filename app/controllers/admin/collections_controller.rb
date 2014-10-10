@@ -36,7 +36,7 @@ class Admin::CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:collection).permit(:name)
+    params.require(:collection).permit(:name, :collection_url)
   end
 
   def find_collection

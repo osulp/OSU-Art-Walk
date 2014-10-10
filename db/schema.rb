@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140904220919) do
+ActiveRecord::Schema.define(version: 20141010225047) do
 
   create_table "art_piece_artists", force: true do |t|
     t.integer  "art_piece_id"
@@ -137,6 +137,7 @@ ActiveRecord::Schema.define(version: 20140904220919) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "collection_url"
   end
 
   create_table "contacts", force: true do |t|
