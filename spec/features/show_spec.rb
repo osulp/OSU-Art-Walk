@@ -160,7 +160,7 @@ describe "catalog show" do
         visit catalog_path(:id => art_piece.document_id)
       end
       it "should have an edit link" do
-        expect(page).to have_link("Edit This Art Piece")
+        expect(page).to_not have_link("Edit This Art Piece")
       end
     end
   end
