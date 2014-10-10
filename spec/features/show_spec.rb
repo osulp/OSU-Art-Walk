@@ -150,8 +150,9 @@ describe "catalog show" do
         art_piece
         visit catalog_path(:id => art_piece.document_id)
       end
-      it "should have an edit link" do
+      it "should have an edit and delete link" do
         expect(page).to have_link("Edit This Art Piece")
+        expect(page).to have_link("Delete This Art Piece")
       end
     end
     context "and you visit its show page as a non-admin" do
@@ -161,6 +162,7 @@ describe "catalog show" do
       end
       it "should have an edit link" do
         expect(page).to_not have_link("Edit This Art Piece")
+        expect(page).to_not have_link("Delete This Art Piece")
       end
     end
   end
