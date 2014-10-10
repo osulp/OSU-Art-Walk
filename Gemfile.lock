@@ -354,6 +354,7 @@ DEPENDENCIES
   jazz_hands!
   jettywrapper (~> 1.7)
   jquery-rails
+  kaminari
   mysql2
   newrelic_rpm (>= 3.7.3)
   poltergeist
