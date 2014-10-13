@@ -154,6 +154,15 @@ describe "catalog show" do
         expect(page).to have_link("Edit This Art Piece")
         expect(page).to have_link("Delete This Art Piece")
       end
+      context "and clicking that link" do
+        before do
+          click_link "Edit This Art Piece"
+        end
+
+        it "should take you to the edit page of that art piece" do
+          expect(page).to have_content("Edit")
+        end
+      end
     end
     context "and you visit its show page as a non-admin" do
       before do
