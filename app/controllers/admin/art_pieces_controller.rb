@@ -3,10 +3,9 @@ class Admin::ArtPiecesController < AdminController
   before_filter :find_art_piece, :only => [:edit, :update, :destroy]
   
   def index
-    @art_pieces = PaginatingDecorator.new(ArtPiece.all.includes(:art_piece_photos).page(params[:page]))
+    @art_pieces = PaginatingDecorator.new(ArtPiece.all.order(:title => :asc).includes(:art_piece_photos).page(params[:page]))
     respond_with(@art_pieces)
   end
-
   def edit
   end
 
