@@ -44,7 +44,7 @@ module MakeSearchable
         collections.map(&:name)
       end
       string :collection_url, :stored => true, :multiple => true do
-        collections.map(&:collection_url)
+        collection_urls
       end
       string :series, :stored => true, :multiple => true do
         series.map(&:name)

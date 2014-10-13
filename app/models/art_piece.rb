@@ -53,6 +53,10 @@ class ArtPiece < ActiveRecord::Base
     return nil if lat.blank? || long.blank?
     [title, lat, long].join("-|-")
   end
+
+  def collection_urls
+    collections.map(&:collection_url).compact
+  end
   
   private
 
