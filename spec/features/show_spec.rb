@@ -2,11 +2,21 @@ require 'spec_helper'
 
 describe "catalog show" do
   context "when there are two art pieces" do
-    let(:art_piece) { create(:art_piece) }
-    let(:art_piece_2) { create(:art_piece) }
+    let(:art_piece) { create(:art_piece, :title => "Alpha") }
+    let(:art_piece_2) { create(:art_piece, :title => "Betic") }
     before do
-      art_piece
       art_piece_2
+      art_piece
+    end
+    context "and the index page is visited" do
+      let(:user) {create(:user, :admin => true) }
+      before do
+        capybara_login(user) if user
+        visit admin_art_pieces_path
+      end
+      it "should display the art pieces sorted alphabetically" do
+        expect(art_piece.title).to appear_before art_piece_2.title
+      end
     end
     context "and the first is visited" do
       before do
