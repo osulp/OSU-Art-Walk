@@ -149,4 +149,40 @@ describe "catalog show" do
       end
     end
   end
+  context "when there is one art piece", :js => true do
+    let(:art_piece) { create(:art_piece, :with_building) }
+    let(:user) {create(:user, :admin)}
+
+    context "and you visit its show page as an admin" do
+      before do
+        user
+        capybara_login(user) if user
+        art_piece
+        visit catalog_path(:id => art_piece.document_id)
+      end
+      it "should have an edit and delete link" do
+        expect(page).to have_link("Edit This Art Piece")
+        expect(page).to have_link("Delete This Art Piece")
+      end
+      context "and clicking that link" do
+        before do
+          click_link "Edit This Art Piece"
+        end
+
+        it "should take you to the edit page of that art piece" do
+          expect(page).to have_content("Edit")
+        end
+      end
+    end
+    context "and you visit its show page as a non-admin" do
+      before do
+        art_piece
+        visit catalog_path(:id => art_piece.document_id)
+      end
+      it "should have an edit link" do
+        expect(page).to_not have_link("Edit This Art Piece")
+        expect(page).to_not have_link("Delete This Art Piece")
+      end
+    end
+  end
 end
