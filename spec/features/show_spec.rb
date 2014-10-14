@@ -224,6 +224,7 @@ describe "catalog show" do
         end
         it "it should display the collections with collection urls as a link" do
           expect(page).to have_link(art_piece.collections.first.name)
+          expect(page).to_not have_link(art_piece.collections.second.name)
           expect(page).to have_link(art_piece.collections.last.name)
         end
       end
