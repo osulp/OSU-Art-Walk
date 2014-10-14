@@ -42,6 +42,12 @@ FactoryGirl.define do
       end
     end
 
+    trait :with_collections do
+      after(:build) do |art_piece|
+        art_piece.collections = [build(:collection), build(:collection), build(:collection)]
+      end
+    end
+
     trait :with_media do
       after(:build) do |art_piece|
         art_piece.media = [build(:medium), build(:medium)]

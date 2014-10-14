@@ -32,6 +32,18 @@
   <% end %>
 </dl>
 <dl class="dl-horizontal  dl-invert">
+  <% if document['collections_sms'] != nil %> 
+    <% document['collections_sms'].each_with_index do |collection, i| %>
+      <% if document['collection_url_sms'][i].present? %>
+        <dt> Collection: <dd> 
+        <a href='<%= document["collection_url_sms"].first %>'>
+          <%= document['collections_sms'][i] %>
+        </a> </dd> </dt>
+      <% end %>
+    <% end %>
+  <% end %>
+</dl>
+<dl class="dl-horizontal  dl-invert">
   <% document_show_fields(document).each do |solr_fname, field| -%>
     <% if should_render_show_field?(document, field) %>
 	    <dt class="blacklight-<%= solr_fname.parameterize %>"><%= render_document_show_field_label document, :field => solr_fname %></dt>
