@@ -55,7 +55,7 @@ class ArtPiece < ActiveRecord::Base
   end
 
   def collection_urls
-    collections.map(&:collection_url).compact
+    collections.map(&:collection_url)
   end
   
   private

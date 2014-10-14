@@ -206,4 +206,27 @@ describe "catalog show" do
       end
     end
   end
+  context "when there is one art piece with three collections", :js => true do
+    let(:art_piece) { create(:art_piece, :with_building, :with_collections) }
+    let(:user) {create(:user, :admin)}
+
+    context "and the collection has a collection url" do
+      before do
+        user
+        capybara_login(user) if user
+        art_piece.collections.first.collection_url = "http://www.google.com"
+        art_piece.collections.last.collection_url = "http://www.google.com"
+        art_piece.save
+      end
+      context "and you visit the show page" do
+        before do
+           visit catalog_path(:id => art_piece.document_id)
+        end
+        it "it should display the collections with collection urls as a link" do
+          expect(page).to have_link(art_piece.collections.first.name)
+          expect(page).to have_link(art_piece.collections.last.name)
+        end
+      end
+    end
+  end
 end
