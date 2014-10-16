@@ -1,10 +1,4 @@
-<div class='container'>
-  <div class='row'>
-    <div class="col-lg-2 col-sm-2"></div>
-    <div class="col-lg-6 col-sm-6">
-      <%= blacklight_map_tag('blacklight-map') {}%>
-      <div id="blacklight-map-sidebar"></div>
-      <%= javascript_tag "window.map_data = #{serialize_geojson}" %>
-    </div>
-  </div>
-</div>
+
+<%= blacklight_map_tag('blacklight-map') {}%>
+<div id="blacklight-map-sidebar"></div>
+<%= javascript_tag "window.map_data = #{serialize_geojson}" %>
