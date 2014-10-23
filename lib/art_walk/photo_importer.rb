@@ -48,14 +48,15 @@ module ArtWalk
         filename.split("~")
       end
 
-      def artist
-        @artist ||= Artist.find_or_create_by(:name => split_name[0].strip)
+      def artists
+        artists = split_name[0].strip.split(" and").map(&:strip)
+        @artists ||= artists.map{|artist| Artist.find_or_initialize_by(:name => artist)}
       end
 
       def art_piece
         @art_piece ||= begin
-                         a = artist.art_pieces.find_or_initialize_by(:title => split_name[1])
-                         a.artists |= [artist]
+                         a = artists.first.art_pieces.find_or_initialize_by(:title => split_name[1])
+                         a.artists |= artists
                          a.save
                          a
                        end
