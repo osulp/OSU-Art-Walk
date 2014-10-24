@@ -54,6 +54,12 @@ FactoryGirl.define do
       end
     end
 
+    trait :with_medium do
+      after(:build) do |art_piece|
+        art_piece.media = [build(:medium)]
+      end
+    end
+
     trait :with_student do
       after(:build) do |art_piece|
         art_piece.artists = [build(:artist, :student => true)]

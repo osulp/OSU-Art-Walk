@@ -54,4 +54,20 @@ describe "searching" do
       end
     end
   end
+  context "when there is an item with a building, medium, artist, and series", :js => true do
+    let (:art_piece) {create(:art_piece, :with_building, :with_artist, :with_collection, :with_series, :with_medium)}
+    before do
+      art_piece
+      @art_info = [art_piece.building.name, art_piece.artists.first.name, art_piece.collections.first.name, art_piece.series.first.name, art_piece.media.first.medium, art_piece.title, art_piece.description]
+      visit root_path
+    end
+    it "should allow for each searchable text to be searched" do
+      @art_info.each do |art_piece_info|
+        fill_in "Search...", :with => art_piece_info
+        click_button "Search"
+        click_link "List"
+        expect(page).to have_content(art_piece_info)
+      end
+    end
+  end
 end
