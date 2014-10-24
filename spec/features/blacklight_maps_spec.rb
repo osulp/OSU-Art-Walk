@@ -1,6 +1,26 @@
 require 'spec_helper'
 
 describe 'blacklight maps' do
+  context "when adding an art piece that is outdoors" do
+    let(:user) {create(:user, :admin => true)}
+    before do
+      capybara_login(user) if user
+      visit new_admin_art_piece_path
+    end
+    context "when there is an outdoords art piece", :js => true do
+      before do
+        fill_in "Title", :with => "Outdoors Art Piece"
+        fill_in "Lat", :with => 0
+        fill_in "Long", :with => 0
+        click_link "remove"
+        click_button "Create Art piece"
+        visit root_path
+      end
+      it "should display the art piece on the map" do
+        expect(page).to have_selector(".leaflet-marker-icon", :text => "1")
+      end
+    end
+  end
   context "when there are 11 art pieces with buildings" do
     let(:building) {create(:building)}
     before do
