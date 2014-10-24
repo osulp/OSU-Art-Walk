@@ -13,11 +13,11 @@ module ArtWalk
       end
 
       def assign_artist_name(value)
-        new_val = value.split(/[&;]/)
+        new_val = value.gsub(' and ', ";").split(/[&;]/)
         new_val.each do |val|
           new_artist = Artist.find_or_initialize_by(:name => val.strip)
           new_artist.save
-          resource.artists = [new_artist]
+          resource.artists << new_artist
         end
         resource.save
       end
