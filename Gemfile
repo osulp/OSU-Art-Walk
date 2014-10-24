@@ -39,6 +39,7 @@ group :development, :test do
   # Test Coverage
   gem 'coveralls', :require => false
   gem 'simplecov'
+  gem 'capybara-screenshot'
 end
 
 group :test do
