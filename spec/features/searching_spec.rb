@@ -67,7 +67,6 @@ describe "searching" do
         click_button "Search"
         click_link "List"
         expect(page).to have_content(art_piece_info)
-        page.save_screenshot('spec/fixtures/screenshot.png')
       end
     end
   end
