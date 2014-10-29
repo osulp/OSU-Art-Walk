@@ -1,5 +1,5 @@
 module ArtWalk
-  #class ArtPieceNotFoundException < StandardError; end;
+  class ArtPieceNotFoundException < StandardError; end;
   class PhotoImporter < GenericImporter
 
     def initialize(path_name)
