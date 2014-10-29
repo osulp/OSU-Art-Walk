@@ -1,4 +1,5 @@
 module ArtWalk
+  #class ArtPieceNotFoundException < StandardError; end;
   class PhotoImporter < GenericImporter
 
     def initialize(path_name)
@@ -18,7 +19,11 @@ module ArtWalk
 
     def import_photo!(path_name)
       path_name.each do |pathname|
-        self.class::RowCreator.call(pathname)
+        begin
+          self.class::RowCreator.call(pathname)
+        rescue ArtPieceNotFoundException => e
+          f = File.open('art_walk_importer_errors.txt', 'a') { |file| file.write("Error raised: #{e.message} \n\n") }
+        end
       end
     end
 
@@ -55,7 +60,11 @@ module ArtWalk
 
       def art_piece
         @art_piece ||= begin
-                         a = artists.first.art_pieces.find_or_initialize_by(:title => split_name[1])
+                         #DEBUG STATEMENT FOR CHECKING WHICH PHOTOS ARE NOT BEING IMPORTED PROPERLY
+                         raise ArtPieceNotFoundException.new("Art Piece '#{filename}' not found.\n Please make sure the art piece following naming convention (artpiece~artist~building~number)\n") if split_name[1].nil?
+                         a = artists.first.art_pieces.where('title LIKE ?', split_name[1].gsub('_', '%')).first
+                         #DEBUG STATEMENT FOR CHECKING WHICH PHOTOS ARE NOT BEING IMPORTED PROPERLY
+                         raise ArtPieceNotFoundException.new("Art Piece '#{filename}' not found. \n Please make sure the art piece is spelled correctly in the google drive and try again\n") if a.nil?
                          a.artists |= artists
                          a.save
                          a
