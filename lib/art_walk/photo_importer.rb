@@ -62,7 +62,7 @@ module ArtWalk
         @art_piece ||= begin
                          #DEBUG STATEMENT FOR CHECKING WHICH PHOTOS ARE NOT BEING IMPORTED PROPERLY
                          raise ArtPieceNotFoundException.new("Art Piece '#{filename}' not found.\n Please make sure the art piece following naming convention (artpiece~artist~building~number)\n") if split_name[1].nil?
-                         a = artists.first.art_pieces.where('title LIKE ?', split_name[1].gsub('_', '%')).first
+                         a = artists.first.art_pieces.where('title LIKE ?', split_name[1].gsub('_', '%').gsub('-', '%')).first
                          #DEBUG STATEMENT FOR CHECKING WHICH PHOTOS ARE NOT BEING IMPORTED PROPERLY
                          raise ArtPieceNotFoundException.new("Art Piece '#{filename}' not found. \n Please make sure the art piece is spelled correctly in the google drive and try again\n") if a.nil?
                          a.artists |= artists
