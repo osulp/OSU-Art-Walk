@@ -18,7 +18,7 @@ module ArtWalk
     private
 
     def import_photo!(path_name)
-      path_name.each do |pathname|
+      path_name.sort.each do |pathname|
         begin
           self.class::RowCreator.call(pathname)
         rescue ArtPieceNotFoundException => e
