@@ -9,6 +9,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
+  process :auto_orient
   process :resize_to_limit => [720,1080]
   process :quality => 120
   process :thumb
@@ -36,6 +37,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_limit => [200, 200]
+  end
+  
+  def auto_orient
+    manipulate! do |image|
+      image.auto_orient
+    end
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
