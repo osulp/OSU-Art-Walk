@@ -6,7 +6,9 @@ module ArtWalk
 
       def resource
         if row[4].blank?
-          @resource ||= model.find_or_initialize_by(:title => "Untitled")
+          @resource ||= model.create(:title => "Untitled")
+        elsif row[4] == "Untitled"
+          @resource ||= model.create(:title => row[4])
         else
           @resource ||= model.find_or_initialize_by(:title => row[4])
         end
