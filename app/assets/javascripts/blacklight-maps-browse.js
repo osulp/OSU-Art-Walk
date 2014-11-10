@@ -65,17 +65,20 @@
       if(navigator.geolocation) {
         var  locationMarker = new L.Marker([44.5649730045019, -123.275924921036], {icon: locationIcon}).addTo(map)
       }
-
+      var onCampus = false;
+      var initialized = false;
       // Puts the marker on the map if the get location was successful
       var success = function (position) {
         locationMarker.setLatLng([position.coords.latitude, position.coords.longitude]);
-      }
 
-      // Gets the current location on map load
-     document.onload = getLocation();
-      function getLocation() {
-        if(navigator.geolocation) {
-          navigator.geolocation.watchPosition(success, function () {}, opts);
+        if(markers.getBounds().contains(locationMarker.getLatLng())) {
+          onCampus = true;
+        }
+        if(onCampus && !initialized){
+          initialized = true;
+          map.fitBounds([[position.coords.latitude, position.coords.longitude],
+                         [position.coords.latitude, position.coords.longitude]], {});
+          map.setView([position.coords.latitude, position.coords.longitude], 40);
         }
       }
 
@@ -94,11 +97,19 @@
       // Add GeoJSON layer to marker cluster object
       markers.addLayer(geoJsonLayer);
 
+     // Gets the current location on map load
+     document.onload = getLocation();
+      function getLocation() {
+        if(navigator.geolocation) {
+          navigator.geolocation.watchPosition(success, function () {}, opts);
+        }
+      }
+
       // Add marker cluster object to map
       map.addLayer(markers);
 
       // Zooms to show all points on map
-      if(geojson_docs.features.length > 0) {
+      if((geojson_docs.features.length > 0) && (!onCampus)) {
         map.fitBounds(markers.getBounds());
       }
 
