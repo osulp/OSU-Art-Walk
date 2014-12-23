@@ -1,4 +1,5 @@
 class Admin::ArtPiecesController < AdminController
+  respond_to :html, :json
   before_filter :find_art_piece, :only => [:edit, :update, :destroy]
   
   def index
@@ -6,6 +7,7 @@ class Admin::ArtPiecesController < AdminController
     @art = ArtPiece.all
     respond_to do |format|
       format.html
+      format.json
       format.csv { send_data @art.to_csv }
     end
   end
