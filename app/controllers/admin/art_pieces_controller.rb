@@ -1,11 +1,15 @@
 class Admin::ArtPiecesController < AdminController
-  respond_to :html, :json
   before_filter :find_art_piece, :only => [:edit, :update, :destroy]
   
   def index
     @art_pieces = PaginatingDecorator.new(ArtPiece.order(:title => :asc).includes(:art_piece_photos).page(params[:page]))
-    respond_with(@art_pieces)
+    @art = ArtPiece.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @art.to_csv }
+    end
   end
+
   def edit
   end
 
