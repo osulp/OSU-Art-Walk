@@ -72,10 +72,10 @@ class ArtPiece < ActiveRecord::Base
     CSV.generate do |csv|
       csv << ["Art Piece Name", "Created on", "Size", "Legal Info", "Contact Info", "Description", 
               "Displayed", "Private", "Number", "Artist Comments", "Art Piece Latitude", 
-              "Art Pieve Longitude", "Photo Credit", "Artist Name", "Artist Bio", "Artist Birthdate",
-              "Artist Deathdate", "Is Student", "Is Faculty", "Is Featured", "Building Name", 
+              "Art Piece Longitude", "Photo Credit", "Artist Name", "Artist Bio", "Artist Birthdate",
+              "Artist Deathdate", "Artist Is Student", "Artist Is Faculty", "Artist Is Featured", "Building Name", 
               "Building Description", "Building Latitude", "Building Longitude", "Floor", 
-              "Location in Building", "Position in Building", "Collections", "Media", "Series"]
+              "Location in Building", "Position in Building", "Collections", "Media", "Series", 'Art Piece Photo Credit']
       all.each do |art|
         csv << [art.title, art.creation_date, art.size, art.legal_info, art.contact_info, 
                 art.description, art.displayed, art.private, art.number, art.artist_comments,
@@ -86,7 +86,7 @@ class ArtPiece < ActiveRecord::Base
                 art.building.name, art.building.description, art.building.lat, art.building.long,
                 art.art_piece_building.floor, art.art_piece_building.location, art.art_piece_building.position_num, 
                 art.collections.map{|collection| collection.name}.compact.join(", "), art.media.map{|media| media.medium}.compact.join(", "),
-                art.series.map{|series| series.name}.compact.join(", ")]
+                art.series.map{|series| series.name}.compact.join(", "), art.art_piece_photos.map{|photo| photo.photo_credit}.compact.join(", ")]
       end
     end
   end
