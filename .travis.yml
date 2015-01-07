@@ -1,9 +1,14 @@
 cache:
-  - bundler
+  bundler: true
+  apt: true
+  directories:
+    - tmp
+
 language:
   - ruby
 rvm:
   - 2.1.2
+sudo: false
 env:
   matrix:
     - ARTWALK_ADAPTER=mysql2 ARTWALK_DB=artwalk_test ARTWALK_DB_USERNAME=travis
