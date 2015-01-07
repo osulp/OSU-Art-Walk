@@ -78,9 +78,6 @@ class ArtPiece < ActiveRecord::Base
               "Building Description", "Building Latitude", "Building Longitude", "Floor", 
               "Location in Building", "Position in Building", "Collections", "Media", "Series", 'Art Piece Photo Credit']
       all.each do |art|
-        print "##################################################################"
-        print art.title
-        print "##################################################################"
         csv << [art.title, art.creation_date, art.size, art.legal_info, art.contact_info, 
                 art.description, art.displayed, art.private, art.number, art.artist_comments,
                 art.lat, art.long, art.global_photo_credit, art.artists.map{|artist| artist.name}.compact.join("; "), 
@@ -91,7 +88,6 @@ class ArtPiece < ActiveRecord::Base
                 art.art_piece_building_floor, art.art_piece_building_location, art.art_piece_building_position_num, 
                 art.collections.map{|collection| collection.name}.compact.join(", "), art.media.map{|media| media.medium}.compact.join(", "),
                 art.series.map{|series| series.name}.compact.join(", "), art.art_piece_photos.map{|photo| photo.photo_credit}.compact.join(", ")]
-        print "####################################################################"
       end
     end
   end
