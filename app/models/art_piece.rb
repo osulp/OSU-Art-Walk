@@ -1,7 +1,7 @@
 class ArtPiece < ActiveRecord::Base
   include SunspotModel
   include MakeSearchable
-  include ToCSV
+
   validates :title, :presence => true 
 
 
@@ -35,6 +35,12 @@ class ArtPiece < ActiveRecord::Base
 
 
   accepts_nested_attributes_for :art_piece_photos, :art_piece_building, :allow_destroy => true
+
+  class << self
+    def to_csv
+      ArtPieceCSVGenerator.new(self).run
+    end
+  end
 
   def status
     status = []
