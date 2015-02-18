@@ -16,7 +16,6 @@ class CatalogController < ApplicationController
 
   #filter out not-diplayed art pieces
   self.solr_search_params_logic += [:exclude_not_displayed_items]
-  self.solr_search_params_logic += [:exclude_displayed_facet]
   self.solr_search_params_logic += [:require_coordinates]
 
   configure_blacklight do |config|
@@ -63,10 +62,6 @@ class CatalogController < ApplicationController
 
   def load_map_results
     @map_results = get_search_results(params.merge(:map_view => true), {:start => 0, :rows => 10000, :sort => "art_piece_building_position_num_is asc"}).first.docs unless params[:controller] == "bookmarks"
-  end
-
-  def exclude_displayed_facet(solr_params, user_params)
-    solr_params["facet.field"] -= ["displayed_bs"] unless current_or_guest_user.admin?
   end
 
   def exclude_not_displayed_items(solr_params, user_params)
